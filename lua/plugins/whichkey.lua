@@ -41,6 +41,8 @@ return {
                 },
                 -- better descriptions
                 { "gx", desc = "Open with system app" },
+
+                { "<leader>m", name = "Multicursores", icon = { icon = "󰇀", color = "grey" } },
             },
         },
     },

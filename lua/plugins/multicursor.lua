@@ -9,11 +9,6 @@ return {
 
         mc.setup()
 
-        local wk = require("which-key")
-        wk.add({
-            { "<leader>m", name = "Multicursores", icon = { icon = "󰇀", color = "grey" } },
-        })
-
         local set = vim.keymap.set
 
         -- Add or skip cursor above/below the main cursor.
