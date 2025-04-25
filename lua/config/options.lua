@@ -12,4 +12,4 @@ vim.opt.spelllang      = { "es", "en" }
 vim.opt.spell          = false
 vim.opt.cursorline     = true
 vim.opt.wrap           = false
-vim.cmd.colorscheme("tokyonight-storm")
+vim.cmd.colorscheme("tokyonight-night")

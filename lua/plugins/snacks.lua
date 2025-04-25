@@ -206,6 +206,13 @@ return {
             end,
             desc = "Terminal flotante",
             mode = { "n", "t" }
+        },
+        {
+            "<leader>cs",
+            function()
+                Snacks.picker.lsp_symbols()
+            end,
+            desc = "Lsp symbols"
         }
     },
 }

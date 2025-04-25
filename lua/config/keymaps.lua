@@ -10,6 +10,10 @@ keymap("n", "<C-h>", "<C-w>h", { desc = "Mover a la ventana izquierda" })
 keymap("n", "<C-j>", "<C-w>j", { desc = "Mover a la ventana abajo" })
 keymap("n", "<C-k>", "<C-w>k", { desc = "Mover a la ventana arriba" })
 keymap("n", "<C-l>", "<C-w>l", { desc = "Mover a la ventana derecha" })
+keymap("t", '<C-j>', '<C-\\><C-n><C-w>j',
+    { desc = 'Mover a la ventana de abajo (terminal)', noremap = true, silent = true })
+keymap("t", '<C-k>', '<C-\\><C-n><C-w>k',
+    { desc = 'Mover a la ventana de arriba (terminal)', noremap = true, silent = true })
 keymap("n", "<leader>-", "<CMD>split<CR>", { desc = "Split horizontal" })
 keymap("n", "<leader>|", "<CMD>vsplit<CR>", { desc = "Split vertical" })
 keymap("n", "<leader>wc", "<C-w>c", { desc = "Cerrar la ventana" })
@@ -69,21 +73,10 @@ keymap("n", "<leader>rd", function()
     vim.opt.relativenumber = false
 end, { desc = "Desactivar números relativos" })
 
+keymap("v", ">", ">gv", { noremap = true })
+keymap("v", "<", "<gv", { noremap = true })
+
 -- vim.keymap.set("n", "<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })
 -- vim.keymap.set("n", "<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Down" })
 -- vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Mover selección abajo", silent = true })
 -- vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Mover selección arriba", silent = true })
-
--- vim.api.nvim_set_keymap("v", ">", ">gv", { noremap = true })
--- vim.api.nvim_set_keymap("v", "<", "<gv", { noremap = true })
-
--- vim.keymap.set({ "n", "t" }, "<leader>tt", function()
--- 	require("snacks.terminal").toggle(nil, { cwd = vim.fn.getcwd() })
--- end, { desc = "Terminal" })
---
--- vim.keymap.set(
--- 	{ "n", "t" },
--- 	"<leader>ty",
--- 	"<cmd>lua Snacks.terminal(nil, { win = {position = 'float'}})<CR>",
--- 	{ desc = "Terminal flotante", noremap = true, silent = true }
--- )
