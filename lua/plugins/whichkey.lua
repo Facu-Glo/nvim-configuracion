@@ -6,15 +6,11 @@ return {
         spec = {
             {
                 mode = { "n", "v" },
-                -- { "<leader><tab>", group = "tabs" },
                 { "<leader>t", group = "terminal" },
-                -- { "<leader>r", group = "numeros de lineas" },
                 { "<leader>c", group = "code" },
                 { "<leader>d", group = "debug" },
-                -- { "<leader>dp", group = "profiler" },
                 { "<leader>f", group = "file/find" },
                 { "<leader>g", group = "git" },
-                -- { "<leader>gh", group = "hunks" },
                 { "<leader>q", group = "quit/session" },
                 { "<leader>s", group = "search" },
                 -- { "<leader>u", group = "ui", icon = { icon = "󰙵 ", color = "cyan" } },
@@ -39,27 +35,12 @@ return {
                         return require("which-key.extras").expand.win()
                     end,
                 },
-                -- better descriptions
                 { "gx", desc = "Open with system app" },
 
                 { "<leader>m", name = "Multicursores", icon = { icon = "󰇀", color = "grey" } },
+                { "<leader>r", name = "Relative number", icon = { icon = " " } },
+                { "<leader>o", name = "Abir Oil explorer", icon = { icon = "󰝰 " } },
             },
-        },
-    },
-    keys = {
-        -- {
-        --     "'d",
-        --     function()
-        --         require("which-key").show({ global = false })
-        --     end,
-        --     desc = "Eliminar marcas",
-        -- },
-        {
-            "<leader>r",
-            function()
-                require("which-key").show({ global = false })
-            end,
-            desc = "Relative number",
         },
     },
 }

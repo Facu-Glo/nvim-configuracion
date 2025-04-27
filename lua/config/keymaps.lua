@@ -22,6 +22,8 @@ keymap({ "n", "v" }, "<C-s>", ":w<CR>", { noremap = true, silent = true })
 keymap("i", "<C-s>", "<Esc>:w<CR>", { noremap = true, silent = true })
 
 keymap("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+keymap("n", "<leader>oo", "<CMD>Oil<CR>", { desc = "Abrir Oil" })
+keymap("n", "<leader>of", "<CMD>Oil --float<CR>", { desc = "Abrir Oil flotante" })
 
 keymap("n", "<leader>cf", "<CMD>lua vim.lsp.buf.format()<CR>")
 keymap("n", "<leader>ca", "<CMD>lua vim.lsp.buf.code_action()<CR>")
@@ -75,6 +77,13 @@ end, { desc = "Desactivar números relativos" })
 
 keymap("v", ">", ">gv", { noremap = true })
 keymap("v", "<", "<gv", { noremap = true })
+
+keymap("n", "<leader>qq", "<CMD>qall<CR>", { desc = "Salir sin guardar" })
+keymap("n", "<leader>qw", "<CMD>wqall<CR>", { desc = "Guardar y salir" })
+
+-- vim.keymap.set("n", "<leader>td", function()
+--     vim.cmd('vsplit ~/Notas/To Do.md')
+-- end, { desc = "Abrir ToDo.md" })
 
 -- vim.keymap.set("n", "<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })
 -- vim.keymap.set("n", "<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Down" })
