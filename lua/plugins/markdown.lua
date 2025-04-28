@@ -10,6 +10,7 @@ return {
                 blink = { enabled = true },
                 lsp = { enabled = false },
             },
+            checkbox = { checked = { scope_highlight = '@markup.strikethrough' } },
         })
     end
 }

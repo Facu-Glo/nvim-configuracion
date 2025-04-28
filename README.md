@@ -1,5 +1,5 @@
 # Neovim configuración
-Mi configuración de Neovim con lsp, plugins y keymaps que utilizo en el dia a dia.
+Mi configuración de Neovim con lsp, plugins y keymaps que utilizo en el día a día.
 
 ![Image](https://github.com/user-attachments/assets/ac525303-2eda-49d4-bb37-2c1984252575)
 
