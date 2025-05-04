@@ -6,7 +6,7 @@ return {
         spec = {
             {
                 mode = { "n", "v" },
-                { "<leader>t", group = "terminal" },
+                { "<leader>t", group = "terminal / to do" },
                 { "<leader>c", group = "code" },
                 { "<leader>d", group = "debug" },
                 { "<leader>f", group = "file/find" },
