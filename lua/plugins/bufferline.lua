@@ -15,12 +15,8 @@ return {
     },
     opts = {
         options = {
-            close_command = function(n)
-                vim.api.nvim_buf_delete(n, { force = false })
-            end,
-            right_mouse_command = function(n)
-                vim.api.nvim_buf_delete(n, { force = false })
-            end,
+            close_command = false,
+            right_mouse_command = false,
             diagnostics = "nvim_lsp",
             always_show_bufferline = false,
             diagnostics_indicator = function(_, _, diag)
@@ -46,6 +42,8 @@ return {
                 },
             },
             color_icons = true,
+            show_buffer_close_icons = false,
+            -- show_close_icon = false,
             --mini.icons
             -- get_element_icon = function(opts)
             --     local filetype = opts.filetype or "default"
