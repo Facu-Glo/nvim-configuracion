@@ -14,8 +14,8 @@ keymap("t", '<C-j>', '<C-\\><C-n><C-w>j',
     { desc = 'Mover a la ventana de abajo (terminal)', noremap = true, silent = true })
 keymap("t", '<C-k>', '<C-\\><C-n><C-w>k',
     { desc = 'Mover a la ventana de arriba (terminal)', noremap = true, silent = true })
-keymap("n", "<leader>-", "<CMD>split<CR>", { desc = "Split horizontal" })
-keymap("n", "<leader>|", "<CMD>vsplit<CR>", { desc = "Split vertical" })
+keymap("n", "<leader>-", "<CMD>split<CR><C-w>j", { desc = "Split horizontal" })
+keymap("n", "<leader>|", "<CMD>vsplit<CR><C-w>l", { desc = "Split vertical" })
 keymap("n", "<leader>wc", "<C-w>c", { desc = "Cerrar la ventana" })
 
 keymap({ "n", "v" }, "<C-s>", ":w<CR>", { noremap = true, silent = true })
@@ -80,10 +80,6 @@ keymap("v", "<", "<gv", { noremap = true })
 
 keymap("n", "<leader>qq", "<CMD>qall<CR>", { desc = "Salir sin guardar" })
 keymap("n", "<leader>qw", "<CMD>wqall<CR>", { desc = "Guardar y salir" })
-
--- vim.keymap.set("n", "<leader>td", function()
---     vim.cmd('vsplit ~/Notas/To Do.md')
--- end, { desc = "Abrir ToDo.md" })
 
 -- vim.keymap.set("n", "<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })
 -- vim.keymap.set("n", "<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Down" })
