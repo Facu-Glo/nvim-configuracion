@@ -6,33 +6,33 @@ return {
         end,
     },
 
-    {
-        "williamboman/mason-lspconfig.nvim",
-        config = function()
-            require("mason-lspconfig").setup({
-                ensure_installed = {
-                    "lua_ls",
-                    "rust_analyzer",
-                    "pyright",
-                    "asm_lsp",
-                    "bashls",
-                    "clangd",
-                    "gopls",
-                    "jdtls",
-                    "hyprls",
-                    "biome",
-                    "cssls",
-                    "marksman"
-                },
-            })
-        end,
-    },
+    -- {
+    --     "williamboman/mason-lspconfig.nvim",
+    --     config = function()
+    --         require("mason-lspconfig").setup({
+    --             ensure_installed = {
+    --                 "lua_ls",
+    --                 "rust_analyzer",
+    --                 "pyright",
+    --                 "asm_lsp",
+    --                 "bashls",
+    --                 "clangd",
+    --                 "gopls",
+    --                 "jdtls",
+    --                 "hyprls",
+    --                 "biome",
+    --                 "cssls",
+    --                 "marksman"
+    --             },
+    --         })
+    --     end,
+    -- },
 
     {
         "neovim/nvim-lspconfig",
         dependencies = {
             "williamboman/mason.nvim",
-            "williamboman/mason-lspconfig.nvim",
+            -- "williamboman/mason-lspconfig.nvim",
             "saghen/blink.cmp",
             -- "SmiteshP/nvim-navic",
         },
@@ -70,13 +70,10 @@ return {
                             version = "LuaJIT",
                         },
                         diagnostics = {
-                            globals = { "vim" },
+                            globals = { 'vim' },
                         },
                         workspace = {
-                            library = {
-                                '${3rd}/luv/library',
-                                unpack(vim.api.nvim_get_runtime_file('', true)),
-                            },
+                            library = vim.api.nvim_get_runtime_file("", true),
                             checkThirdParty = false,
                         },
                         telemetry = {
