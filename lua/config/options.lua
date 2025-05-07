@@ -13,3 +13,4 @@ vim.opt.spell          = false
 vim.opt.cursorline     = true
 vim.opt.wrap           = false
 vim.cmd.colorscheme("tokyonight-night")
+vim.opt.showmode = false
