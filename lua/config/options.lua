@@ -1,16 +1,19 @@
-vim.opt.number         = true
-vim.opt.relativenumber = true
-vim.o.expandtab        = true
-vim.o.tabstop          = 4
-vim.o.shiftwidth       = 4
-vim.o.softtabstop      = 4
-vim.opt.clipboard      = "unnamedplus"
-vim.opt.ignorecase     = true
-vim.opt.smartcase      = true
-vim.opt.undofile       = true
-vim.opt.spelllang      = { "es", "en" }
-vim.opt.spell          = false
-vim.opt.cursorline     = true
-vim.opt.wrap           = false
+local nvim          = vim.o
+
+nvim.number         = true
+nvim.relativenumber = true
+nvim.expandtab      = true
+nvim.tabstop        = 4
+nvim.shiftwidth     = 4
+nvim.softtabstop    = 4
+nvim.clipboard      = "unnamedplus"
+nvim.ignorecase     = true
+nvim.smartcase      = true
+nvim.undofile       = true
+nvim.spelllang      = "es,en"
+nvim.spell          = false
+nvim.cursorline     = true
+nvim.wrap           = false
+nvim.showmode       = false
+
 vim.cmd.colorscheme("tokyonight-night")
-vim.opt.showmode = false
