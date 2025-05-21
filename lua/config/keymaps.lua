@@ -1,6 +1,6 @@
 local keymap = vim.keymap.set
 
-keymap("i", "<M-j>", "<ESC>")
+keymap("i", "<M-e>", "<ESC>")
 
 keymap("n", "<leader>a", function()
     vim.cmd("keepjumps normal! ggVG")
@@ -52,7 +52,9 @@ keymap("n", "j", "gj", { noremap = true, silent = true })
 keymap("n", "k", "gk", { noremap = true, silent = true })
 
 keymap({ "n", "v" }, "<leader>0", "^", { noremap = true, silent = true, desc = "Ir al inicio de la linea" })
+keymap({ "n", "v" }, "<M-i>", "^", { noremap = true, silent = true, desc = "Ir al inicio de la linea" })
 keymap({ "n", "v" }, "<leader>9", "$", { noremap = true, silent = true, desc = "Ir al final de la linea" })
+keymap({ "n", "v" }, "<M-f>", "$", { noremap = true, silent = true, desc = "Ir al final de la linea" })
 
 ----
 keymap("n", "<leader>qs", function() require("persistence").load() end,
