@@ -43,23 +43,6 @@ return {
             },
             color_icons = true,
             show_buffer_close_icons = false,
-            -- show_close_icon = false,
-            --mini.icons
-            -- get_element_icon = function(opts)
-            --     local filetype = opts.filetype or "default"
-            --     local icon, hl = require("mini.icons").get("filetype", filetype)
-            --     return icon, hl
-            -- end,
         },
     },
-    config = function(_, opts)
-        require("bufferline").setup(opts)
-        vim.api.nvim_create_autocmd({ "BufAdd", "BufDelete" }, {
-            callback = function()
-                vim.schedule(function()
-                    pcall(vim.cmd, "BufferLineRefresh")
-                end)
-            end,
-        })
-    end,
 }
