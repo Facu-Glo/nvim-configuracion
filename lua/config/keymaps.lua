@@ -1,6 +1,7 @@
 local keymap = vim.keymap.set
 
-keymap("i", "<M-e>", "<ESC>")
+keymap({ "i", "v" }, "<M-e>", "<ESC>")
+keymap("t", "<M-e>", "<C-\\><C-n>", { noremap = true, silent = true })
 
 keymap("n", "<leader>a", function()
     vim.cmd("keepjumps normal! ggVG")
