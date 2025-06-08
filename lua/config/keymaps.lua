@@ -22,7 +22,7 @@ keymap("n", "<leader>wc", "<C-w>c", { desc = "Cerrar la ventana" })
 keymap({ "n", "v" }, "<C-s>", ":w<CR>", { noremap = true, silent = true })
 keymap("i", "<C-s>", "<Esc>:w<CR>", { noremap = true, silent = true })
 
-keymap("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+keymap("n", "-", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
 keymap("n", "<leader>oo", "<CMD>Oil<CR>", { desc = "Abrir Oil" })
 keymap("n", "<leader>of", "<CMD>Oil --float<CR>", { desc = "Abrir Oil flotante" })
 
