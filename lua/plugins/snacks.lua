@@ -58,6 +58,7 @@ return {
             enabled = true,
             sources = {
                 explorer = {
+                    hidden = true,
                     layout = {
                         layout = {
                             position = "left",
@@ -65,6 +66,10 @@ return {
                         },
                     },
                 },
+                files = {
+                    hidden = true,
+
+                }
             },
             layout = {
                 preset = "ivy",
