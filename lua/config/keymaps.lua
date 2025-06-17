@@ -84,6 +84,8 @@ keymap("v", "<", "<gv", { noremap = true })
 keymap("n", "<leader>qq", "<CMD>qall<CR>", { desc = "Salir sin guardar" })
 keymap("n", "<leader>qw", "<CMD>wqall<CR>", { desc = "Guardar y salir" })
 
+-- Github CLI
+keymap("n", "<leader>gh", "<CMD>!gh repo view --web<CR>", { desc = "Abrir repositorio en github" })
 -- vim.keymap.set("n", "<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })
 -- vim.keymap.set("n", "<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Down" })
 -- vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Mover selección abajo", silent = true })
