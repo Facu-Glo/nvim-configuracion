@@ -3,30 +3,31 @@ return {
         "williamboman/mason.nvim",
         config = function()
             require("mason").setup()
+            local mr = require("mason-registry")
+            local ensure_installed = {
+                "lua-language-server",
+                "rust-analyzer",
+                "pyright",
+                "asm-lsp",
+                "bash-language-server",
+                "clangd",
+                "gopls",
+                "jdtls",
+                "hyprls",
+                "biome",
+                "css-lsp",
+                "marksman",
+                "ruff",
+            }
+
+            for _, name in ipairs(ensure_installed) do
+                local ok, pkg = pcall(mr.get_package, name)
+                if ok and not pkg:is_installed() then
+                    pkg:install()
+                end
+            end
         end,
     },
-
-    -- {
-    --     "williamboman/mason-lspconfig.nvim",
-    --     config = function()
-    --         require("mason-lspconfig").setup({
-    --             ensure_installed = {
-    --                 "lua_ls",
-    --                 "rust_analyzer",
-    --                 "pyright",
-    --                 "asm_lsp",
-    --                 "bashls",
-    --                 "clangd",
-    --                 "gopls",
-    --                 "jdtls",
-    --                 "hyprls",
-    --                 "biome",
-    --                 "cssls",
-    --                 "marksman"
-    --             },
-    --         })
-    --     end,
-    -- },
 
     {
         "neovim/nvim-lspconfig",
@@ -91,6 +92,19 @@ return {
 
             -- Configuración para el servidor de Python (Pyright)
             lspconfig.pyright.setup({
+                on_attach = on_attach,
+                capabilities = capabilities,
+                settings = {
+                    python = {
+                        analysis = {
+                            autoImportCompletions = true,
+                            diagnosticMode = "openFilesOnly",
+                        },
+                    },
+                },
+            })
+
+            lspconfig.ruff.setup({
                 on_attach = on_attach,
                 capabilities = capabilities,
             })
