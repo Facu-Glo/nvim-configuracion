@@ -14,10 +14,11 @@ return {
                 "gopls",
                 "jdtls",
                 "hyprls",
-                "biome",
                 "css-lsp",
                 "marksman",
                 "ruff",
+                "ts_ls",    --lsp de typescriptreact
+                "prettier", -- formateador typescriptreact
             }
 
             for _, name in ipairs(ensure_installed) do
@@ -153,11 +154,11 @@ return {
             })
 
             -- Configuración para Biome (JSON)
-            lspconfig.biome.setup({
-                cmd = { "biome", "lsp-proxy" },
-                filetypes = { "json", "jsonc" },
-                root_dir = require("lspconfig.util").root_pattern(".git", "package.json", "biome.json", "biome.jsonc"),
-            })
+            -- lspconfig.biome.setup({
+            --     cmd = { "biome", "lsp-proxy" },
+            --     filetypes = { "json", "jsonc" },
+            --     root_dir = require("lspconfig.util").root_pattern(".git", "package.json", "biome.json", "biome.jsonc"),
+            -- })
 
             -- Configuración para CSS
             lspconfig.cssls.setup({
@@ -171,6 +172,13 @@ return {
                 root_dir = function()
                     return vim.fn.getcwd()
                 end,
+            })
+
+            lspconfig.ts_ls.setup({
+                on_attach = on_attach,
+                capabilities = capabilities,
+                filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+                cmd = { "typescript-language-server", "--stdio" },
             })
         end,
     },
