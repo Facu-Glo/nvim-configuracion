@@ -197,6 +197,13 @@ return {
             desc = "Lazygit",
         },
         {
+            "<leader>gb",
+            function()
+                Snacks.picker.git_branches()
+            end,
+            desc = "Git Branchs",
+        },
+        {
             "<leader>tt",
             function()
                 Snacks.terminal.toggle(nil, { cwd = vim.fn.getcwd() })
