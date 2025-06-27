@@ -10,6 +10,8 @@ return {
                 typescriptreact = { "prettier" },
                 json = { "prettier" },
                 yaml = { "prettier" },
+                c = { "clang_format" },
+                cpp = { "clang_format" },
             },
             format_on_save = {
                 timeout_ms = 500,        -- tiempo máximo para formatear
@@ -18,6 +20,12 @@ return {
             formatters = {
                 prettier = {
                     prepend_args = { "--tab-width", "2", "--no-semi", "--single-quote" },
+                },
+                clang_format = {
+                    command = "clang-format",
+                    args = {
+                        "--style={BasedOnStyle: LLVM, IndentWidth: 4, TabWidth: 4, UseTab: Never}"
+                    },
                 },
             },
         })
