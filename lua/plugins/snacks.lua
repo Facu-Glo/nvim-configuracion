@@ -134,6 +134,13 @@ return {
             desc = "Notification History",
         },
         {
+            "<leader>fh",
+            function()
+                Snacks.picker.help()
+            end,
+            desc = "Help",
+        },
+        {
             "<leader>fz",
             function()
                 Snacks.picker.zoxide()
