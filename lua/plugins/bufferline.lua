@@ -17,7 +17,7 @@ return {
     },
     opts = {
         options = {
-            close_command = false,
+            close_command = true,
             right_mouse_command = false,
             diagnostics = "nvim_lsp",
             always_show_bufferline = false,
