@@ -1,28 +1,26 @@
 return {
     "iamcco/markdown-preview.nvim",
-
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = "markdown",
     build = function()
-        require("lazy").load({ plugins = { "markdown-preview.nvim" } })
         vim.fn["mkdp#util#install"]()
     end,
     keys = {
         {
             "<leader>pm",
-            ft = "markdown",
             "<cmd>MarkdownPreview<cr>",
-            desc = "Markdown Preview",
+            desc = "Markdown Start Preview",
         },
         {
             "<leader>ps",
-            ft = "markdown",
             "<cmd>MarkdownPreviewStop<cr>",
-            desc = "Markdown stop Preview",
+            desc = "Markdown Stop Preview",
         },
     },
     config = function()
-        vim.cmd([[do FileType]])
+        local wk = require("which-key")
+        wk.add({
+            { "<leader>p", icon = "", group = "Markdown Preview" },
+        })
     end,
 }
-
---- en ~/.local/share/nvim-prueba/lazy/markdown-preview.nvim/app instalar tslib con npm
