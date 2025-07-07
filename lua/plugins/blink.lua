@@ -54,13 +54,6 @@ return {
                         name = 'Codeium',
                         module = 'codeium.blink',
                         async = true,
-                        transform_items = function(items)
-                            for _, item in ipairs(items) do
-                                item.kind_icon = ' '
-                                item.kind_name = 'Codeium'
-                            end
-                            return items
-                        end,
                     },
                     copilot = {
                         name = "copilot",
