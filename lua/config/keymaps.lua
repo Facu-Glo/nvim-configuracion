@@ -4,7 +4,7 @@ keymap({ "i", "v" }, "<M-e>", "<ESC>")
 keymap("t", "<M-e>", "<C-\\><C-n>", { noremap = true, silent = true })
 
 keymap("n", "<leader>a", function()
-	vim.cmd("keepjumps normal! ggVG")
+    vim.cmd("keepjumps normal! ggVG")
 end, { desc = "Seleccionar todo el archivo" })
 
 keymap("n", "<C-h>", "<C-w>h", { desc = "Mover a la ventana izquierda" })
@@ -12,16 +12,16 @@ keymap("n", "<C-j>", "<C-w>j", { desc = "Mover a la ventana abajo" })
 keymap("n", "<C-k>", "<C-w>k", { desc = "Mover a la ventana arriba" })
 keymap("n", "<C-l>", "<C-w>l", { desc = "Mover a la ventana derecha" })
 keymap(
-	"t",
-	"<C-j>",
-	"<C-\\><C-n><C-w>j",
-	{ desc = "Mover a la ventana de abajo (terminal)", noremap = true, silent = true }
+    "t",
+    "<C-j>",
+    "<C-\\><C-n><C-w>j",
+    { desc = "Mover a la ventana de abajo (terminal)", noremap = true, silent = true }
 )
 keymap(
-	"t",
-	"<C-k>",
-	"<C-\\><C-n><C-w>k",
-	{ desc = "Mover a la ventana de arriba (terminal)", noremap = true, silent = true }
+    "t",
+    "<C-k>",
+    "<C-\\><C-n><C-w>k",
+    { desc = "Mover a la ventana de arriba (terminal)", noremap = true, silent = true }
 )
 keymap("n", "<leader>-", "<CMD>split<CR><C-w>j", { desc = "Split horizontal" })
 keymap("n", "<leader>|", "<CMD>vsplit<CR><C-w>l", { desc = "Split vertical" })
@@ -47,16 +47,16 @@ keymap("n", "<c-left>", "<cmd>vertical resize -2<cr>", { desc = "disminuir el an
 keymap("n", "<c-right>", "<cmd>vertical resize +2<cr>", { desc = "aumentar el ancho de la ventana" })
 
 keymap("n", "<A-z>", function()
-	local wrap_enabled = vim.wo.wrap
-	vim.wo.wrap = not wrap_enabled
-	vim.wo.breakindent = not wrap_enabled
-	vim.wo.linebreak = not wrap_enabled
+    local wrap_enabled = vim.wo.wrap
+    vim.wo.wrap = not wrap_enabled
+    vim.wo.breakindent = not wrap_enabled
+    vim.wo.linebreak = not wrap_enabled
 
-	if wrap_enabled then
-		print("Wrap desactivado")
-	else
-		print("Wrap activado")
-	end
+    if wrap_enabled then
+        print("Wrap desactivado")
+    else
+        print("Wrap activado")
+    end
 end, { desc = "Alternar ajuste de línea con Alt+Z" })
 
 keymap("n", "<Esc>", "<cmd>nohlsearch<CR>")
@@ -71,27 +71,27 @@ keymap({ "n", "v" }, "<M-f>", "$", { noremap = true, silent = true, desc = "Ir a
 
 ----
 keymap("n", "<leader>qs", function()
-	require("persistence").load()
+    require("persistence").load()
 end, { desc = "Cargar la sesión para el directorio actual" })
 
 keymap("n", "<leader>qS", function()
-	require("persistence").select()
+    require("persistence").select()
 end, { desc = "Seleccionar una sesión para cargar" })
 
 keymap("n", "<leader>ql", function()
-	require("persistence").load({ last = true })
+    require("persistence").load({ last = true })
 end, { desc = "Cargar la última sesión" })
 
 keymap("n", "<leader>qd", function()
-	require("persistence").stop()
+    require("persistence").stop()
 end, { desc = "Detener la persistencia => la sesión no se guardará al salir" })
 
 keymap("n", "<leader>ra", function()
-	vim.opt.relativenumber = true
+    vim.opt.relativenumber = true
 end, { desc = "Activar números relativos" })
 
 keymap("n", "<leader>rd", function()
-	vim.opt.relativenumber = false
+    vim.opt.relativenumber = false
 end, { desc = "Desactivar números relativos" })
 
 keymap("v", ">", ">gv", { noremap = true })
@@ -102,6 +102,7 @@ keymap("n", "<leader>qw", "<CMD>wqall<CR>", { desc = "Guardar y salir" })
 
 -- Github CLI
 keymap("n", "<leader>gh", "<CMD>!gh repo view --web<CR>", { desc = "Abrir repositorio en github" })
+
 -- vim.keymap.set("n", "<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })
 -- vim.keymap.set("n", "<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Down" })
 -- vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Mover selección abajo", silent = true })
