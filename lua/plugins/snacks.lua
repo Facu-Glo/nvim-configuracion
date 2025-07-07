@@ -76,6 +76,22 @@ return {
                 cycle = false,
             },
             layouts = {
+                default = {
+                    layout = {
+                        box = "horizontal",
+                        width = 0.8,
+                        min_width = 120,
+                        height = 0.8,
+                        {
+                            box = "vertical",
+                            border = "rounded",
+                            title = "{title} {live} {flags}",
+                            { win = "input", height = 1,     border = "bottom" },
+                            { win = "list",  border = "none" },
+                        },
+                        { win = "preview", title = "{preview}", border = "rounded", width = 0.5 },
+                    },
+                },
                 ivy = {
                     layout = {
                         box = "vertical",
@@ -94,6 +110,7 @@ return {
                         },
                     },
                 },
+
             },
         },
         notifier = { enabled = true },
@@ -146,6 +163,13 @@ return {
                 Snacks.picker.zoxide()
             end,
             desc = "Buscar directorios",
+        },
+        {
+            "<leader>fl",
+            function()
+                Snacks.picker.lines()
+            end,
+            desc = "Buscar lineas",
         },
         {
             "<leader>f:",
