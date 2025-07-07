@@ -60,21 +60,31 @@ return {
                         }
                     },
                     funcs.pretty_path,
-                    -- {
-                    --     function()
-                    --         local navic = require("nvim-navic")
-                    --         return navic.is_available() and navic.get_location() or ""
-                    --     end,
-                    --     cond = function()
-                    --         return require("nvim-navic").is_available()
-                    --     end,
-                    -- }
                 },
                 lualine_x = {
                     {
                         noice.api.status.command.get,
                         cond = noice.api.status.command.has,
                         color = { fg = "#ff9e64" },
+                    },
+                    {
+                        function()
+                            for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
+                                if client.name == "copilot" then
+                                    return " "
+                                end
+                            end
+                            return ""
+                        end,
+                        cond = function()
+                            for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
+                                if client.name == "copilot" then
+                                    return true
+                                end
+                            end
+                            return false
+                        end,
+                        color = { fg = "#37d5ff", gui = "bold" },
                     },
                     {
                         noice.api.status.mode.get,
@@ -88,14 +98,15 @@ return {
                     },
                     {
                         "lsp_status",
-                        icon = " ", -- f013
+                        icon = " ",
                         symbols = {
                             spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
                             done = "✓",
                             separator = " ",
                         },
-                        ignore_lsp = {},
+                        ignore_lsp = { "copilot" },
                     },
+
                 },
                 lualine_y = { "progress" },
                 lualine_z = { "location" },
