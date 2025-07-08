@@ -40,3 +40,25 @@ autocmd("FileType", {
         )
     end,
 })
+
+autocmd("FileType", {
+    pattern = "markdown",
+    callback = function()
+        local wk = require("which-key")
+        wk.add({
+            { "<leader>p", icon = " ", group = "Markdown Preview" },
+        })
+
+        vim.keymap.set(
+            "n",
+            "<leader>pm",
+            "<cmd>MarkdownPreview<CR>",
+            { noremap = true, silent = true, buffer = true, desc = "Markdown Start Preview" })
+
+        vim.keymap.set(
+            "n",
+            "<leader>ps",
+            "<cmd>MarkdownPreviewStop<CR>",
+            { noremap = true, silent = true, buffer = true, desc = "Markdown Stop Preview" })
+    end,
+})

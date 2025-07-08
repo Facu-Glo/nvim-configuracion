@@ -1,4 +1,4 @@
-return function(client, bufnr)
+return function(_, bufnr)
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
     -- Navegación
