@@ -97,7 +97,7 @@ end, { desc = "Desactivar números relativos" })
 keymap("v", ">", ">gv", { noremap = true })
 keymap("v", "<", "<gv", { noremap = true })
 
-keymap("n", "<leader>qq", "<CMD>qall<CR>", { desc = "Salir sin guardar" })
+keymap("n", "<leader>qq", "<CMD>qall!<CR>", { desc = "Salir sin guardar" })
 keymap("n", "<leader>qw", "<CMD>wqall<CR>", { desc = "Guardar y salir" })
 
 -- Github CLI
