@@ -1,6 +1,12 @@
 return {
     {
         "Facu-Glo/nvim-todo-md",
-        opts = {},
+        opts = {
+            path = "~/Notas/TODO.md",
+            float = {
+                width  = 120,
+                height = 30,
+            },
+        },
     },
 }
