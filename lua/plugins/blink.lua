@@ -11,23 +11,23 @@ return {
 
             keymap = {
                 preset = 'default',
-                ["<CR>"] = { "accept", "fallback" },
+                ["<CR>"] = { "accept_and_enter", "fallback" },
                 ['<C-k>'] = { 'select_prev', 'fallback' },
                 ['<C-j>'] = { 'select_next', 'fallback' },
             },
 
-            -- cmdline = {
-            --     keymap = {
-            --         ["<CR>"] = { "accept", "fallback" },
-            --         ['<C-j>'] = { 'select_next', 'fallback' },
-            --         ['<C-k>'] = { 'select_prev', 'fallback' },
-            --     },
-            --     completion = {
-            --         menu = {
-            --             auto_show = false,
-            --         },
-            --     },
-            -- },
+            cmdline = {
+                keymap = {
+                    preset = 'inherit',
+                    ['<CR>'] = { 'fallback' },
+                    ['<Tab>'] = { 'accept' },
+                },
+                completion = {
+                    menu = {
+                        auto_show = true
+                    },
+                },
+            },
 
             appearance = {
                 nerd_font_variant = 'mono'
