@@ -245,6 +245,13 @@ return {
             desc = "Git Branchs",
         },
         {
+            "<leader>gl",
+            function()
+                Snacks.picker.git_log()
+            end,
+            desc = "Git Log",
+        },
+        {
             "<leader>tt",
             function()
                 Snacks.terminal.toggle(nil, { cwd = vim.fn.getcwd() })
