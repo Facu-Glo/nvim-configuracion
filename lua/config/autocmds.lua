@@ -20,6 +20,7 @@ autocmd("FileType", {
     pattern = { "markdown", "text", "gitcommit" },
     callback = function()
         vim.opt_local.spell = true
+        vim.opt.conceallevel = 2
     end,
 })
 
