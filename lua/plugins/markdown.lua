@@ -10,6 +10,8 @@ return {
                 lsp = { enabled = false },
             },
             checkbox = { checked = { scope_highlight = '@markup.strikethrough' } },
+            heading = { border = true },
+            pipe_table = { preset = 'round' },
         })
     end
 }
