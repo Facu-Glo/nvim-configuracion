@@ -47,7 +47,7 @@ autocmd("FileType", {
     callback = function()
         local wk = require("which-key")
         wk.add({
-            { "<leader>p", icon = " ", group = "Markdown Preview" },
+            { "<leader>p", icon = { icon = " ", color = "white" }, group = "Markdown Preview" },
         })
 
         vim.keymap.set(
