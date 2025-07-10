@@ -48,7 +48,16 @@ return {
             },
 
             sources = {
-                default = { 'codeium', 'copilot', 'lsp', 'path', 'snippets', 'buffer' },
+                default = function()
+                    local ft = vim.bo.filetype
+                    if ft == 'oil' then
+                        -- For oil.nvim, we don't want to use Codeium or Copilot
+                        return { 'lsp', 'path', 'snippets', 'buffer' }
+                    else
+                        return { 'codeium', 'copilot', 'lsp', 'path', 'snippets', 'buffer' }
+                    end
+                end,
+
                 providers = {
                     codeium = {
                         name = 'Codeium',
