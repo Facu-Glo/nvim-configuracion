@@ -15,6 +15,7 @@ nvim.spell          = false
 nvim.cursorline     = true
 nvim.wrap           = false
 nvim.showmode       = false
-vim.opt.splitright  = true
+nvim.splitright     = true
+nvim.textwidth      = 150
 
 vim.cmd.colorscheme("tokyonight-night")
