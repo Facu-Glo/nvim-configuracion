@@ -11,7 +11,7 @@ return {
 
             keymap = {
                 preset = 'default',
-                ["<CR>"] = { "accept_and_enter", "fallback" },
+                ["<CR>"] = { "accept", "fallback" },
                 ['<C-k>'] = { 'select_prev', 'fallback' },
                 ['<C-j>'] = { 'select_next', 'fallback' },
             },
