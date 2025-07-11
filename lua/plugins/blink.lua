@@ -48,16 +48,21 @@ return {
             },
 
             sources = {
-                default = function()
-                    local ft = vim.bo.filetype
-                    if ft == 'oil' then
-                        -- For oil.nvim, we don't want to use Codeium or Copilot
-                        return { 'lsp', 'path', 'snippets', 'buffer' }
-                    else
-                        return { 'codeium', 'copilot', 'lsp', 'path', 'snippets', 'buffer' }
-                    end
-                end,
+                -- default = function()
+                --     local ft = vim.bo.filetype
+                --     if ft == 'oil' then
+                --         -- For oil.nvim, we don't want to use Codeium or Copilot
+                --         return { 'lsp', 'path', 'snippets', 'buffer' }
+                --     else
+                --         return { 'copilot', 'lsp', 'path', 'snippets', 'buffer' }
+                --     end
+                -- end,
 
+                default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot', 'codeium' },
+                per_filetype = {
+                    markdown = { 'lsp', 'path', 'snippets', 'buffer', 'copilot', 'codeium' },
+                    oil = { 'lsp', 'path', 'snippets', 'buffer' },
+                },
                 providers = {
                     codeium = {
                         name = 'Codeium',

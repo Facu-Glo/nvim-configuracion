@@ -3,18 +3,16 @@ return {
         "zbirenbaum/copilot.lua",
         optional = true,
         opts = function()
-            require("copilot.api").status = require("copilot.status")
-            require("copilot.api").filetypes = {
+            require("copilot").setup {
                 filetypes = {
-                    yaml = false,
-                    markdown = false,
-                    help = false,
-                    gitcommit = false,
-                    gitrebase = false,
-                    hgcommit = false,
-                    svn = false,
-                    cvs = false,
-                    ["."] = false,
+                    markdown = true,
+                    terraform = false,
+                    sh = function()
+                        if string.match(vim.fs.basename(vim.api.nvim_buf_get_name(0)), '^%.env.*') then
+                            return false
+                        end
+                        return true
+                    end,
                 },
             }
         end,
