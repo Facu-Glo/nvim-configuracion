@@ -61,50 +61,50 @@ return {
                         -- },
                         --
                         -- COPILOT SIN PLUGIN
-                        -- {
-                        --     function()
-                        --         for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
-                        --             if client.name == "copilot" then
-                        --                 return " "
-                        --             end
-                        --         end
-                        --         return ""
-                        --     end,
-                        --     cond = function()
-                        --         for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
-                        --             if client.name == "copilot" then
-                        --                 return true
-                        --             end
-                        --         end
-                        --         return false
-                        --     end,
-                        --     color = { fg = "#37d5ff", gui = "bold" },
-                        -- },
                         {
-                            'copilot',
-                            symbols = {
-                                status = {
-                                    icons = {
-                                        enabled = " ",
-                                        sleep = " ",
-                                        disabled = " ",
-                                        warning = " ",
-                                        unknown = " "
-                                    },
-                                    hl = {
-                                        enabled = "#37d5ff",
-                                        sleep = "#AEB7D0",
-                                        disabled = "#6272A4",
-                                        warning = "#FFB86C",
-                                        unknown = "#FF5555"
-                                    }
-                                },
-                                spinners = "dots",
-                                spinner_color = "#6272A4"
-                            },
-                            show_colors = true,
-                            show_loading = true
+                            function()
+                                for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
+                                    if client.name == "copilot" then
+                                        return " "
+                                    end
+                                end
+                                return " "
+                            end,
+                            color = function()
+                                for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
+                                    if client.name == "copilot" then
+                                        return { fg = "#37d5ff", gui = "bold" }
+                                    end
+                                end
+                                return { fg = "#6272A4", gui = "bold" }
+                            end,
                         },
+
+                        -- {
+                        --     'copilot',
+                        --     symbols = {
+                        --         status = {
+                        --             icons = {
+                        --                 enabled = " ",
+                        --                 sleep = " ",
+                        --                 disabled = " ",
+                        --                 warning = " ",
+                        --                 unknown = " "
+                        --             },
+                        --             hl = {
+                        --                 enabled = "#37d5ff",
+                        --                 sleep = "#AEB7D0",
+                        --                 disabled = "#6272A4",
+                        --                 warning = "#FFB86C",
+                        --                 unknown = "#FF5555"
+                        --             }
+                        --         },
+                        --         spinners = "dots",
+                        --         spinner_color = "#6272A4"
+                        --     },
+                        --     show_colors = true,
+                        --     show_loading = true
+                        -- },
                         {
                             noice.api.status.mode.get,
                             cond = noice.api.status.mode.has,
@@ -155,7 +155,4 @@ return {
             })
         end,
     },
-    {
-        { 'AndreM222/copilot-lualine' }
-    }
 }

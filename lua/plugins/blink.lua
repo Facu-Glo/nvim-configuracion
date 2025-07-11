@@ -3,7 +3,8 @@ return {
         'saghen/blink.cmp',
         dependencies = {
             'rafamadriz/friendly-snippets',
-            'giuxtaposition/blink-cmp-copilot',
+            "fang2hou/blink-copilot"
+            -- 'giuxtaposition/blink-cmp-copilot',
         },
 
         version = '1.*',
@@ -71,7 +72,7 @@ return {
                     },
                     copilot = {
                         name = "copilot",
-                        module = "blink-cmp-copilot",
+                        module = "blink-copilot",
                         score_offset = 100,
                         async = true,
                     },
