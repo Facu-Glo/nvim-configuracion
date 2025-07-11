@@ -51,18 +51,6 @@ return {
                                 warn  = " ",
                             }
                         },
-                        {
-                            "filetype",
-                            icon_only = false,
-                            separator = "|",
-                            padding   = {
-                                left  = 1,
-                                right = 1,
-                            },
-                            color     = {
-                                fg = "#ffffff",
-                            },
-                        },
                         funcs.pretty_path,
                     },
                     lualine_x = {
@@ -128,14 +116,24 @@ return {
                             color = { fg = "#ff9e64" },
                         },
                         {
-                            "lsp_status",
-                            icon = " ",
-                            symbols = {
-                                spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
-                                done = "✓",
-                                separator = " ",
+                            -- "lsp_status",
+                            -- icon = " ",
+                            -- symbols = {
+                            --     spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
+                            --     done = "✓",
+                            --     separator = " ",
+                            -- },
+
+                            "filetype",
+                            icon_only = false,
+                            separator = "|",
+                            padding   = {
+                                left  = 1,
+                                right = 1,
                             },
-                            ignore_lsp = { "copilot" },
+                            color     = {
+                                fg = "#ffffff",
+                            },
                         },
 
                     },
