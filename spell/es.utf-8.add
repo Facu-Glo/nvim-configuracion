@@ -95,3 +95,6 @@ libicns
 x256
 microservicios
 eza
+pasarle
+PathVariable
+RequestParam
