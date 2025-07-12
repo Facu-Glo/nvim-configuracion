@@ -98,3 +98,7 @@ eza
 pasarle
 PathVariable
 RequestParam
+chatGPT
+lsblk
+initramfs
+chroot
