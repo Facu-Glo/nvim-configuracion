@@ -17,7 +17,7 @@ return {
     },
     {
         "CopilotC-Nvim/CopilotChat.nvim",
-        enabled = false,
+        enabled = true,
     },
     {
         "zbirenbaum/copilot.lua",

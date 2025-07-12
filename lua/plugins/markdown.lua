@@ -9,6 +9,7 @@ return {
                 blink = { enabled = true },
                 lsp = { enabled = false },
             },
+            file_types = { 'markdown', 'copilot-chat' },
             checkbox = { checked = { scope_highlight = '@markup.strikethrough' } },
             heading = { border = true },
             pipe_table = { preset = 'round' },
