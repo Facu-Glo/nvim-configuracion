@@ -54,6 +54,7 @@ return {
                         funcs.pretty_path,
                     },
                     lualine_x = {
+                        -- -- Muestra las teclas que se presionan
                         -- {
                         --     noice.api.status.command.get,
                         --     cond = noice.api.status.command.has,

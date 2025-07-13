@@ -83,7 +83,24 @@ return {
                         allow_incremental_sync = true,
                     },
                     init_options = {
-                        bundles = {}
+                        bundles = {},
+                        settings = {
+                            java = {
+                                imports = {
+                                    gradle = {
+                                        wrapper = {
+                                            checksums = {
+                                                {
+                                                    sha256 =
+                                                    "7d3a4ac4de1c32b59bc6a4eb8ecb8e612ccd0cf1ae1e99f66902da64df296172",
+                                                    allowed = true
+                                                }
+                                            },
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     },
                     capabilities = require("blink.cmp").get_lsp_capabilities(),
                     on_attach = function(client, bufnr)

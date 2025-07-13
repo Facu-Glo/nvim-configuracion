@@ -8,10 +8,6 @@ return {
         enabled = false,
     },
     {
-        'b0o/incline.nvim',
-        enabled = false,
-    },
-    {
         "Exafunction/windsurf.nvim",
         enabled = true,
     },
@@ -22,9 +18,5 @@ return {
     {
         "zbirenbaum/copilot.lua",
         enabled = true,
-    },
-    {
-        "folke/noice.nvim",
-        enabled = true,
-    },
+    }
 }
