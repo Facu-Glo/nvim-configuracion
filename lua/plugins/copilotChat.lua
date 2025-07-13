@@ -49,7 +49,7 @@ return {
                 ]],
             window = {
                 layout = "vertical",
-                width = 0.35,
+                width = 0.4,
             },
             show_help = true,
             highlight_headers = false,

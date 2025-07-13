@@ -40,6 +40,7 @@ return {
                 { "<leader>m", name = "Multicursores", icon = { icon = "󰇀", color = "grey" } },
                 { "<leader>r", name = "Relative number", icon = { icon = " " } },
                 { "<leader>o", name = "Abir Oil explorer", icon = { icon = "󰝰 " } },
+                { "<leader>i", name = "Copilot", icon = { icon = " ", color = "blue" } },
             },
         },
     },
