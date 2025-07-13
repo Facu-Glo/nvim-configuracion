@@ -1,4 +1,4 @@
-local nvim          = vim.o
+local nvim = vim.o
 
 nvim.number         = true
 nvim.relativenumber = true
@@ -16,6 +16,6 @@ nvim.cursorline     = true
 nvim.wrap           = false
 nvim.showmode       = false
 nvim.splitright     = true
-nvim.textwidth      = 150
+nvim.textwidth      = 100
 
 vim.cmd.colorscheme("tokyonight-night")

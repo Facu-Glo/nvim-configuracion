@@ -1,7 +1,7 @@
 return {
     "stevearc/conform.nvim",
     config = function()
-        require("conform").setup({
+        require("conform").setup {
             formatters_by_ft = {
                 lua = { "stylua" },
                 rust = { "rustfmt", lsp_format = "fallback" },
@@ -21,6 +21,24 @@ return {
                 lsp_format = "fallback",
             },
             formatters = {
+                stylua = {
+                    prepend_args = {
+                        "--column-width",
+                        "120",
+                        "--line-endings",
+                        "Unix",
+                        "--indent-type",
+                        "Spaces",
+                        "--indent-width",
+                        "4",
+                        "--quote-style",
+                        "ForceDouble",
+                        "--call-parentheses",
+                        "Input",
+                        "--collapse-simple-statement",
+                        "Never",
+                    },
+                },
                 ruff_format = {
                     command = "ruff",
                     args = { "format", "--line-length", "88", "--stdin-filename", "$FILENAME", "-" },
@@ -56,10 +74,10 @@ return {
                             AlwaysBreakAfterReturnType: TopLevelDefinitions,
                             PenaltyExcessCharacter: 7,
                             PenaltyBreakBeforeFirstCallParameter: 50
-                          }]]
+                          }]],
                     },
                 },
             },
-        })
+        }
     end,
 }

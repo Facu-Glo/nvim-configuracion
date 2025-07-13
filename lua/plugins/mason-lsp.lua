@@ -15,7 +15,7 @@ return {
 				"css-lsp",
 				"marksman",
 				"ruff",
-				"typescript-language-server",
+				"vtsls",
 				"prettier",
 			}
 
@@ -36,146 +36,185 @@ return {
 			-- "williamboman/mason-lspconfig.nvim",
 			-- "SmiteshP/nvim-navic",
 		},
-		config = function()
-			-- ✨ CONFIGURACIÓN DE DIAGNÓSTICOS (Como Error Lens de VSCode)
-			vim.diagnostic.config({
-				virtual_text = {
-					enabled = true,
-					source = "if_many",
-					spacing = 4,
-					prefix = "●",
-					format = function(diagnostic)
-						local source = diagnostic.source and (" [" .. diagnostic.source .. "]") or ""
-						return string.format(" %s%s", diagnostic.message, source)
-					end,
-				},
-				signs = {
-					text = {
-						[vim.diagnostic.severity.ERROR] = "✗",
-						[vim.diagnostic.severity.WARN] = "⚠",
-						[vim.diagnostic.severity.INFO] = "ℹ",
-						[vim.diagnostic.severity.HINT] = "💡",
+		opts = function()
+			local ret = {
+				-- Configuración de diagnósticos (Como Error Lens de VSCode)
+				diagnostics = {
+					virtual_text = {
+						enabled = true,
+						source = "if_many",
+						spacing = 4,
+						prefix = "●",
+					},
+					signs = {
+						text = {
+							[vim.diagnostic.severity.ERROR] = " ",
+							[vim.diagnostic.severity.WARN] = " ",
+							[vim.diagnostic.severity.INFO] = " ",
+							[vim.diagnostic.severity.HINT] = " ",
+						},
+					},
+					underline = true,
+					update_in_insert = false,
+					severity_sort = true,
+					float = {
+						focusable = false,
+						style = "minimal",
+						border = "rounded",
+						source = "if_many",
+						header = "",
+						prefix = "",
 					},
 				},
-				underline = true,
-				update_in_insert = false,
-				severity_sort = true,
-				float = {
-					focusable = false,
-					style = "minimal",
-					border = "rounded",
-					source = "if_many",
-					header = "",
-					prefix = "",
-				},
-			})
-			-- Configuración de nvim-lspconfig
-			local lspconfig = require("lspconfig")
-			-- local navic = require("nvim-navic")
 
-			-- Habilitar capacidades de autocompletado
-			local capabilities = require("blink.cmp").get_lsp_capabilities()
-
-			-- Keybindings
-			local on_attach = require("plugins.config.lsp.on_attach")
-
-			-- Configuración para el servidor de Lua
-			lspconfig.lua_ls.setup({
-				on_attach = on_attach,
-				capabilities = capabilities,
-				settings = {
-					Lua = {
-						runtime = {
-							version = "LuaJIT",
-						},
-						diagnostics = {
-							globals = { "vim" },
-						},
-						workspace = {
-							library = vim.api.nvim_get_runtime_file("", true),
-							checkThirdParty = false,
-						},
-						telemetry = {
-							enable = false,
+				-- Configuración de capacidades globales
+				capabilities = {
+					workspace = {
+						fileOperations = {
+							didRename = true,
+							willRename = true,
 						},
 					},
 				},
-			})
 
-			-- Configuración para el servidor de Rust
-			lspconfig.rust_analyzer.setup({
-				on_attach = on_attach,
-				capabilities = capabilities,
-			})
-
-			-- Configuración para el servidor de Python (Pyright)
-			lspconfig.pyright.setup({
-				on_attach = on_attach,
-				capabilities = capabilities,
-				settings = {
-					python = {
-						analysis = {
-							autoImportCompletions = true,
-							diagnosticMode = "openFilesOnly",
+				-- Configuración de servidores LSP
+				servers = {
+					lua_ls = {
+						settings = {
+							Lua = {
+								runtime = {
+									version = "LuaJIT",
+								},
+								diagnostics = {
+									globals = { "vim" },
+								},
+								workspace = {
+									checkThirdParty = false,
+									library = {
+										-- Make the server aware of Neovim runtime files
+										vim.env.VIMRUNTIME,
+										vim.fn.stdpath("config"),
+									},
+								},
+								telemetry = {
+									enable = false,
+								},
+							},
 						},
 					},
+
+					pyright = {
+						settings = {
+							python = {
+								analysis = {
+									autoImportCompletions = true,
+									diagnosticMode = "openFilesOnly",
+								},
+							},
+						},
+					},
+
+					marksman = {
+						root_dir = function()
+							return vim.fn.getcwd()
+						end,
+					},
+
+					-- ts_ls = {
+					-- 	filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+					-- 	cmd = { "typescript-language-server", "--stdio" },
+					-- },
+					vtsls = {
+						-- Configuración para vtsls
+						settings = {
+							complete_function_calls = true,
+							vtsls = {
+								enableMoveToFileCodeAction = true,
+								autoUseWorkspaceTsdk = true,
+								experimental = {
+									completion = {
+										enableServerSideFuzzyMatch = true,
+									},
+								},
+							},
+							typescript = {
+								updateImportsOnFileMove = { enabled = "always" },
+								suggest = {
+									completeFunctionCalls = true,
+								},
+								inlayHints = {
+									enumMemberValues = { enabled = true },
+									functionLikeReturnTypes = { enabled = true },
+									parameterNames = { enabled = "literals" },
+									parameterTypes = { enabled = true },
+									propertyDeclarationTypes = { enabled = true },
+									variableTypes = { enabled = false },
+								},
+							},
+						},
+					},
+
+					rust_analyzer = {},
+
+					bashls = {},
+
+					clangd = {},
+
+					gopls = {},
+
+					lemminx = {},
+
+					cssls = {},
 				},
-			})
 
-			-- Configuración para el servidor de ASM
-			lspconfig.asm_lsp.setup({
-				on_attach = on_attach,
-				capabilities = capabilities,
-				filetypes = { "nasm", "asm", "s", "S" },
-			})
+				setup = {},
+			}
+			return ret
+		end,
 
-			-- Configuración para el servidor de Bash
-			lspconfig.bashls.setup({
-				on_attach = on_attach,
-				capabilities = capabilities,
-			})
+		config = function(_, opts)
+			-- Configurar diagnósticos
+			vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
 
-			-- Configuración para el servidor de C/C++ (Clangd)
-			lspconfig.clangd.setup({
-				on_attach = on_attach,
-				capabilities = capabilities,
-			})
+			-- Obtener capacidades de blink.cmp
+			local has_blink, blink = pcall(require, "blink.cmp")
+			local capabilities = vim.tbl_deep_extend(
+				"force",
+				{},
+				vim.lsp.protocol.make_client_capabilities(),
+				has_blink and blink.get_lsp_capabilities() or {},
+				opts.capabilities or {}
+			)
 
-			-- Configuración para el servidor de Go
-			lspconfig.gopls.setup({
-				on_attach = on_attach,
-				capabilities = capabilities,
-			})
+			-- Función para configurar servidores
+			local function setup(server)
+				local server_opts = vim.tbl_deep_extend("force", {
+					capabilities = vim.deepcopy(capabilities),
+					on_attach = require("plugins.config.lsp.on_attach"),
+				}, opts.servers[server] or {})
 
-			-- Configuración para el servidor de Java (JDTLS)
-			-- Configuracion en nvim-jdtls
+				if server_opts.enabled == false then
+					return
+				end
 
-			-- Configuración para Lemminx (XML)
-			lspconfig.lemminx.setup({
-				on_attach = on_attach,
-				capabilities = capabilities,
-			})
+				-- Aplicar configuración personalizada si existe
+				if opts.setup[server] then
+					if opts.setup[server](server, server_opts) then
+						return
+					end
+				elseif opts.setup["*"] then
+					if opts.setup["*"](server, server_opts) then
+						return
+					end
+				end
 
-			-- Configuración para CSS
-			lspconfig.cssls.setup({
-				on_attach = on_attach,
-				capabilities = capabilities,
-			})
+				require("lspconfig")[server].setup(server_opts)
+			end
 
-			lspconfig.marksman.setup({
-				on_attach = on_attach,
-				capabilities = capabilities,
-				root_dir = function()
-					return vim.fn.getcwd()
-				end,
-			})
-
-			lspconfig.ts_ls.setup({
-				on_attach = on_attach,
-				capabilities = capabilities,
-				filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
-				cmd = { "typescript-language-server", "--stdio" },
-			})
+			-- Configurar todos los servidores
+			for server, _ in pairs(opts.servers) do
+				setup(server)
+			end
 		end,
 	},
 }
