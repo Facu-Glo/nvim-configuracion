@@ -47,15 +47,22 @@ return {
 
                 Tu tono es amigable pero profesional, como un tutor que enseña con paciencia y respeto, sin subestimar al estudiante.
                 ]],
+
+            selection = function(source)
+                local select = require("CopilotChat.select")
+                return select.visual(source) or select.buffer(source)
+            end,
+
+            context = 'buffer',
             window = {
                 layout = "vertical",
                 width = 0.4,
             },
             show_help = true,
             highlight_headers = false,
-            separator = '---',
             error_header = '> [!ERROR] Error',
-            answer_header = "🤖 Copilot Mentor 🤖",
+            answer_header = "───🤖 Copilot Mentor 🤖",
+
         },
     },
 }

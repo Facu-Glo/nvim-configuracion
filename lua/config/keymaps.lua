@@ -107,8 +107,8 @@ keymap("n", "<leader>gH", "<CMD>!gh api user --jq '.html_url' | xargs xdg-open<C
 -- Copilot
 keymap({ "n", "v" }, "<leader>ic", "<CMD>CopilotChatToggle<CR>", { desc = "Copilot Toggle [C]hat " })
 keymap({ "n", "v" }, "<leader>ip", "<CMD>CopilotChatPrompts<CR>", { desc = "Copilot [P]rompts" })
-keymap({ "n", "v" }, "<leader>ie", "<CMD>CopilotChat Explain<CR>", { desc = "Copilot [E]xplain" })
-keymap({ "n", "v" }, "<leader>if", "<CMD>CopilotChat FixCode<CR>", { desc = "Copilot [F]ix Code" })
+keymap({ "n", "v" }, "<leader>ie", "<CMD>CopilotChatExplain<CR>", { desc = "Copilot [E]xplain" })
+keymap({ "n", "v" }, "<leader>if", "<CMD>CopilotChatFixCode<CR>", { desc = "Copilot [F]ix Code" })
 
 -- vim.keymap.set("n", "<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })
 -- vim.keymap.set("n", "<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Down" })
