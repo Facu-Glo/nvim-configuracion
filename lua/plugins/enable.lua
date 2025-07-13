@@ -22,5 +22,9 @@ return {
     {
         "zbirenbaum/copilot.lua",
         enabled = true,
-    }
+    },
+    {
+        "folke/noice.nvim",
+        enabled = true,
+    },
 }

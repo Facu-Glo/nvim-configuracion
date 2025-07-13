@@ -8,6 +8,7 @@ return {
                 javascript = { "prettier", stop_after_first = true },
                 typescript = { "prettier" },
                 typescriptreact = { "prettier" },
+                javascriptreact = { "prettier" },
                 json = { "prettier" },
                 jsonc = { "prettier" },
                 yaml = { "prettier" },

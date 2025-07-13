@@ -8,7 +8,6 @@ return {
                 "lua-language-server",
                 "rust-analyzer",
                 "pyright",
-                "asm-lsp",
                 "bash-language-server",
                 "clangd",
                 "gopls",

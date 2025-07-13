@@ -19,7 +19,7 @@ return {
             --     },
             -- },
             cmdline = {
-                view = "cmdline_popup",
+                view = "cmdline",
                 format = {
                     search_down = {
                         view = "cmdline",
