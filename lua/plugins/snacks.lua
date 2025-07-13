@@ -122,6 +122,13 @@ return {
                 },
 
             },
+            win = {
+                input = {
+                    keys = {
+                        ["<M-t>"] = { "tab", mode = { "n", "i" } },
+                    }
+                },
+            }
         },
         notifier = { enabled = true },
         -- quickfile = { enabled = true },
