@@ -104,3 +104,4 @@ initramfs
 chroot
 finfgit
 fetchs
+waybar
