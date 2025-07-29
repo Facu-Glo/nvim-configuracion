@@ -1,8 +1,6 @@
 return {
     "MeanderingProgrammer/render-markdown.nvim",
-    dependencies = { "nvim-treesitter/nvim-treesitter" }, -- if you use the mini.nvim suite
-    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
-    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
     config = function()
         require('render-markdown').setup({
             completions = {
@@ -13,6 +11,12 @@ return {
             checkbox = { checked = { scope_highlight = '@markup.strikethrough' } },
             heading = { border = true },
             pipe_table = { preset = 'round' },
+            code = {
+                position = 'right',
+                width = 'block',
+                left_pad = 2,
+                right_pad = 4,
+            },
         })
     end
 }
