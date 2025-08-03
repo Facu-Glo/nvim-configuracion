@@ -77,7 +77,7 @@ return {
                     },
                 },
                 files = {
-                    hidden = true,
+                    hidden = false,
 
                 }
             },
