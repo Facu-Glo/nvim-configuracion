@@ -59,17 +59,17 @@ return {
                 --     end
                 -- end,
 
-                default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot', 'codeium' },
+                default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
                 per_filetype = {
-                    markdown = { 'lsp', 'path', 'snippets', 'buffer', 'copilot', 'codeium' },
+                    markdown = { 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
                     oil = { 'lsp', 'path', 'snippets', 'buffer' },
                 },
                 providers = {
-                    codeium = {
-                        name = 'Codeium',
-                        module = 'codeium.blink',
-                        async = true,
-                    },
+                    -- codeium = {
+                    --     name = 'Codeium',
+                    --     module = 'codeium.blink',
+                    --     async = true,
+                    -- },
                     copilot = {
                         name = "copilot",
                         module = "blink-copilot",
