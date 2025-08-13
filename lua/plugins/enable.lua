@@ -23,4 +23,8 @@ return {
         "zbirenbaum/copilot.lua",
         enabled = true,
     },
+    {
+        "stevearc/conform.nvim",
+        enabled = false,
+    },
 }
