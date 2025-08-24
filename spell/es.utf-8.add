@@ -142,3 +142,6 @@ ucode
 RTC
 Pipewire
 fstab
+truthy
+falsy
+ok
