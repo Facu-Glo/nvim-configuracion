@@ -17,6 +17,7 @@ return {
                 "ruff",
                 "vtsls",
                 "prettier",
+                "elixir-ls"
             }
 
             for _, name in ipairs(ensure_installed) do
@@ -168,6 +169,10 @@ return {
                     lemminx = {},
 
                     cssls = {},
+
+                    elixirls = {
+                        cmd = {"/home/facu/.local/share/nvim/mason/packages/elixir-ls/language_server.sh"}
+                    },
                 },
 
                 setup = {},
