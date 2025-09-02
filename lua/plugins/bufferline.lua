@@ -15,7 +15,6 @@ return {
         { "[B",         "<cmd>BufferLineMovePrev<cr>",             desc = "Move buffer prev" },
         { "]B",         "<cmd>BufferLineMoveNext<cr>",             desc = "Move buffer next" },
         { "gb",         "<CMD>BufferLinePick<CR>",                 desc = "Pick Buffer" },
-        { "B",          "<CMD>BufferLinePick<CR>",                 desc = "Pick Buffer" },
         { "gD",         "<CMD>BufferLinePickClose<CR>",            desc = "Pick Buffer Close" },
     },
     opts = {
