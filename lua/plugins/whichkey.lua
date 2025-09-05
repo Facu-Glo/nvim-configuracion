@@ -41,6 +41,7 @@ return {
                 { "<leader>r", name = "Relative number", icon = { icon = " " } },
                 { "<leader>o", name = "Abir Oil explorer", icon = { icon = "󰝰 " } },
                 { "<leader>i", name = "Copilot", icon = { icon = " ", color = "cyan" } },
+                { "<leader>l", name = "lazy" },
             },
         },
     },

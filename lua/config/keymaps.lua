@@ -110,6 +110,10 @@ keymap({ "n", "v" }, "<leader>ip", "<CMD>CopilotChatPrompts<CR>", { desc = "Copi
 keymap({ "n", "v" }, "<leader>ie", "<CMD>CopilotChatExplain<CR>", { desc = "Copilot [E]xplain" })
 keymap({ "n", "v" }, "<leader>if", "<CMD>CopilotChatFixCode<CR>", { desc = "Copilot [F]ix Code" })
 
+-- Lazy
+keymap("n", "<leader>lu", "<CMD>Lazy update<CR>", { desc = "Actualizar Lazy" })
+keymap("n","<leader>ll", "<CMD>Lazy<CR>", { desc = "Abrir Lazy" })
+
 -- vim.keymap.set("n", "<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })
 -- vim.keymap.set("n", "<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Down" })
 -- vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Mover selección abajo", silent = true })

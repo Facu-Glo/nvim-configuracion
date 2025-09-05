@@ -9,7 +9,7 @@ return {
             },
             file_types = { 'markdown', 'copilot-chat' },
             checkbox = { checked = { scope_highlight = '@markup.strikethrough' } },
-            heading = { border = true },
+            heading = { border = false },
             pipe_table = { preset = 'round' },
             code = {
                 position = 'right',
