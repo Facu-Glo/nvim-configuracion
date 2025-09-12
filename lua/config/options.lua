@@ -17,5 +17,8 @@ nvim.wrap           = false
 nvim.showmode       = false
 nvim.splitright     = true
 nvim.textwidth      = 100
+nvim.foldmethod     = "expr"
+nvim.foldexpr       = "nvim_treesitter#foldexpr()"
+nvim.foldlevel      = 99
 
 vim.cmd.colorscheme("tokyonight-night")
