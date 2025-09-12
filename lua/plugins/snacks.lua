@@ -218,6 +218,13 @@ return {
             desc = "Undo",
         },
         {
+            "<leader>fs",
+            function()
+                Snacks.picker.lsp_symbols()
+            end,
+            desc = "Undo",
+        },
+        {
             "<leader>bd",
             function()
                 Snacks.bufdelete()
