@@ -225,7 +225,7 @@ return {
             desc = "Undo",
         },
         {
-            "<leader>bd",
+            "<leader>bc",
             function()
                 Snacks.bufdelete()
             end,

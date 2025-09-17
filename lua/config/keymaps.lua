@@ -34,10 +34,14 @@ keymap("n", "-", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
 keymap("n", "<leader>oo", "<CMD>Oil<CR>", { desc = "Abrir Oil" })
 keymap("n", "<leader>of", "<CMD>Oil --float<CR>", { desc = "Abrir Oil flotante" })
 
+keymap("n", "<leader>bd", "<CMD>bd %<CR>", { desc = "Cerrar el buffer y ventana actual" })
+
 -- Code
 keymap("n", "<leader>cf", "<CMD>lua vim.lsp.buf.format()<CR>", { desc = "Formatear el archivo" })
 keymap("n", "<leader>ca", "<CMD>lua vim.lsp.buf.code_action()<CR>", { desc = "Sugerencias de código (Code Actions)" })
 keymap("n", "<leader>cd", "<CMD>lua vim.lsp.buf.definition()<CR>", { desc = "Ir a la definición" })
+keymap("n", "<leader>cv", "<CMD>vsplit | lua vim.lsp.buf.definition()<CR>", { desc = "Ir a la definición en un ventana lateral" })
+keymap("n", "<leader>cs", "<CMD>belowright split | lua vim.lsp.buf.definition()<CR>", { desc = "Ir a la definición en una ventana abajo" })
 keymap("n", "<leader>cr", "<CMD>lua vim.lsp.buf.rename()<CR>", { desc = "Renombrar identificador en todo el proyecto" })
 keymap("n", "<leader>ce", "<CMD>lua vim.diagnostic.open_float()<CR>", { desc = "Mostrar diagnóstico flotante" })
 
