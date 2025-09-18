@@ -20,7 +20,7 @@ return {
                     theme = "auto",
                     component_separators = { left = "", right = "" },
                     section_separators = { left = "", right = "" },
-                    disabled_filetypes = { statusline = { "dashboard", "alpha", "ministarter", "snacks_dashboard" } },
+                    disabled_filetypes = { statusline = { "NvimTree","dashboard", "alpha", "ministarter", "snacks_dashboard", "fyler" } },
                     ignore_focus = {},
                     always_divide_middle = true,
                     always_show_tabline = true,
