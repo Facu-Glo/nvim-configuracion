@@ -171,7 +171,7 @@ return {
                     cssls = {},
 
                     elixirls = {
-                        cmd = {"/home/facu/.local/share/nvim/mason/packages/elixir-ls/language_server.sh"}
+                        cmd = { "/home/facu/.local/share/nvim/mason/packages/elixir-ls/language_server.sh" }
                     },
                 },
 
@@ -215,8 +215,8 @@ return {
                         return
                     end
                 end
-
-                require("lspconfig")[server].setup(server_opts)
+                vim.lsp.config(server, server_opts)
+                vim.lsp.enable(server)
             end
 
             -- Configurar todos los servidores
