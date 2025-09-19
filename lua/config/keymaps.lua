@@ -40,8 +40,10 @@ keymap("n", "<leader>bd", "<CMD>bd %<CR>", { desc = "Cerrar el buffer y ventana 
 keymap("n", "<leader>cf", "<CMD>lua vim.lsp.buf.format()<CR>", { desc = "Formatear el archivo" })
 keymap("n", "<leader>ca", "<CMD>lua vim.lsp.buf.code_action()<CR>", { desc = "Sugerencias de código (Code Actions)" })
 keymap("n", "<leader>cd", "<CMD>lua vim.lsp.buf.definition()<CR>", { desc = "Ir a la definición" })
-keymap("n", "<leader>cv", "<CMD>vsplit | lua vim.lsp.buf.definition()<CR>", { desc = "Ir a la definición en un ventana lateral" })
-keymap("n", "<leader>cs", "<CMD>belowright split | lua vim.lsp.buf.definition()<CR>", { desc = "Ir a la definición en una ventana abajo" })
+keymap("n", "<leader>cv", "<CMD>vsplit | lua vim.lsp.buf.definition()<CR>",
+    { desc = "Ir a la definición en un ventana lateral" })
+keymap("n", "<leader>cs", "<CMD>belowright split | lua vim.lsp.buf.definition()<CR>",
+    { desc = "Ir a la definición en una ventana abajo" })
 keymap("n", "<leader>cr", "<CMD>lua vim.lsp.buf.rename()<CR>", { desc = "Renombrar identificador en todo el proyecto" })
 keymap("n", "<leader>ce", "<CMD>lua vim.diagnostic.open_float()<CR>", { desc = "Mostrar diagnóstico flotante" })
 
@@ -116,7 +118,7 @@ keymap({ "n", "v" }, "<leader>if", "<CMD>CopilotChatFixCode<CR>", { desc = "Copi
 
 -- Lazy
 keymap("n", "<leader>lu", "<CMD>Lazy update<CR>", { desc = "Actualizar Lazy" })
-keymap("n","<leader>ll", "<CMD>Lazy<CR>", { desc = "Abrir Lazy" })
+keymap("n", "<leader>ll", "<CMD>Lazy<CR>", { desc = "Abrir Lazy" })
 
 -- fyler
 keymap("n", "<leader>E", "<CMD>Fyler<CR>", { desc = "Abrir Fyler" })
