@@ -39,6 +39,9 @@ return {
                 indent = {
                     enable = true,
                 },
+                folds = {
+                    enable = true,
+                },
             })
         end,
     },
