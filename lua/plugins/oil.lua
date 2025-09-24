@@ -42,7 +42,7 @@ return {
                 explorer = {
                     width = 0.2,
                     height = 0.2,
-                    kind = "split:right",
+                    kind = "split:rightmost",
                     border = "single",
                 },
                 confirm = {
