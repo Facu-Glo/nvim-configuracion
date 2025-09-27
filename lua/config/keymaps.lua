@@ -123,6 +123,16 @@ keymap("n", "<leader>ll", "<CMD>Lazy<CR>", { desc = "Abrir Lazy" })
 -- fyler
 keymap("n", "<leader>E", "<CMD>Fyler<CR>", { desc = "Abrir Fyler" })
 
+keymap("n", "<leader>gd", function()
+  local lib = require("diffview.lib")
+  local view = lib.get_current_view()
+  if view then
+    vim.cmd("DiffviewClose")
+  else
+    vim.cmd("DiffviewOpen")
+  end
+end, { desc = "Toggle Diffview" })
+
 -- vim.keymap.set("n", "<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })
 -- vim.keymap.set("n", "<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Down" })
 -- vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Mover selección abajo", silent = true })
