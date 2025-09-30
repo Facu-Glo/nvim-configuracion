@@ -1,7 +1,7 @@
 local nvim          = vim.o
 
 nvim.number         = true
-nvim.relativenumber = true
+nvim.relativenumber = false
 nvim.expandtab      = true
 nvim.tabstop        = 4
 nvim.shiftwidth     = 4
