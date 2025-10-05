@@ -225,6 +225,13 @@ return {
             desc = "Undo",
         },
         {
+            "<leader>fi",
+            function()
+                Snacks.picker.icons()
+            end,
+            desc = "Icons",
+        },
+        {
             "<leader>bc",
             function()
                 Snacks.bufdelete()
