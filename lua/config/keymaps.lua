@@ -121,7 +121,7 @@ keymap("n", "<leader>lu", "<CMD>Lazy update<CR>", { desc = "Actualizar Lazy" })
 keymap("n", "<leader>ll", "<CMD>Lazy<CR>", { desc = "Abrir Lazy" })
 
 -- fyler
-keymap("n", "<leader>E", "<CMD>Fyler<CR>", { desc = "Abrir Fyler" })
+keymap("n", "<leader>E", "<CMD>Fyler kind=float<CR>", { desc = "Abrir Fyler" })
 
 keymap("n", "<leader>gd", function()
   local lib = require("diffview.lib")
