@@ -27,4 +27,8 @@ return {
         "stevearc/conform.nvim",
         enabled = false,
     },
+    {
+        'stevearc/oil.nvim',
+        enabled = false,
+    }
 }

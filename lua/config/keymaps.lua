@@ -30,9 +30,9 @@ keymap("n", "<leader>wc", "<C-w>c", { desc = "Cerrar la ventana" })
 keymap({ "n", "v" }, "<C-s>", ":w<CR>", { noremap = true, silent = true })
 keymap("i", "<C-s>", "<Esc>:w<CR>", { noremap = true, silent = true })
 
-keymap("n", "-", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
-keymap("n", "<leader>oo", "<CMD>Oil<CR>", { desc = "Abrir Oil" })
-keymap("n", "<leader>of", "<CMD>Oil --float<CR>", { desc = "Abrir Oil flotante" })
+-- keymap("n", "-", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
+-- keymap("n", "<leader>oo", "<CMD>Oil<CR>", { desc = "Abrir Oil" })
+-- keymap("n", "<leader>of", "<CMD>Oil --float<CR>", { desc = "Abrir Oil flotante" })
 
 keymap("n", "<leader>bd", "<CMD>bd %<CR>", { desc = "Cerrar el buffer y ventana actual" })
 
@@ -122,6 +122,7 @@ keymap("n", "<leader>ll", "<CMD>Lazy<CR>", { desc = "Abrir Lazy" })
 
 -- fyler
 keymap("n", "<leader>E", "<CMD>Fyler kind=float<CR>", { desc = "Abrir Fyler" })
+keymap("n", "-", "<CMD>Fyler kind=float<CR>", { desc = "Abrir Fyler" })
 
 keymap("n", "<leader>gd", function()
   local lib = require("diffview.lib")
