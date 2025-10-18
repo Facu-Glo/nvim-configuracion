@@ -140,161 +140,29 @@ return {
         -- words = { enabled = true },
     },
     keys = {
-        {
-            "<leader><space>",
-            function()
-                Snacks.picker.files()
-            end,
-            desc = "Buscar archivos",
-        },
-        {
-            "<leader>fb",
-            function()
-                Snacks.picker.buffers()
-            end,
-            desc = "Buffers",
-        },
-        {
-            "<leader>fg",
-            function()
-                Snacks.picker.grep()
-            end,
-            desc = "Grep",
-        },
-        {
-            "<leader>fn",
-            function()
-                Snacks.picker.notifications()
-            end,
-            desc = "Notification History",
-        },
-        {
-            "<leader>fh",
-            function()
-                Snacks.picker.help()
-            end,
-            desc = "Help",
-        },
-        {
-            "<leader>fz",
-            function()
-                Snacks.picker.zoxide()
-            end,
-            desc = "Buscar directorios",
-        },
-        {
-            "<leader>fl",
-            function()
-                Snacks.picker.lines()
-            end,
-            desc = "Buscar lineas",
-        },
-        {
-            "<leader>f:",
-            function()
-                Snacks.picker.command_history()
-            end,
-            desc = "Command History",
-        },
-        {
-            "<leader>fd",
-            function()
-                Snacks.picker.diagnostics()
-            end,
-            desc = "Diagnostico",
-        },
-        {
-            "<leader>fr",
-            function()
-                Snacks.picker.registers()
-            end,
-            desc = "Registros",
-        },
-        {
-            "<leader>fu",
-            function()
-                Snacks.picker.undo()
-            end,
-            desc = "Undo",
-        },
-        {
-            "<leader>fs",
-            function()
-                Snacks.picker.lsp_symbols()
-            end,
-            desc = "Undo",
-        },
-        {
-            "<leader>fi",
-            function()
-                Snacks.picker.icons()
-            end,
-            desc = "Icons",
-        },
-        {
-            "<leader>bc",
-            function()
-                Snacks.bufdelete()
-            end,
-            desc = "Eliminar buffer",
-        },
-        {
-            "<leader>bo",
-            function()
-                Snacks.bufdelete.other()
-            end,
-            desc = "Eliminar otros buffers",
-        },
-        {
-            "<leader>e",
-            function()
-                Snacks.explorer()
-            end,
-            desc = "File Explorer",
-        },
-        {
-            "<leader>gg",
-            function()
-                Snacks.lazygit()
-            end,
-            desc = "Lazygit",
-        },
-        {
-            "<leader>gb",
-            function()
-                Snacks.picker.git_branches()
-            end,
-            desc = "Git Branchs",
-        },
-        {
-            "<leader>gl",
-            function()
-                Snacks.picker.git_log()
-            end,
-            desc = "Git Log",
-        },
-        {
-            "<leader>tt",
-            function()
-                Snacks.terminal.toggle(nil, { cwd = vim.fn.getcwd() })
-            end,
-            desc = "Terminal horizontal",
-            mode = { "n", "t" }
-        },
-        {
-            "<leader>ty",
-            function()
-                Snacks.terminal(nil, { win = { position = 'float' } })
-            end,
-            desc = "Terminal flotante",
-            mode = { "n", "t" }
-        },
-        {
-            "<leader>cs",
-            function()
-                Snacks.picker.lsp_symbols()
-            end,
-            desc = "Lsp symbols"
-        }
+        { "<leader><space>", function() Snacks.picker.files() end,                                  desc = "Buscar archivos", },
+        { "<leader>fb",      function() Snacks.picker.buffers() end,                                desc = "Buffers", },
+        { "<leader>fg",      function() Snacks.picker.grep() end,                                   desc = "Grep", },
+        { "<leader>fn",      function() Snacks.picker.notifications() end,                          desc = "Notification History", },
+        { "<leader>fh",      function() Snacks.picker.help() end,                                   desc = "Help", },
+        { "<leader>fz",      function() Snacks.picker.zoxide() end,                                 desc = "Buscar directorios", },
+        { "<leader>fl",      function() Snacks.picker.lines() end,                                  desc = "Buscar lineas", },
+        { "<leader>f:",      function() Snacks.picker.command_history() end,                        desc = "Command History", },
+        { "<leader>fd",      function() Snacks.picker.diagnostics() end,                            desc = "Diagnostico", },
+        { "<leader>fr",      function() Snacks.picker.registers() end,                              desc = "Registros", },
+        { "<leader>fu",      function() Snacks.picker.undo() end,                                   desc = "Undo", },
+        { "<leader>fs",      function() Snacks.picker.lsp_symbols() end,                            desc = "Undo", },
+        { "<leader>fi",      function() Snacks.picker.icons() end,                                  desc = "Icons", },
+        { "<leader>gb",      function() Snacks.picker.git_branches() end,                           desc = "Git Branchs", },
+        { "<leader>gl",      function() Snacks.picker.git_log() end,                                desc = "Git Log", },
+        { "<leader>cs",      function() Snacks.picker.lsp_symbols() end,                            desc = "Lsp symbols" },
+
+        { "<leader>bc",      function() Snacks.bufdelete() end,                                     desc = "Eliminar buffer", },
+        { "<leader>bo",      function() Snacks.bufdelete.other() end,                               desc = "Eliminar otros buffers", },
+        { "<leader>e",       function() Snacks.explorer() end,                                      desc = "File Explorer", },
+        { "<leader>tt",      function() Snacks.terminal.toggle(nil, { cwd = vim.fn.getcwd() }) end, desc = "Terminal horizontal",    mode = { "n", "t" } },
+        { "<leader>ty",      function() Snacks.terminal(nil, { win = { position = 'float' } }) end, desc = "Terminal flotante",      mode = { "n", "t" } },
+        { "<leader>gB",      function() Snacks.gitbrowse() end,                                     desc = "Git Browse",             mode = { "n", "v" } },
+        { "<leader>gg",      function() Snacks.lazygit() end,                                       desc = "Lazygit", },
     },
 }
