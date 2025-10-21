@@ -12,10 +12,10 @@ return {
         local set = vim.keymap.set
 
         -- Add or skip cursor above/below the main cursor.
-        set({ "n", "x" }, "<leader>mu", function()
+        set({ "n", "x" }, "<up>", function()
             mc.lineAddCursor(-1)
         end, { desc = "Añadir cursor arriba" })
-        set({ "n", "x" }, "<leader>md", function()
+        set({ "n", "x" }, "<down>", function()
             mc.lineAddCursor(1)
         end, { desc = "Añadir cursor abajo" })
         set({ "n", "x" }, "<leader>m<up>", function()
@@ -64,8 +64,8 @@ return {
         -- end)
 
         -- Rotate the main cursor.
-        set({ "n", "x" }, "<left>", mc.nextCursor)
-        set({ "n", "x" }, "<right>", mc.prevCursor)
+        set({ "n", "x" }, "<left>", mc.prevCursor)
+        set({ "n", "x" }, "<right>", mc.nextCursor)
 
         -- Delete the main cursor.
         set({ "n", "x" }, "<leader>mx", mc.deleteCursor, { desc = "Eliminar cursor" })
@@ -109,12 +109,12 @@ return {
         set("x", "M", mc.matchCursors)
         --
         -- -- Rotate visual selection contents.
-        set("x", "<leader>t", function()
-            mc.transposeCursors(1)
-        end)
-        set("x", "<leader>T", function()
-            mc.transposeCursors(-1)
-        end)
+        -- set("x", "<leader>t", function()
+        --     mc.transposeCursors(1)
+        -- end)
+        -- set("x", "<leader>T", function()
+        --     mc.transposeCursors(-1)
+        -- end)
         --
         -- -- Jumplist support
         set({ "x", "n" }, "<c-i>", mc.jumpForward)
