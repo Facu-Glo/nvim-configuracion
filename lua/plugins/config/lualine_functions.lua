@@ -36,7 +36,7 @@ M.pretty_path = function()
         status = " [No Name]"
     end
 
-    return final_path .. "%#LualineFilename#" .. filename .. status
+    return final_path ..  filename .. status
 end
 
 -- Función para mostrar el estado de grabación de macros

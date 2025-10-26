@@ -37,8 +37,6 @@ return {
         dependencies = {
             "mason-org/mason.nvim",
             "saghen/blink.cmp",
-            -- "williamboman/mason-lspconfig.nvim",
-            -- "SmiteshP/nvim-navic",
         },
         opts = function()
             local ret = {
@@ -90,7 +88,7 @@ return {
                                     version = "LuaJIT",
                                 },
                                 diagnostics = {
-                                    globals = { "vim" },
+                                    globals = { "vim", "Snacks" },
                                 },
                                 workspace = {
                                     checkThirdParty = false,
