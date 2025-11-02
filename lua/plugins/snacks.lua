@@ -161,7 +161,7 @@ return {
         { "<leader>bo",      function() Snacks.bufdelete.other() end,                               desc = "Eliminar otros buffers", },
         { "<leader>e",       function() Snacks.explorer() end,                                      desc = "File Explorer", },
         { "<leader>tt",      function() Snacks.terminal.toggle(nil, { cwd = vim.fn.getcwd() }) end, desc = "Terminal horizontal",    mode = { "n", "t" } },
-        { "<leader>ty",      function() Snacks.terminal(nil, { win = { position = 'float' } }) end, desc = "Terminal flotante",      mode = { "n", "t" } },
+        { "<leader>ty",      function() Snacks.terminal("zsh") end, desc = "Terminal flotante",      mode = { "n", "t" } },
         { "<leader>gB",      function() Snacks.gitbrowse() end,                                     desc = "Git Browse",             mode = { "n", "v" } },
         { "<leader>gg",      function() Snacks.lazygit() end,                                       desc = "Lazygit", },
     },
