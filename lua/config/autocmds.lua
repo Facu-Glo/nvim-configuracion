@@ -63,3 +63,13 @@ autocmd("FileType", {
             { noremap = true, silent = true, buffer = true, desc = "Markdown Stop Preview" })
     end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "markdown",
+    callback = function()
+        vim.keymap.set("x", "<leader>cw",
+            ":<C-u>lua vim.api.nvim_buf_set_lines(0, vim.api.nvim_buf_get_mark(0, '>')[1], vim.api.nvim_buf_get_mark(0, '>')[1], false, {'```'}); vim.api.nvim_buf_set_lines(0, vim.api.nvim_buf_get_mark(0, '<')[1] - 1, vim.api.nvim_buf_get_mark(0, '<')[1] - 1, false, {'```'})<CR>",
+            { buffer = true, noremap = true, silent = true, desc = "Wrap visual selection with code block" }
+        )
+    end,
+})
