@@ -39,7 +39,7 @@ return {
                         ["vim.lsp.util.stylize_markdown"] = true,
                     },
                     hover = {
-                        enabled = true, -- Activa el hover de noice
+                        enabled = true,
                     },
                 },
                 presets = {
@@ -51,7 +51,7 @@ return {
                     opts = {
                         lang = "txt",
                         replace = true,
-                        render = "plain", -- Aquí puedes cambiar a "markdown" para mejor renderizado
+                        render = "plain",
                         format = { "{message}" },
                         win_options = { concealcursor = "n", conceallevel = 3 },
                     },
