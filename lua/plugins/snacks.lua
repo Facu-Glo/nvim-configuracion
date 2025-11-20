@@ -72,8 +72,8 @@ return {
                     hidden = true,
                     layout = {
                         layout = {
-                            position = "left",
-                            width = 30,
+                            position = "right",
+                            width = 40,
                         },
                     },
                 },
