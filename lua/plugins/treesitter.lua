@@ -23,6 +23,7 @@ return {
                     "hyprlang",
                     "xml",
                     "rasi",
+                    "elixir",
                 },
                 highlight = {
                     enable = true,
