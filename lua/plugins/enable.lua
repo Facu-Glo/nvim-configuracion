@@ -1,7 +1,7 @@
 return {
     {
         "iamcco/markdown-preview.nvim",
-        enabled = true,
+        enabled = false,
     },
     {
         "barrett-ruth/live-server.nvim",
