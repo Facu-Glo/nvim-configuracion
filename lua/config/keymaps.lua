@@ -107,8 +107,8 @@ keymap("n", "<leader>qq", "<CMD>qall!<CR>", { desc = "Salir sin guardar" })
 keymap("n", "<leader>qw", "<CMD>wqall<CR>", { desc = "Guardar y salir" })
 
 -- Github CLI
-keymap("n", "<leader>gh", "<CMD>!gh repo view --web<CR>", { desc = "Abrir repositorio en github" })
-keymap("n", "<leader>gH", "<CMD>!gh api user --jq '.html_url' | xargs xdg-open<CR>", { desc = "Abrir perfil en github" })
+keymap("n", "<leader>gr", "<CMD>!gh repo view --web<CR>", { desc = "Abrir repositorio en github" })
+keymap("n", "<leader>gp", "<CMD>!gh api user --jq '.html_url' | xargs xdg-open<CR>", { desc = "Abrir perfil en github" })
 
 -- Copilot
 keymap({ "n", "v" }, "<leader>ic", "<CMD>CopilotChatToggle<CR>", { desc = "Copilot Toggle [C]hat " })
