@@ -3,8 +3,8 @@ return {
     config = function()
         require("conform").setup {
             formatters_by_ft = {
-                lua = { "stylua" },
-                rust = { "rustfmt", lsp_format = "fallback" },
+                -- lua = { "stylua" },
+                -- rust = { "rustfmt", lsp_format = "fallback" },
                 javascript = { "prettier", stop_after_first = true },
                 typescript = { "prettier" },
                 typescriptreact = { "prettier" },
@@ -14,7 +14,7 @@ return {
                 yaml = { "prettier" },
                 c = { "clang_format" },
                 cpp = { "clang_format" },
-                python = { "ruff_format" },
+                -- python = { "ruff_format" },
             },
             format_on_save = {
                 timeout_ms = 500,
