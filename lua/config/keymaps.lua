@@ -121,17 +121,20 @@ keymap("n", "<leader>lu", "<CMD>Lazy update<CR>", { desc = "Actualizar Lazy" })
 keymap("n", "<leader>ll", "<CMD>Lazy<CR>", { desc = "Abrir Lazy" })
 
 -- fyler
-keymap("n", "<leader>E", "<CMD>Fyler kind=split_right_most<CR>", { desc = "Abrir Fyler" })
+-- keymap("n", "<leader>e", "<CMD>Fyler kind=split_right_most<CR>", { desc = "Abrir Fyler" })
+keymap("n", "<leader>e", function()
+    require("fyler").toggle()
+end, { desc = "Abrir Fyler" })
 keymap("n", "-", "<CMD>Fyler kind=float<CR>", { desc = "Abrir Fyler" })
 
 keymap("n", "<leader>gd", function()
-  local lib = require("diffview.lib")
-  local view = lib.get_current_view()
-  if view then
-    vim.cmd("DiffviewClose")
-  else
-    vim.cmd("DiffviewOpen")
-  end
+    local lib = require("diffview.lib")
+    local view = lib.get_current_view()
+    if view then
+        vim.cmd("DiffviewClose")
+    else
+        vim.cmd("DiffviewOpen")
+    end
 end, { desc = "Toggle Diffview" })
 
 -- vim.keymap.set("n", "<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })
