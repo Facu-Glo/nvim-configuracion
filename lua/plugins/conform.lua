@@ -14,12 +14,12 @@ return {
                 yaml = { "prettier" },
                 c = { "clang_format" },
                 cpp = { "clang_format" },
-                -- python = { "ruff_format" },
+                python = { "ruff_format" },
             },
-            format_on_save = {
-                timeout_ms = 500,
-                lsp_format = "fallback",
-            },
+            -- format_on_save = {
+            --     timeout_ms = 500,
+            --     lsp_format = "fallback",
+            -- },
             formatters = {
                 stylua = {
                     prepend_args = {

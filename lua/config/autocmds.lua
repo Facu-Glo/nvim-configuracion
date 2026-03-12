@@ -64,7 +64,7 @@ autocmd("FileType", {
     end,
 })
 
-vim.api.nvim_create_autocmd("FileType", {
+autocmd("FileType", {
     pattern = "markdown",
     callback = function()
         vim.keymap.set("x", "<leader>cw",
