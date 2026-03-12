@@ -1,5 +1,9 @@
 return {
     {
+        'mluders/comfy-line-numbers.nvim',
+        enabled = true,
+    },
+    {
         "barrett-ruth/live-server.nvim",
         enabled = false,
     },
