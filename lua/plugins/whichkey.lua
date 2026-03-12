@@ -38,7 +38,7 @@ return {
                 { "gx", desc = "Open with system app" },
 
                 { "<leader>m", name = "Multicursores", icon = { icon = "󰇀", color = "grey" } },
-                { "<leader>r", name = "Relative number", icon = { icon = " " } },
+                { "<leader>r", name = "Toggle números relativos", icon = { icon = " " } },
                 { "<leader>o", name = "Abir Oil explorer", icon = { icon = "󰝰 " } },
                 { "<leader>i", name = "Copilot", icon = { icon = " ", color = "cyan" } },
                 { "<leader>l", name = "lazy" },

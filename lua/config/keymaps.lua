@@ -92,13 +92,9 @@ keymap("n", "<leader>qd", function()
     require("persistence").stop()
 end, { desc = "Detener la persistencia => la sesión no se guardará al salir" })
 
-keymap("n", "<leader>ra", function()
-    vim.opt.relativenumber = true
-end, { desc = "Activar números relativos" })
-
-keymap("n", "<leader>rd", function()
-    vim.opt.relativenumber = false
-end, { desc = "Desactivar números relativos" })
+keymap("n", "<leader>r", function()
+    vim.opt.relativenumber = not vim.opt.relativenumber:get()
+end, { desc = "Toggle números relativos" })
 
 keymap("v", ">", ">gv", { noremap = true })
 keymap("v", "<", "<gv", { noremap = true })
