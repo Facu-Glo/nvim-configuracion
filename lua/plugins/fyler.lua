@@ -50,7 +50,7 @@ return {
                         win_opts = {
                             number = true,
                             relativenumber = true,
-                            cursorline = false,
+                            cursorline = true,
                             signcolumn = "yes",
                         }
                     },
