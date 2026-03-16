@@ -1,3 +1,25 @@
+local function open_files()
+    local line = vim.api.nvim_get_current_line()
+    local filename = line:match("([^%s%z]+)$")
+
+    if filename then
+        local name_lower = filename:lower()
+        if name_lower:match("%.pdf$") or name_lower:match("%.png$") or
+            name_lower:match("%.jpg$") or name_lower:match("%.jpeg$") then
+            local full_path = vim.fn.getcwd() .. "/" .. filename
+
+            if vim.fn.filereadable(full_path) == 1 then
+                vim.fn.jobstart({ "xdg-open", full_path }, { detach = true })
+                print("Abriendo externo: " .. filename)
+                return
+            end
+        end
+    end
+
+    local key = vim.api.nvim_replace_termcodes("<F24>", true, false, true)
+    vim.api.nvim_feedkeys(key, "m", false)
+end
+
 return {
     {
         "A7Lavinraj/fyler.nvim",
@@ -14,33 +36,36 @@ return {
                     highlight_groups.FylerGitUntracked = { fg = "#6d6d6d" }
 
                     highlight_groups.FylerIndentMarker = { fg = "#45475a" }
-                end
+                end,
             },
             views = {
                 finder = {
                     follow_current_file = true,
+                    close_on_select = false,
                     icon = {
-                        directory_expanded = ""
+                        directory_expanded = "",
                     },
                     mappings = {
-                        ["q"] = "CloseView",
-                        ["<CR>"] = "Select",
-                        ["L"] = "Select",
+                        ["q"]     = "CloseView",
+                        ["<CR>"]  = open_files,
+                        ["<F24>"] = "Select",
+                        ["L"]     = "Select",
                         ["<C-t>"] = "SelectTab",
-                        ["|"] = "SelectVSplit",
-                        ["-"] = "SelectSplit",
-                        ["^"] = "GotoParent",
-                        ["="] = "GotoCwd",
-                        ["."] = "GotoNode",
-                        ["#"] = "CollapseAll",
-                        ["<BS>"] = "CollapseNode",
+                        ["|"]     = "SelectVSplit",
+                        ["-"]     = "SelectSplit",
+                        ["^"]     = "GotoParent",
+                        ["H"]     = "GotoParent",
+                        ["="]     = "GotoCwd",
+                        ["."]     = "GotoNode",
+                        ["#"]     = "CollapseAll",
+                        ["<BS>"]  = "CollapseNode",
                     },
                     win = {
                         kind = "split_right_most",
                         border = "single",
                         kinds = {
                             split_right_most = {
-                                width = "25%",
+                                width = "30%",
                             },
                             float = {
                                 width = "70%",
