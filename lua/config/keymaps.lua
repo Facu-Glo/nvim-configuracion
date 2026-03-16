@@ -92,7 +92,7 @@ keymap("n", "<leader>qd", function()
     require("persistence").stop()
 end, { desc = "Detener la persistencia => la sesión no se guardará al salir" })
 
-keymap("n", "<leader>r", function()
+keymap({ "n", "v" }, "<leader>r", function()
     vim.opt.relativenumber = not vim.opt.relativenumber:get()
 end, { desc = "Toggle números relativos" })
 
@@ -132,6 +132,8 @@ keymap("n", "<leader>gd", function()
         vim.cmd("DiffviewOpen")
     end
 end, { desc = "Toggle Diffview" })
+
+keymap("n", "<leader>oe", "<CMD>!xdg-open .<CR>", { desc = "Abrir en el explorador de archivos predeterminado" })
 
 -- vim.keymap.set("n", "<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })
 -- vim.keymap.set("n", "<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Down" })

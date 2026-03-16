@@ -39,7 +39,7 @@ return {
 
                 { "<leader>m", name = "Multicursores", icon = { icon = "󰇀", color = "grey" } },
                 { "<leader>r", name = "Toggle números relativos", icon = { icon = " " } },
-                { "<leader>o", name = "Abir Oil explorer", icon = { icon = "󰝰 " } },
+                { "<leader>o", name = "Abrir ...", icon = { icon = "󰝰 " } },
                 { "<leader>i", name = "Copilot", icon = { icon = " ", color = "cyan" } },
                 { "<leader>l", name = "lazy" },
             },
