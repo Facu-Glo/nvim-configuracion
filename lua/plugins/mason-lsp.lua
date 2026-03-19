@@ -17,7 +17,8 @@ return {
                 "ruff",
                 "vtsls",
                 "prettier",
-                "elixir-ls"
+                "elixir-ls",
+                "latexindent"
             }
 
             for _, name in ipairs(ensure_installed) do

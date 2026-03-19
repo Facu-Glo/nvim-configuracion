@@ -37,7 +37,13 @@ keymap("i", "<C-s>", "<Esc>:w<CR>", { noremap = true, silent = true })
 keymap("n", "<leader>bd", "<CMD>bd %<CR>", { desc = "Cerrar el buffer y ventana actual" })
 
 -- Code
-keymap("n", "<leader>cf", "<CMD>lua vim.lsp.buf.format()<CR>", { desc = "Formatear el archivo" })
+vim.keymap.set("n", "<leader>cf", function()
+    require("conform").format({
+        lsp_fallback = true,
+        async = false,
+        timeout_ms = 2000,
+    })
+end, { desc = "Formatear el archivo (Conform)" })
 keymap("n", "<leader>ca", "<CMD>lua vim.lsp.buf.code_action()<CR>", { desc = "Sugerencias de código (Code Actions)" })
 keymap("n", "<leader>cd", "<CMD>lua vim.lsp.buf.definition()<CR>", { desc = "Ir a la definición" })
 keymap("n", "<leader>cv", "<CMD>vsplit | lua vim.lsp.buf.definition()<CR>",
@@ -121,7 +127,7 @@ keymap("n", "<leader>ll", "<CMD>Lazy<CR>", { desc = "Abrir Lazy" })
 keymap("n", "<leader>e", function()
     require("fyler").toggle()
 end, { desc = "Abrir Fyler" })
-keymap("n", "-", "<CMD>Fyler kind=float<CR>", { desc = "Abrir Fyler" })
+keymap("n", "-", "<CMD>Fyler kind=split_below_all<CR>", { desc = "Abrir Fyler" })
 
 keymap("n", "<leader>gd", function()
     local lib = require("diffview.lib")

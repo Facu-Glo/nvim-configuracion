@@ -15,10 +15,11 @@ return {
                 c = { "clang_format" },
                 cpp = { "clang_format" },
                 python = { "ruff_format" },
+                tex = { "latexindent" },
             },
             -- format_on_save = {
-            --     timeout_ms = 500,
-            --     lsp_format = "fallback",
+            --     timeout_ms = 2000,
+            --     lsp_fallback = true,
             -- },
             formatters = {
                 stylua = {
