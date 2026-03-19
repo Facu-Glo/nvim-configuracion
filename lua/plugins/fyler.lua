@@ -3,21 +3,24 @@ local function open_files()
     local filename = line:match("([^%s%z]+)$")
 
     if filename then
-        local name_lower = filename:lower()
-        if name_lower:match("%.pdf$") or name_lower:match("%.png$") or
-            name_lower:match("%.jpg$") or name_lower:match("%.jpeg$") then
-            local full_path = vim.fn.getcwd() .. "/" .. filename
+        local cmd = string.format("fd -g '%s' --max-results 1", filename)
+        local handle = io.popen(cmd)
 
-            if vim.fn.filereadable(full_path) == 1 then
+        if handle then
+            local result = handle:read("*a")
+            handle:close()
+
+            if result and result ~= "" then
+                local relative_path = result:gsub("%s+$", "")
+                local full_path = vim.fn.getcwd() .. "/" .. relative_path
+
                 vim.fn.jobstart({ "xdg-open", full_path }, { detach = true })
-                print("Abriendo externo: " .. filename)
+                print("Open: " .. relative_path)
                 return
             end
         end
+        print("fd no encontró: " .. filename)
     end
-
-    local key = vim.api.nvim_replace_termcodes("<F24>", true, false, true)
-    vim.api.nvim_feedkeys(key, "m", false)
 end
 
 return {
@@ -48,7 +51,6 @@ return {
                     mappings = {
                         ["q"]     = "CloseView",
                         ["<CR>"]  = open_files,
-                        ["<F24>"] = "Select",
                         ["L"]     = "Select",
                         ["<C-t>"] = "SelectTab",
                         ["|"]     = "SelectVSplit",
@@ -65,12 +67,15 @@ return {
                         border = "single",
                         kinds = {
                             split_right_most = {
-                                width = "30%",
+                                width = "28%",
                             },
                             float = {
                                 width = "70%",
                                 height = "70%",
-                            }
+                            },
+                            split_below_all = {
+                                height = "28%",
+                            },
                         },
                         win_opts = {
                             number = true,
