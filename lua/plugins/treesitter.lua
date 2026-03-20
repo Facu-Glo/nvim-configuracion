@@ -23,7 +23,7 @@ return {
                 "yaml",
                 "nasm",
                 "hyprlang",
-
+                "latex",
                 "xml",
                 "rasi",
                 "elixir",
