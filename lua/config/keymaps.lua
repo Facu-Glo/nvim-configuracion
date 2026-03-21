@@ -30,10 +30,6 @@ keymap("n", "<leader>wc", "<C-w>c", { desc = "Cerrar la ventana" })
 keymap({ "n", "v" }, "<C-s>", ":w<CR>", { noremap = true, silent = true })
 keymap("i", "<C-s>", "<Esc>:w<CR>", { noremap = true, silent = true })
 
--- keymap("n", "-", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
--- keymap("n", "<leader>oo", "<CMD>Oil<CR>", { desc = "Abrir Oil" })
--- keymap("n", "<leader>of", "<CMD>Oil --float<CR>", { desc = "Abrir Oil flotante" })
-
 keymap("n", "<leader>bd", "<CMD>bd %<CR>", { desc = "Cerrar el buffer y ventana actual" })
 
 -- Code
@@ -122,16 +118,16 @@ keymap({ "n", "v" }, "<leader>if", "<CMD>CopilotChatFixCode<CR>", { desc = "Copi
 keymap("n", "<leader>lu", "<CMD>Lazy update<CR>", { desc = "Actualizar Lazy" })
 keymap("n", "<leader>ll", "<CMD>Lazy<CR>", { desc = "Abrir Lazy" })
 
--- fyler
--- keymap("n", "<leader>e", "<CMD>Fyler kind=split_right_most<CR>", { desc = "Abrir Fyler" })
+-- FYLER (file manager)
 keymap("n", "<leader>e", function()
     require("fyler").toggle()
 end, { desc = "Abrir Fyler" })
 
-keymap("n", "_", function ()
+keymap("n", "<M-f>", function ()
     require("fyler").toggle({ kind = "split_below_all" })
 end, { desc = "Abrir Fyler horizontal" })
 
+-- git --
 keymap("n", "<leader>gd", function()
     local lib = require("diffview.lib")
     local view = lib.get_current_view()
