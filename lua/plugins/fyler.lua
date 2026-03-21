@@ -50,7 +50,8 @@ return {
                     },
                     mappings = {
                         ["q"]     = "CloseView",
-                        ["<CR>"]  = open_files,
+                        ["<CR>"]  = "Select",
+                        ["<M-o>"]   = open_files,
                         ["L"]     = "Select",
                         ["<C-t>"] = "SelectTab",
                         ["|"]     = "SelectVSplit",
