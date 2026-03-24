@@ -51,17 +51,18 @@ return {
                     mappings = {
                         ["q"]     = "CloseView",
                         ["<CR>"]  = "Select",
-                        ["<M-o>"]   = open_files,
                         ["L"]     = "Select",
                         ["<C-t>"] = "SelectTab",
                         ["|"]     = "SelectVSplit",
-                        ["-"]     = "SelectSplit",
+                        ["_"]     = "SelectSplit",
                         ["^"]     = "GotoParent",
                         ["H"]     = "GotoParent",
                         ["="]     = "GotoCwd",
                         ["."]     = "GotoNode",
                         ["#"]     = "CollapseAll",
                         ["<BS>"]  = "CollapseNode",
+                        ["-"]     = "CloseView",
+                        ["<M-o>"] = open_files,
                     },
                     win = {
                         kind = "split_right_most",
@@ -75,7 +76,7 @@ return {
                                 height = "70%",
                             },
                             split_below_all = {
-                                height = "28%",
+                                height = "35%",
                             },
                         },
                         win_opts = {

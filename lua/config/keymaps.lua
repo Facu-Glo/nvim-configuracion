@@ -123,7 +123,7 @@ keymap("n", "<leader>e", function()
     require("fyler").toggle()
 end, { desc = "Abrir Fyler" })
 
-keymap("n", "<M-f>", function ()
+keymap("n", "-", function ()
     require("fyler").toggle({ kind = "split_below_all" })
 end, { desc = "Abrir Fyler horizontal" })
 
