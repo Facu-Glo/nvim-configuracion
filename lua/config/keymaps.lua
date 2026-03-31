@@ -119,9 +119,9 @@ keymap("n", "<leader>lu", "<CMD>Lazy update<CR>", { desc = "Actualizar Lazy" })
 keymap("n", "<leader>ll", "<CMD>Lazy<CR>", { desc = "Abrir Lazy" })
 
 -- FYLER (file manager)
-keymap("n", "<leader>e", function()
-    require("fyler").toggle()
-end, { desc = "Abrir Fyler" })
+-- keymap("n", "<leader>e", function()
+--     require("fyler").toggle()
+-- end, { desc = "Abrir Fyler" })
 
 keymap("n", "-", function ()
     require("fyler").toggle({ kind = "split_below_all" })
