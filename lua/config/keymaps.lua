@@ -123,7 +123,7 @@ keymap("n", "<leader>ll", "<CMD>Lazy<CR>", { desc = "Abrir Lazy" })
 --     require("fyler").toggle()
 -- end, { desc = "Abrir Fyler" })
 
-keymap("n", "-", function ()
+keymap({ "n", "v" }, "<M-f>", function()
     require("fyler").toggle({ kind = "split_below_all" })
 end, { desc = "Abrir Fyler horizontal" })
 

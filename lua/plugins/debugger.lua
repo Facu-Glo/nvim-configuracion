@@ -75,7 +75,7 @@ return {
         -- Adaptador para Python
         dap.adapters.python = {
             type = "executable",
-            command = "python",
+            command = vim.fn.stdpath("data") .. "/mason/packages/debugpy/venv/bin/python",
             args = { "-m", "debugpy.adapter" },
         }
 

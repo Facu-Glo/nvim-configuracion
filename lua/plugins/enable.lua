@@ -9,7 +9,7 @@ return {
     },
     {
         "mfussenegger/nvim-dap",
-        enabled = false,
+        enabled = true,
     },
     {
         "Exafunction/windsurf.nvim",
@@ -27,4 +27,12 @@ return {
         "stevearc/conform.nvim",
         enabled = true,
     },
+    {
+        "mfussenegger/nvim-jdtls",
+        enabled = false
+    },
+    {
+        "barrett-ruth/live-server.nvim",
+        enabled = false
+    }
 }

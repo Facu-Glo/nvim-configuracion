@@ -26,7 +26,7 @@ return {
 
         require('mini.comment').setup()
         require('mini.move').setup()
-        require('mini.pairs').setup()
+        -- require('mini.pairs').setup()
         require('mini.files').setup()
 
         local hipatterns = require('mini.hipatterns')
