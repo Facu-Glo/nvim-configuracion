@@ -62,24 +62,24 @@ return {
                         -- },
                         --
                         -- COPILOT SIN PLUGIN
-                        {
-                            function()
-                                for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
-                                    if client.name == "copilot" then
-                                        return " "
-                                    end
-                                end
-                                return " "
-                            end,
-                            color = function()
-                                for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
-                                    if client.name == "copilot" then
-                                        return { fg = "#37d5ff", gui = "bold" }
-                                    end
-                                end
-                                return { fg = "#6272A4", gui = "bold" }
-                            end,
-                        },
+                        -- {
+                        --     function()
+                        --         for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
+                        --             if client.name == "copilot" then
+                        --                 return " "
+                        --             end
+                        --         end
+                        --         return " "
+                        --     end,
+                        --     color = function()
+                        --         for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
+                        --             if client.name == "copilot" then
+                        --                 return { fg = "#37d5ff", gui = "bold" }
+                        --             end
+                        --         end
+                        --         return { fg = "#6272A4", gui = "bold" }
+                        --     end,
+                        -- },
 
                         -- {
                         --     'copilot',

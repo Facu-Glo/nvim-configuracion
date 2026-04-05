@@ -3,7 +3,7 @@ return {
         'saghen/blink.cmp',
         dependencies = {
             'rafamadriz/friendly-snippets',
-            "fang2hou/blink-copilot"
+            -- "fang2hou/blink-copilot"
             -- 'giuxtaposition/blink-cmp-copilot',
         },
 
@@ -59,9 +59,9 @@ return {
                 --     end
                 -- end,
 
-                default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
+                default = { 'lsp', 'path', 'snippets', 'buffer' },
                 per_filetype = {
-                    markdown = { 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
+                    markdown = { 'lsp', 'path', 'snippets', 'buffer' },
                     oil = { 'lsp', 'path', 'snippets', 'buffer' },
                 },
                 providers = {
@@ -70,12 +70,12 @@ return {
                     --     module = 'codeium.blink',
                     --     async = true,
                     -- },
-                    copilot = {
-                        name = "copilot",
-                        module = "blink-copilot",
-                        score_offset = 100,
-                        async = true,
-                    },
+                    -- copilot = {
+                    --     name = "copilot",
+                    --     module = "blink-copilot",
+                    --     score_offset = 100,
+                    --     async = true,
+                    -- },
                 },
             },
 

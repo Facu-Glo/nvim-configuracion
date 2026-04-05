@@ -1,7 +1,15 @@
 return {
     {
-        'mluders/comfy-line-numbers.nvim',
-        enabled = true,
+        "nvim-lua/plenary.nvim",
+        enabled = false
+    },
+    {
+        "CopilotC-Nvim/CopilotChat.nvim",
+        enabled = false,
+    },
+    {
+        "zbirenbaum/copilot.lua",
+        enabled = false,
     },
     {
         "barrett-ruth/live-server.nvim",
@@ -14,14 +22,6 @@ return {
     {
         "Exafunction/windsurf.nvim",
         enabled = false,
-    },
-    {
-        "CopilotC-Nvim/CopilotChat.nvim",
-        enabled = true,
-    },
-    {
-        "zbirenbaum/copilot.lua",
-        enabled = true,
     },
     {
         "stevearc/conform.nvim",
