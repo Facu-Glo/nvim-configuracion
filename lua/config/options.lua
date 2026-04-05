@@ -19,6 +19,8 @@ nvim.splitright     = true
 nvim.textwidth      = 100
 nvim.textwidth      = 80
 vim.opt.formatoptions:remove("t")
+vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#1f2335" })
+
 vim.opt.foldexpr   = 'v:lua.vim.treesitter.foldexpr()'
 vim.opt.foldmethod = 'expr'
 vim.wo.foldlevel   = 99
