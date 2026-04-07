@@ -1,0 +1,71 @@
+vim.pack.add({
+    { src = "https://github.com/stevearc/conform.nvim.git" }
+})
+
+require("conform").setup({
+    formatters_by_ft = {
+        javascript = { "prettier", stop_after_first = true },
+        typescript = { "prettier" },
+        typescriptreact = { "prettier" },
+        javascriptreact = { "prettier" },
+        json = { "prettier" },
+        jsonc = { "prettier" },
+        yaml = { "prettier" },
+        c = { "clang_format" },
+        cpp = { "clang_format" },
+        python = { "ruff_format" },
+        tex = { "latexindent" },
+        lua = { "stylua" },
+    },
+    formatters = {
+        stylua = {
+            prepend_args = {
+                "--column-width", "120",
+                "--line-endings", "Unix",
+                "--indent-type", "Spaces",
+                "--indent-width", "4",
+                "--quote-style", "ForceDouble",
+                "--call-parentheses", "Input",
+                "--collapse-simple-statement", "Never",
+            },
+        },
+        ruff_format = {
+            command = "ruff",
+            args = { "format", "--line-length", "88", "--stdin-filename", "$FILENAME", "-" },
+            stdin = true,
+        },
+        prettier = {
+            prepend_args = { "--tab-width", "2", "--no-semi", "--single-quote" },
+        },
+        clang_format = {
+            command = "clang-format",
+            args = {
+                [[--style={
+                    BasedOnStyle: LLVM,
+                    IndentWidth: 8,
+                    UseTab: ForIndentation,
+                    ContinuationIndentWidth: 8,
+                    ColumnLimit: 80,
+                    SortIncludes: false,
+                    BreakBeforeBraces: Linux,
+                    PointerAlignment: Right,
+                    DerivePointerAlignment: false,
+                    SpaceAfterCStyleCast: true,
+                    SpacesInCStyleCastParentheses: false,
+                    BinPackArguments: false,
+                    BinPackParameters: false,
+                    IndentCaseLabels: false,
+                    Cpp11BracedListStyle: false,
+                    MaxEmptyLinesToKeep: 2,
+                    AlignTrailingComments: true,
+                    SpacesBeforeTrailingComments: 2,
+                    KeepEmptyLinesAtTheStartOfBlocks: false,
+                    AllowShortIfStatementsOnASingleLine: false,
+                    AlwaysBreakAfterReturnType: TopLevelDefinitions,
+                    PenaltyExcessCharacter: 7,
+                    PenaltyBreakBeforeFirstCallParameter: 50
+                  }]],
+            },
+        },
+    },
+})

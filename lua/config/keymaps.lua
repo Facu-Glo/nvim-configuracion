@@ -1,146 +1,140 @@
 local keymap = vim.keymap.set
+vim.g.mapleader = " "
 
+-- [ NAVEGACIÓN Y VENTANAS ]
+-- Salir de modos de forma rápida
 keymap({ "i", "v" }, "<M-e>", "<ESC>")
-keymap("t", "<M-e>", "<C-\\><C-n>", { noremap = true, silent = true })
+keymap("t", "<M-e>", [[<C-\><C-n>]], { desc = "Escapar terminal" })
 
-keymap("n", "<leader>a", function()
-    vim.cmd("keepjumps normal! ggVG")
-end, { desc = "Seleccionar todo el archivo" })
+-- Movimiento entre splits (Normal y Terminal)
+local directions = { h = "Izquierda", j = "Abajo", k = "Arriba", l = "Derecha" }
+for key, desc in pairs(directions) do
+    keymap("n", "<C-" .. key .. ">", "<C-w>" .. key, { desc = "Mover a la ventana " .. desc })
+end
 
-keymap("n", "<C-h>", "<C-w>h", { desc = "Mover a la ventana izquierda" })
-keymap("n", "<C-j>", "<C-w>j", { desc = "Mover a la ventana abajo" })
-keymap("n", "<C-k>", "<C-w>k", { desc = "Mover a la ventana arriba" })
-keymap("n", "<C-l>", "<C-w>l", { desc = "Mover a la ventana derecha" })
-keymap(
-    "t",
-    "<C-j>",
-    "<C-\\><C-n><C-w>j",
-    { desc = "Mover a la ventana de abajo (terminal)", noremap = true, silent = true }
-)
-keymap(
-    "t",
-    "<C-k>",
-    "<C-\\><C-n><C-w>k",
-    { desc = "Mover a la ventana de arriba (terminal)", noremap = true, silent = true }
-)
+keymap("t", "<C-j>", [[<C-\><C-n><C-w>j]], { desc = "Mover abajo (terminal)" })
+keymap("t", "<C-k>", [[<C-\><C-n><C-w>k]], { desc = "Mover arriba (terminal)" })
+
+-- Creación de splits
 keymap("n", "<leader>-", "<CMD>split<CR><C-w>j", { desc = "Split horizontal" })
 keymap("n", "<leader>|", "<CMD>vsplit<CR><C-w>l", { desc = "Split vertical" })
-keymap("n", "<leader>wc", "<C-w>c", { desc = "Cerrar la ventana" })
 
-keymap({ "n", "v" }, "<C-s>", ":w<CR>", { noremap = true, silent = true })
-keymap("i", "<C-s>", "<Esc>:w<CR>", { noremap = true, silent = true })
+-- [ EDICIÓN Y ARCHIVOS ]
+-- Guardado rápido
+keymap({ "n", "v" }, "<C-s>", "<CMD>w<CR>", { silent = true })
+keymap("i", "<C-s>", "<Esc><CMD>w<CR>", { silent = true })
 
-keymap("n", "<leader>bd", "<CMD>bd %<CR>", { desc = "Cerrar el buffer y ventana actual" })
+-- Selección total
+keymap("n", "<leader>a", function()
+    vim.cmd("keepjumps normal! ggVG")
+end, { desc = "Seleccionar todo" })
 
--- Code
-vim.keymap.set("n", "<leader>cf", function()
+-- Cerrar buffer
+keymap("n", "<leader>bd", "<CMD>bd %<CR>", { desc = "Cerrar buffer/ventana actual" })
+
+-- [ UI / TOGGLES ]
+keymap({ "n", "v" }, "<leader>r", function()
+    vim.wo.relativenumber = not vim.wo.relativenumber
+end, { desc = "Toggle números relativos" })
+
+-- [ DIAGNÓSTICOS (TROUBLE) ]
+-- Agrupamos bajo la letra 'x' de eXtra o eXceptional
+keymap("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", { desc = "Diagnostics (Trouble)" })
+keymap("n", "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { desc = "Buffer Diagnostics" })
+keymap("n", "<leader>cs", "<cmd>Trouble symbols toggle focus=false<cr>", { desc = "Symbols" })
+keymap("n", "<leader>cl", "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+    { desc = "LSP Definitions / references (Trouble)" })
+keymap("n", "<leader>xL", "<cmd>Trouble loclist toggle<cr>", { desc = "Location List (Trouble)" })
+keymap("n", "<leader>xQ", "<cmd>Trouble qflist toggle<cr>", { desc = "Quickfix List (Trouble)" })
+
+-- Formatear archivo (Llama a conform)
+vim.keymap.set({ "n", "v" }, "<leader>cf", function()
     require("conform").format({
         lsp_fallback = true,
         async = false,
-        timeout_ms = 2000,
+        timeout_ms = 1000,
     })
-end, { desc = "Formatear el archivo (Conform)" })
-keymap("n", "<leader>ca", "<CMD>lua vim.lsp.buf.code_action()<CR>", { desc = "Sugerencias de código (Code Actions)" })
-keymap("n", "<leader>cd", "<CMD>lua vim.lsp.buf.definition()<CR>", { desc = "Ir a la definición" })
-keymap("n", "<leader>cv", "<CMD>vsplit | lua vim.lsp.buf.definition()<CR>",
-    { desc = "Ir a la definición en un ventana lateral" })
-keymap("n", "<leader>cs", "<CMD>belowright split | lua vim.lsp.buf.definition()<CR>",
-    { desc = "Ir a la definición en una ventana abajo" })
-keymap("n", "<leader>cr", "<CMD>lua vim.lsp.buf.rename()<CR>", { desc = "Renombrar identificador en todo el proyecto" })
-keymap("n", "<leader>ce", "<CMD>lua vim.diagnostic.open_float()<CR>", { desc = "Mostrar diagnóstico flotante" })
+end, { desc = "Formatear archivo o selección" })
 
-keymap({ "n", "t" }, "<c-up>", "<cmd>resize +2<cr>", { desc = "aumentar la altura de la ventana" })
-keymap({ "n", "t" }, "<c-down>", "<cmd>resize -2<cr>", { desc = "disminuir la altura de la ventana" })
-keymap("n", "<c-left>", "<cmd>vertical resize -2<cr>", { desc = "disminuir el ancho de la ventana" })
-keymap("n", "<c-right>", "<cmd>vertical resize +2<cr>", { desc = "aumentar el ancho de la ventana" })
+-- [ FYLER ]
+vim.keymap.set({ "n", "v" }, "-", function()
+    require("fyler").toggle({ kind = "float" })
+end, { desc = "Abrir Fyler" })
 
-keymap("n", "<A-z>", function()
-    local wrap_enabled = vim.wo.wrap
-    vim.wo.wrap = not wrap_enabled
-    vim.wo.breakindent = not wrap_enabled
-    vim.wo.linebreak = not wrap_enabled
 
-    if wrap_enabled then
-        print("Wrap desactivado")
+-- [ MULTICURSOR: NAVEGACIÓN Y EDICIÓN ]
+local mc = require("multicursor-nvim")
+
+-- Añadir cursores arriba/abajo
+keymap({ "n", "x" }, "<up>", function() mc.lineAddCursor(-1) end, { desc = "Cursor arriba" })
+keymap({ "n", "x" }, "<down>", function() mc.lineAddCursor(1) end, { desc = "Cursor abajo" })
+
+-- Match por palabras
+keymap({ "n", "x" }, "<leader>mn", function() mc.matchAddCursor(1) end, { desc = "Siguiente coincidencia" })
+keymap({ "n", "x" }, "<leader>ms", function() mc.matchSkipCursor(1) end, { desc = "Saltar y siguiente" })
+keymap({ "n", "x" }, "<leader>mA", mc.matchAllAddCursors, { desc = "Todas las coincidencias" })
+
+-- Operadores (iw, ap, etc)
+keymap({ "n", "x" }, "mw", function() mc.operator({ motion = "iw", visual = true }) end)
+keymap("n", "mW", mc.operator)
+
+-- Gestión de cursores
+keymap({ "n", "x" }, "<left>", mc.prevCursor, { desc = "Cursor anterior" })
+keymap({ "n", "x" }, "<right>", mc.nextCursor, { desc = "Cursor siguiente" })
+keymap({ "n", "x" }, "<leader>mx", mc.deleteCursor, { desc = "Eliminar cursor actual" })
+keymap({ "n", "x" }, "<leader>mq", mc.clearCursors, { desc = "Limpiar cursores" })
+keymap({ "n", "x" }, "<leader>ma", mc.toggleCursor, { desc = "Agregar cursor" })
+keymap("n", "<leader>me", mc.enableCursors, { desc = "Activar los cursores" })
+
+-- Acciones visuales
+keymap("x", "S", mc.splitCursors, { desc = "Split por regex" })
+keymap("x", "I", mc.insertVisual, { desc = "Insertar en selección" })
+keymap("x", "A", mc.appendVisual, { desc = "Append en selección" })
+
+-- [ ESCAPE INTELIGENTE ]
+keymap("n", "<Esc>", function()
+    if mc.hasCursors() then
+        mc.clearCursors()
     else
-        print("Wrap activado")
+        vim.cmd("nohlsearch")
     end
-end, { desc = "Alternar ajuste de línea con Alt+Z" })
+end, { desc = "Limpiar búsqueda y cursores" })
 
-keymap("n", "<Esc>", "<cmd>nohlsearch<CR>")
+-- [ SNACKS ]
+keymap("n", "<leader><space>", function() Snacks.picker.files() end, { desc = "Buscar archivos" })
+keymap("n", "<leader>fb", function() Snacks.picker.buffers() end, { desc = "Buffers" })
+keymap("n", "<leader>fg", function() Snacks.picker.grep() end, { desc = "Grep" })
+keymap("n", "<leader>fn", function() Snacks.picker.notifications() end, { desc = "History" })
+keymap("n", "<leader>fh", function() Snacks.picker.help() end, { desc = "Help" })
+keymap("n", "<leader>fz", function() Snacks.picker.zoxide() end, { desc = "Zoxide" })
+keymap("n", "<leader>fl", function() Snacks.picker.lines() end, { desc = "Buscar lineas" })
+keymap("n", "<leader>f:", function() Snacks.picker.command_history() end, { desc = "Command History" })
+keymap("n", "<leader>fd", function() Snacks.picker.diagnostics() end, { desc = "Diagnostico" })
+keymap("n", "<leader>fr", function() Snacks.picker.registers() end, { desc = "Registros" })
+keymap("n", "<leader>fu", function() Snacks.picker.undo() end, { desc = "Undo" })
+keymap("n", "<leader>fi", function() Snacks.picker.icons() end, { desc = "Icons" })
+keymap("n", "<leader>cs", function() Snacks.picker.lsp_symbols() end, { desc = "Lsp symbols" })
+keymap("n", "<leader>fc", function() Snacks.picker.colorschemes() end, { desc = "colorscheme" })
 
-keymap("n", "j", "gj", { noremap = true, silent = true })
-keymap("n", "k", "gk", { noremap = true, silent = true })
+-- Git
+keymap("n", "<leader>gb", function() Snacks.picker.git_branches() end, { desc = "Git Branches" })
+keymap("n", "<leader>gl", function() Snacks.picker.git_log() end, { desc = "Git Log" })
+keymap({ "n", "v" }, "<leader>gB", function() Snacks.gitbrowse() end, { desc = "Git Browse" })
+keymap("n", "<leader>gg", function() Snacks.lazygit() end, { desc = "Lazygit" })
 
-keymap({ "n", "v" }, "<leader>0", "^", { noremap = true, silent = true, desc = "Ir al inicio de la linea" })
-keymap({ "n", "v" }, "<M-i>", "^", { noremap = true, silent = true, desc = "Ir al inicio de la linea" })
-keymap({ "n", "v" }, "<leader>9", "$", { noremap = true, silent = true, desc = "Ir al final de la linea" })
-keymap({ "n", "v" }, "<M-f>", "$", { noremap = true, silent = true, desc = "Ir al final de la linea" })
+-- Buffers & Utils
+keymap("n", "<leader>bc", function() Snacks.bufdelete() end, { desc = "Eliminar buffer" })
+keymap("n", "<leader>bo", function() Snacks.bufdelete.other() end, { desc = "Eliminar otros" })
+keymap("n", "<leader>e", function() Snacks.explorer() end, { desc = "File Explorer" })
 
-----
-keymap("n", "<leader>qs", function()
-    require("persistence").load()
-end, { desc = "Cargar la sesión para el directorio actual" })
+-- Terminal
+keymap({ "n", "t" }, "<leader>tt", function() Snacks.terminal.toggle(nil, { cwd = vim.fn.getcwd() }) end,
+    { desc = "Terminal Toggle" })
+keymap({ "n", "t" }, "<leader>ty", function() Snacks.terminal("zsh") end, { desc = "Terminal Zsh" })
 
-keymap("n", "<leader>qS", function()
-    require("persistence").select()
-end, { desc = "Seleccionar una sesión para cargar" })
-
-keymap("n", "<leader>ql", function()
-    require("persistence").load({ last = true })
-end, { desc = "Cargar la última sesión" })
-
-keymap("n", "<leader>qd", function()
-    require("persistence").stop()
-end, { desc = "Detener la persistencia => la sesión no se guardará al salir" })
-
-keymap({ "n", "v" }, "<leader>r", function()
-    vim.opt.relativenumber = not vim.opt.relativenumber:get()
-end, { desc = "Toggle números relativos" })
-
-keymap("v", ">", ">gv", { noremap = true })
-keymap("v", "<", "<gv", { noremap = true })
-
-keymap("n", "<leader>qq", "<CMD>qall!<CR>", { desc = "Salir sin guardar" })
-keymap("n", "<leader>qw", "<CMD>wqall<CR>", { desc = "Guardar y salir" })
-
--- Github CLI
-keymap("n", "<leader>gr", "<CMD>!gh repo view --web<CR>", { desc = "Abrir repositorio en github" })
-keymap("n", "<leader>gp", "<CMD>!gh api user --jq '.html_url' | xargs xdg-open<CR>", { desc = "Abrir perfil en github" })
-
--- Copilot
-keymap({ "n", "v" }, "<leader>ic", "<CMD>CopilotChatToggle<CR>", { desc = "Copilot Toggle [C]hat " })
-keymap({ "n", "v" }, "<leader>ip", "<CMD>CopilotChatPrompts<CR>", { desc = "Copilot [P]rompts" })
-keymap({ "n", "v" }, "<leader>ie", "<CMD>CopilotChatExplain<CR>", { desc = "Copilot [E]xplain" })
-keymap({ "n", "v" }, "<leader>if", "<CMD>CopilotChatFixCode<CR>", { desc = "Copilot [F]ix Code" })
-
--- Lazy
-keymap("n", "<leader>lu", "<CMD>Lazy update<CR>", { desc = "Actualizar Lazy" })
-keymap("n", "<leader>ll", "<CMD>Lazy<CR>", { desc = "Abrir Lazy" })
-
--- FYLER (file manager)
--- keymap("n", "<leader>e", function()
---     require("fyler").toggle()
--- end, { desc = "Abrir Fyler" })
-
-keymap({ "n", "v" }, "<M-f>", function()
-    require("fyler").toggle({ kind = "split_below_all" })
-end, { desc = "Abrir Fyler horizontal" })
-
--- git --
-keymap("n", "<leader>gd", function()
-    local lib = require("diffview.lib")
-    local view = lib.get_current_view()
-    if view then
-        vim.cmd("DiffviewClose")
-    else
-        vim.cmd("DiffviewOpen")
-    end
-end, { desc = "Toggle Diffview" })
-
-keymap("n", "<leader>oe", "<CMD>!xdg-open .<CR>", { desc = "Abrir en el explorador de archivos predeterminado" })
-
--- vim.keymap.set("n", "<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })
--- vim.keymap.set("n", "<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Down" })
--- vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Mover selección abajo", silent = true })
--- vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Mover selección arriba", silent = true })
+-- [ NAVEGACIÓN RÁPIDA (FLASH.NVIM) ]
+-- Salto normal (reemplaza 's' y 'S')
+keymap({ "n", "x", "o" }, "s", function() require("flash").jump() end, { desc = "Flash Jump" })
+keymap({ "n", "x", "o" }, "S", function() require("flash").treesitter() end, { desc = "Flash Treesitter" })
+keymap("o", "r", function() require("flash").remote() end, { desc = "Remote Flash" })
+keymap({ "o", "x" }, "R", function() require("flash").treesitter_search() end, { desc = "Treesitter Search" })

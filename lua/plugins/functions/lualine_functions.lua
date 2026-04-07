@@ -1,4 +1,3 @@
--- lualine_functions.lua
 local M = {}
 
 -- Función para mostrar la ruta del archivo
@@ -81,3 +80,4 @@ M.custom_mode = function()
 end
 
 return M
+
