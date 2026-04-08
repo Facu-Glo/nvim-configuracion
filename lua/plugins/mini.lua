@@ -73,7 +73,7 @@ miniclue.setup({
         { mode = { 'n', 'x' }, keys = 'z' },
     },
     window = {
-        delay = 300,
+        delay = 200,
 
         config = {
             border = 'rounded',
@@ -90,3 +90,9 @@ miniclue.setup({
     },
 })
 -- require('mini.pairs').setup()
+
+require('mini.sessions').setup({
+    file = '',
+    directory = vim.fn.stdpath('data') .. '/sessions',
+    autowrite = true,
+})
