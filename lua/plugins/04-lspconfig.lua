@@ -77,7 +77,7 @@ local servers = {
     },
     ts_ls = {},
     pyright = {},
-    bashls = {},
+    bashls = { filetypes = { "sh", "bash", "zsh" }, },
     jsonls = {},
     html = {},
     cssls = {},

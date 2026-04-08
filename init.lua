@@ -1,5 +1,5 @@
-require("config.plugins_loader")
 require("config.options")
+require("config.plugins_loader")
 require("config.keymaps")
 require("config.usercommand")
 require("config.autocmds")

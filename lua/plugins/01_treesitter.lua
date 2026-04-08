@@ -1,3 +1,4 @@
+vim.opt.runtimepath:prepend(vim.fn.stdpath("data") .. "/site")
 vim.pack.add({
     {
         src = "https://github.com/nvim-treesitter/nvim-treesitter.git",
@@ -30,5 +31,3 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
     end,
 })
-
-vim.opt.runtimepath:append(vim.fn.stdpath("data") .. "/site")
