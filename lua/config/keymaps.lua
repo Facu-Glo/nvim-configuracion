@@ -19,6 +19,12 @@ keymap("t", "<C-k>", [[<C-\><C-n><C-w>k]], { desc = "Mover arriba (terminal)" })
 keymap("n", "<leader>-", "<CMD>split<CR><C-w>j", { desc = "Split horizontal" })
 keymap("n", "<leader>|", "<CMD>vsplit<CR><C-w>l", { desc = "Split vertical" })
 
+-- Modificar tamaño de la ventana
+keymap({ "n", "t" }, "<c-up>", "<cmd>resize +2<cr>", { desc = "aumentar la altura de la ventana" })
+keymap({ "n", "t" }, "<c-down>", "<cmd>resize -2<cr>", { desc = "disminuir la altura de la ventana" })
+keymap("n", "<c-left>", "<cmd>vertical resize -2<cr>", { desc = "disminuir el ancho de la ventana" })
+keymap("n", "<c-right>", "<cmd>vertical resize +2<cr>", { desc = "aumentar el ancho de la ventana" })
+
 -- [ EDICIÓN Y ARCHIVOS ]
 -- Guardado rápido
 keymap({ "n", "v" }, "<C-s>", "<CMD>w<CR>", { silent = true })
@@ -31,6 +37,26 @@ end, { desc = "Seleccionar todo" })
 
 -- Cerrar buffer
 keymap("n", "<leader>bd", "<CMD>bd %<CR>", { desc = "Cerrar buffer/ventana actual" })
+
+-- Cursor en el incio/fin de linea
+keymap({ "n", "v" }, "<M-i>", "^", { noremap = true, silent = true, desc = "Ir al inicio de la linea" })
+keymap({ "n", "v" }, "<M-f>", "$", { noremap = true, silent = true, desc = "Ir al final de la linea" })
+keymap({ "n", "v" }, "<leader>0", "^", { noremap = true, silent = true, desc = "Ir al inicio de la linea" })
+keymap({ "n", "v" }, "<leader>9", "$", { noremap = true, silent = true, desc = "Ir al final de la linea" })
+
+-- Toggle wrap
+keymap("n", "<A-z>", function()
+    local wrap_enabled = vim.wo.wrap
+    vim.wo.wrap = not wrap_enabled
+    vim.wo.breakindent = not wrap_enabled
+    vim.wo.linebreak = not wrap_enabled
+
+    if wrap_enabled then
+        print("Wrap desactivado")
+    else
+        print("Wrap activado")
+    end
+end, { desc = "Alternar ajuste de línea con Alt+Z" })
 
 -- [ UI / TOGGLES ]
 keymap({ "n", "v" }, "<leader>r", function()
@@ -115,6 +141,7 @@ keymap("n", "<leader>fu", function() Snacks.picker.undo() end, { desc = "Undo" }
 keymap("n", "<leader>fi", function() Snacks.picker.icons() end, { desc = "Icons" })
 keymap("n", "<leader>cs", function() Snacks.picker.lsp_symbols() end, { desc = "Lsp symbols" })
 keymap("n", "<leader>fc", function() Snacks.picker.colorschemes() end, { desc = "colorscheme" })
+keymap("n", "<leader>fm", function() Snacks.picker.marks() end, { desc = "Marks" })
 
 -- Git
 keymap("n", "<leader>gb", function() Snacks.picker.git_branches() end, { desc = "Git Branches" })
@@ -138,3 +165,23 @@ keymap({ "n", "x", "o" }, "s", function() require("flash").jump() end, { desc = 
 keymap({ "n", "x", "o" }, "S", function() require("flash").treesitter() end, { desc = "Flash Treesitter" })
 keymap("o", "r", function() require("flash").remote() end, { desc = "Remote Flash" })
 keymap({ "o", "x" }, "R", function() require("flash").treesitter_search() end, { desc = "Treesitter Search" })
+
+-- [BUFFERLINE]
+keymap("n", "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", { desc = "Toggle Pin" })
+keymap("n", "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", { desc = "Delete Non-Pinned Buffers" })
+keymap("n", "<leader>br", "<Cmd>BufferLineCloseRight<CR>", { desc = "Delete Buffers to the Right" })
+keymap("n", "<leader>bl", "<Cmd>BufferLineCloseLeft<CR>", { desc = "Delete Buffers to the Left" })
+keymap("n", "<S-TAB>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev Buffer" })
+keymap("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next Buffer" })
+keymap("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev Buffer" })
+keymap("n", "<TAB>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next Buffer" })
+keymap("n", "[b", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev Buffer" })
+keymap("n", "]b", "<cmd>BufferLineCycleNext<cr>", { desc = "Next Buffer" })
+keymap("n", "[B", "<cmd>BufferLineMovePrev<cr>", { desc = "Move buffer prev" })
+keymap("n", "]B", "<cmd>BufferLineMoveNext<cr>", { desc = "Move buffer next" })
+keymap("n", "gb", "<CMD>BufferLinePick<CR>", { desc = "Pick Buffer" })
+keymap("n", "gD", "<CMD>BufferLinePickClose<CR>", { desc = "Pick Buffer Close" })
+
+-- Integracion con GIT
+keymap("n", "<leader>gr", "<CMD>!gh repo view --web<CR>", { desc = "Abrir repositorio en github" })
+keymap("n", "<leader>gp", "<CMD>!gh api user --jq '.html_url' | xargs xdg-open<CR>", { desc = "Abrir perfil en github" })
