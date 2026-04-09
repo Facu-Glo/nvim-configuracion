@@ -4,7 +4,7 @@ vim.pack.add({
 
 require("snacks").setup({
     dashboard = {
-        enabled = true,
+        enabled = false,
         preset = {
             keys = {
                 { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
