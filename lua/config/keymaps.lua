@@ -25,6 +25,11 @@ keymap({ "n", "t" }, "<c-down>", "<cmd>resize -2<cr>", { desc = "disminuir la al
 keymap("n", "<c-left>", "<cmd>vertical resize -2<cr>", { desc = "disminuir el ancho de la ventana" })
 keymap("n", "<c-right>", "<cmd>vertical resize +2<cr>", { desc = "aumentar el ancho de la ventana" })
 
+keymap('n', '<C-W>d', function()
+  vim.cmd('vsplit') -- Crea el split
+  vim.lsp.buf.definition() -- Salta a la definición en la nueva ventana
+end, { desc = "LSP: Definición en split horizontal" })
+
 -- [ EDICIÓN Y ARCHIVOS ]
 -- Guardado rápido
 keymap({ "n", "v" }, "<C-s>", "<CMD>w<CR>", { silent = true })
