@@ -1,6 +1,13 @@
 local keymap = vim.keymap.set
 vim.g.mapleader = " "
 
+
+------------------------------------------------------------------------------------------------
+
+keymap("n", "<leader>qq", "<CMD>q<CR>", { desc = "Salir" })
+keymap("n", "<leader>qa", "<CMD>qall!<CR>", { desc = "Salir sin guardar" })
+keymap("n", "<leader>qw", "<CMD>wqall<CR>", { desc = "Guardar y salir" })
+
 ------------------------------------------------------------------------------------------------
 
 -- [ NAVEGACIÓN Y VENTANAS ]

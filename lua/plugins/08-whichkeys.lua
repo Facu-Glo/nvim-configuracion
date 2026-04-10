@@ -11,6 +11,7 @@ require("which-key").setup({
             { "<leader>b", group = "buffer", },
             { "<leader>m", name = "Multicursores", icon = { icon = "󰇀", color = "grey" } },
             { "<leader>r", name = "Toggle números relativos", icon = { icon = " " } },
+            { "<leader>q", group = "quit/session" },
             { "<leader>f", group = "file/find" },
         }
     }
