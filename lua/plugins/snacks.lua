@@ -4,30 +4,95 @@ vim.pack.add({
 
 require("snacks").setup({
     dashboard = {
-        enabled = false,
+        enabled = true,
+        width = 72,
         preset = {
-            keys = {
-                { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
-                { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
-                { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
-                {
-                    icon = " ",
-                    key = "s",
-                    desc = "Restore Session",
-                    action = function()
-                        local session_name = vim.fn.getcwd():gsub("/", "%%")
-                        require("mini.sessions").read(session_name)
-                    end
-                },
-                { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
-                { icon = " ", key = "q", desc = "Quit", action = ":qa" },
-            },
+            header = [[
+██████╗  █████╗ ███████╗██╗  ██╗██████╗  ██████╗  █████╗ ██████╗ ██████╗
+██╔══██╗██╔══██╗██╔════╝██║  ██║██╔══██╗██╔═══██╗██╔══██╗██╔══██╗██╔══██╗
+██║  ██║███████║███████╗███████║██████╔╝██║   ██║███████║██████╔╝██║  ██║
+██║  ██║██╔══██║╚════██║██╔══██║██╔══██╗██║   ██║██╔══██║██╔══██╗██║  ██║
+██████╔╝██║  ██║███████║██║  ██║██████╔╝╚██████╔╝██║  ██║██║  ██║██████╔╝
+╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝]],
         },
         sections = {
             { section = "header" },
-            { section = "keys", gap = 1, padding = 1 },
-            { pane = 2, icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
-            { pane = 2, icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
+            {
+                align = "center",
+                padding = 1,
+                text = {
+                    { "  Update[u] ", hl = "Label" },
+                    { "  Session[s] ", hl = "@property" },
+                    { "  Find Files[f] ", hl = "DiagnosticInfo" },
+                    { " 󰱼 Find Text[g] ", hl = "DiagnosticHint" },
+                    { "  Quit[q] ", hl = "Error" },
+                },
+            },
+
+            {
+                icon = "",
+                key = "q",
+                action = ":qa",
+                hidden = true
+            },
+            {
+                icon = "",
+                key = "s",
+                hidden = true,
+                action = function()
+                    local session_name = vim.fn.getcwd():gsub("/", "%%")
+                    require("mini.sessions").read(session_name)
+                end
+            },
+            {
+                icon = "",
+                key = "f",
+                action = function() Snacks.picker.files() end,
+                hidden = true
+            },
+            {
+                icon = "",
+                key = "g",
+                action = function() Snacks.picker.grep() end,
+                hidden = true
+            },
+            {
+                icon = "",
+                key = "u",
+                action = ":lua vim.pack.update()",
+                hidden = true
+            },
+
+            {
+                pane = 1,
+                section = "projects",
+                title = "Recent Projects:",
+                icon = "󰉋 ",
+                indent = 2,
+                padding = 1,
+                limit = 5,
+            },
+            {
+                pane = 1,
+                section = "recent_files",
+                title = "Most Recent Files:",
+                icon = " ",
+                indent = 2,
+                padding = 1,
+                limit = 6,
+            },
+
+            {
+                text = {
+                    {
+                        "Version " .. vim.version().major .. "." .. vim.version().minor .. "." .. vim.version()
+                        .patch,
+                        hl = "SnacksDashboardFooter",
+                        align = "center",
+                    },
+                },
+                padding = 1,
+            },
         },
     },
     explorer = { enabled = true },

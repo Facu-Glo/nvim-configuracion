@@ -1,6 +1,8 @@
 local keymap = vim.keymap.set
 vim.g.mapleader = " "
 
+------------------------------------------------------------------------------------------------
+
 -- [ NAVEGACIÓN Y VENTANAS ]
 -- Salir de modos de forma rápida
 keymap({ "i", "v" }, "<M-e>", "<ESC>")
@@ -26,9 +28,11 @@ keymap("n", "<c-left>", "<cmd>vertical resize -2<cr>", { desc = "disminuir el an
 keymap("n", "<c-right>", "<cmd>vertical resize +2<cr>", { desc = "aumentar el ancho de la ventana" })
 
 keymap('n', '<C-W>d', function()
-  vim.cmd('vsplit') -- Crea el split
-  vim.lsp.buf.definition() -- Salta a la definición en la nueva ventana
+    vim.cmd('vsplit')        -- Crea el split
+    vim.lsp.buf.definition() -- Salta a la definición en la nueva ventana
 end, { desc = "LSP: Definición en split horizontal" })
+
+------------------------------------------------------------------------------------------------
 
 -- [ EDICIÓN Y ARCHIVOS ]
 -- Guardado rápido
@@ -38,7 +42,7 @@ keymap("i", "<C-s>", "<Esc><CMD>w<CR>", { silent = true })
 -- Selección total
 keymap("n", "<leader>a", function()
     vim.cmd("keepjumps normal! ggVG")
-end, { desc = "Seleccionar todo" })
+end, { desc = "Select all" })
 
 -- Cerrar buffer
 keymap("n", "<leader>bd", "<CMD>bd %<CR>", { desc = "Cerrar buffer/ventana actual" })
@@ -46,8 +50,8 @@ keymap("n", "<leader>bd", "<CMD>bd %<CR>", { desc = "Cerrar buffer/ventana actua
 -- Cursor en el incio/fin de linea
 keymap({ "n", "v" }, "<M-i>", "^", { noremap = true, silent = true, desc = "Ir al inicio de la linea" })
 keymap({ "n", "v" }, "<M-f>", "$", { noremap = true, silent = true, desc = "Ir al final de la linea" })
-keymap({ "n", "v" }, "<leader>0", "^", { noremap = true, silent = true, desc = "Ir al inicio de la linea" })
-keymap({ "n", "v" }, "<leader>9", "$", { noremap = true, silent = true, desc = "Ir al final de la linea" })
+-- keymap({ "n", "v" }, "<leader>0", "^", { noremap = true, silent = true, desc = "Ir al inicio de la linea" })
+-- keymap({ "n", "v" }, "<leader>9", "$", { noremap = true, silent = true, desc = "Ir al final de la linea" })
 
 -- Toggle wrap
 keymap("n", "<A-z>", function()
@@ -63,10 +67,14 @@ keymap("n", "<A-z>", function()
     end
 end, { desc = "Alternar ajuste de línea con Alt+Z" })
 
+------------------------------------------------------------------------------------------------
+
 -- [ UI / TOGGLES ]
 keymap({ "n", "v" }, "<leader>r", function()
     vim.wo.relativenumber = not vim.wo.relativenumber
 end, { desc = "Toggle números relativos" })
+
+------------------------------------------------------------------------------------------------
 
 -- [ DIAGNÓSTICOS (TROUBLE) ]
 -- Agrupamos bajo la letra 'x' de eXtra o eXceptional
@@ -78,6 +86,8 @@ keymap("n", "<leader>cl", "<cmd>Trouble lsp toggle focus=false win.position=righ
 keymap("n", "<leader>xL", "<cmd>Trouble loclist toggle<cr>", { desc = "Location List (Trouble)" })
 keymap("n", "<leader>xQ", "<cmd>Trouble qflist toggle<cr>", { desc = "Quickfix List (Trouble)" })
 
+------------------------------------------------------------------------------------------------
+
 -- Formatear archivo (Llama a conform)
 vim.keymap.set({ "n", "v" }, "<leader>cf", function()
     require("conform").format({
@@ -87,11 +97,14 @@ vim.keymap.set({ "n", "v" }, "<leader>cf", function()
     })
 end, { desc = "Formatear archivo o selección" })
 
+------------------------------------------------------------------------------------------------
+
 -- [ FYLER ]
 vim.keymap.set({ "n", "v" }, "-", function()
     require("fyler").toggle({ kind = "float" })
 end, { desc = "Abrir Fyler" })
 
+------------------------------------------------------------------------------------------------
 
 -- [ MULTICURSOR: NAVEGACIÓN Y EDICIÓN ]
 local mc = require("multicursor-nvim")
@@ -117,6 +130,12 @@ keymap({ "n", "x" }, "<leader>mq", mc.clearCursors, { desc = "Limpiar cursores" 
 keymap({ "n", "x" }, "<leader>ma", mc.toggleCursor, { desc = "Agregar cursor" })
 keymap("n", "<leader>me", mc.enableCursors, { desc = "Activar los cursores" })
 
+-- Integracion con mouse
+keymap("n", "<m-leftmouse>", mc.handleMouse)
+keymap("n", "<m-leftdrag>", mc.handleMouseDrag)
+keymap("n", "<m-leftrelease>", mc.handleMouseRelease)
+------------------------------------------------------------------------------------------------
+
 -- Acciones visuales
 keymap("x", "S", mc.splitCursors, { desc = "Split por regex" })
 keymap("x", "I", mc.insertVisual, { desc = "Insertar en selección" })
@@ -131,8 +150,11 @@ keymap("n", "<Esc>", function()
     end
 end, { desc = "Limpiar búsqueda y cursores" })
 
+
+------------------------------------------------------------------------------------------------
+
 -- [ SNACKS ]
-keymap("n", "<leader><space>", function() Snacks.picker.files() end, { desc = "Buscar archivos" })
+keymap("n", "<leader><space>", function() Snacks.picker.files() end, { desc = "Find files" })
 keymap("n", "<leader>fb", function() Snacks.picker.buffers() end, { desc = "Buffers" })
 keymap("n", "<leader>fg", function() Snacks.picker.grep() end, { desc = "Grep" })
 keymap("n", "<leader>fn", function() Snacks.picker.notifications() end, { desc = "History" })
@@ -147,6 +169,8 @@ keymap("n", "<leader>fi", function() Snacks.picker.icons() end, { desc = "Icons"
 keymap("n", "<leader>cs", function() Snacks.picker.lsp_symbols() end, { desc = "Lsp symbols" })
 keymap("n", "<leader>fc", function() Snacks.picker.colorschemes() end, { desc = "colorscheme" })
 keymap("n", "<leader>fm", function() Snacks.picker.marks() end, { desc = "Marks" })
+
+------------------------------------------------------------------------------------------------
 
 -- Git
 keymap("n", "<leader>gb", function() Snacks.picker.git_branches() end, { desc = "Git Branches" })
@@ -164,12 +188,16 @@ keymap({ "n", "t" }, "<leader>tt", function() Snacks.terminal.toggle(nil, { cwd 
     { desc = "Terminal Toggle" })
 keymap({ "n", "t" }, "<leader>ty", function() Snacks.terminal("zsh") end, { desc = "Terminal Zsh" })
 
+------------------------------------------------------------------------------------------------
+
 -- [ NAVEGACIÓN RÁPIDA (FLASH.NVIM) ]
 -- Salto normal (reemplaza 's' y 'S')
 keymap({ "n", "x", "o" }, "s", function() require("flash").jump() end, { desc = "Flash Jump" })
 keymap({ "n", "x", "o" }, "S", function() require("flash").treesitter() end, { desc = "Flash Treesitter" })
 keymap("o", "r", function() require("flash").remote() end, { desc = "Remote Flash" })
 keymap({ "o", "x" }, "R", function() require("flash").treesitter_search() end, { desc = "Treesitter Search" })
+
+------------------------------------------------------------------------------------------------
 
 -- [BUFFERLINE]
 keymap("n", "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", { desc = "Toggle Pin" })
