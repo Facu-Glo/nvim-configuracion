@@ -9,10 +9,11 @@ require("which-key").setup({
             { "<leader>g", group = "git" },
             { "<leader>x", group = "diagnostics/quickfix", icon = { icon = "󱖫 ", color = "green" } },
             { "<leader>b", group = "buffer", },
-            { "<leader>m", name = "Multicursores", icon = { icon = "󰇀", color = "grey" } },
-            { "<leader>r", name = "Toggle números relativos", icon = { icon = " " } },
+            { "<leader>m", group = "Multicursores", icon = { icon = "󰇀", color = "grey" } },
             { "<leader>q", group = "quit/session" },
             { "<leader>f", group = "file/find" },
+            { "<leader>t", group = "terminal" },
+            { "<leader>r", name = "Toggle números relativos", icon = { icon = " " } },
         }
     }
 })
