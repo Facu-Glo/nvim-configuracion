@@ -1,8 +1,3 @@
-vim.pack.add({
-    { src = "https://github.com/nvim-lualine/lualine.nvim.git" }
-})
-
---- ----------------
 local has_icons, mini_icons = pcall(require, "mini.icons")
 if has_icons then
     mini_icons.mock_nvim_web_devicons()
@@ -61,3 +56,4 @@ require("lualine").setup({
         lualine_z = { "location" },
     },
 })
+

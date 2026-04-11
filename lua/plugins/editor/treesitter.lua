@@ -1,10 +1,4 @@
 vim.opt.runtimepath:prepend(vim.fn.stdpath("data") .. "/site")
-vim.pack.add({
-    {
-        src = "https://github.com/nvim-treesitter/nvim-treesitter.git",
-        version = "main"
-    }
-})
 
 local ts = require('nvim-treesitter')
 

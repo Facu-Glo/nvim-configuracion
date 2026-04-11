@@ -1,7 +1,3 @@
-vim.pack.add({
-    { src = "https://github.com/A7Lavinraj/fyler.nvim.git", version = "main" },
-})
-
 require("fyler").setup({
     hooks = {
         on_highlight = function(highlight_groups, _)
@@ -69,3 +65,4 @@ require("fyler").setup({
         },
     },
 })
+

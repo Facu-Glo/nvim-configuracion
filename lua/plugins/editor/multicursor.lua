@@ -1,7 +1,3 @@
-vim.pack.add({
-    { src = "https://github.com/jake-stewart/multicursor.nvim.git", version = "1.0" }
-})
-
 local mc = require("multicursor-nvim")
 mc.setup()
 
@@ -13,3 +9,4 @@ hl(0, "MultiCursorMatchPreview", { link = "Search" })
 hl(0, "MultiCursorDisabledCursor", { link = "Visual" })
 hl(0, "MultiCursorDisabledVisual", { link = "Visual" })
 hl(0, "MultiCursorDisabledSign", { link = "SignColumn" })
+

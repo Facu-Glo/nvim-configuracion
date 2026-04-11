@@ -1,7 +1,3 @@
-vim.pack.add({
-    { src = "https://github.com/neovim/nvim-lspconfig.git", version = "master" },
-})
-
 local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 local diagnostic_icons = {

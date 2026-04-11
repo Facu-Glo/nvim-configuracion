@@ -1,8 +1,3 @@
-vim.pack.add({
-    { src = "https://github.com/akinsho/bufferline.nvim.git", version = "main" },
-    "https://github.com/nvim-tree/nvim-web-devicons"
-})
-
 require("bufferline").setup({
     options = {
         close_command = "bdelete! %d",
@@ -46,3 +41,4 @@ require("bufferline").setup({
         },
     },
 })
+

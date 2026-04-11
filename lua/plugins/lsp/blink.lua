@@ -1,7 +1,3 @@
-vim.pack.add({
-    { src = "https://github.com/Saghen/blink.cmp.git", version = "main" },
-})
-
 require("blink.cmp").setup({
     fuzzy = {
         prebuilt_binaries = {
@@ -48,3 +44,4 @@ require("blink.cmp").setup({
         ghost_text = { enabled = true },
     },
 })
+

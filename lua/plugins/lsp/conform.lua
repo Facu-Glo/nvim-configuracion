@@ -1,7 +1,3 @@
-vim.pack.add({
-    { src = "https://github.com/stevearc/conform.nvim.git" }
-})
-
 require("conform").setup({
     formatters_by_ft = {
         javascript = { "prettier", stop_after_first = true },
@@ -69,3 +65,4 @@ require("conform").setup({
         },
     },
 })
+
