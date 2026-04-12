@@ -3,7 +3,7 @@ if has_icons then
     mini_icons.mock_nvim_web_devicons()
 end
 
-local has_funcs, funcs = pcall(require, "plugins.functions.lualine_functions")
+local has_funcs, funcs = pcall(require, "plugins.ui.lualine_functions")
 if not has_funcs then
     funcs = { custom_mode = "mode", pretty_path = "filename" }
 end

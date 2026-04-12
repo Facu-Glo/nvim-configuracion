@@ -35,8 +35,8 @@ keymap("n", "<c-left>", "<cmd>vertical resize -2<cr>", { desc = "disminuir el an
 keymap("n", "<c-right>", "<cmd>vertical resize +2<cr>", { desc = "aumentar el ancho de la ventana" })
 
 keymap('n', '<C-W>d', function()
-    vim.cmd('vsplit')        -- Crea el split
-    vim.lsp.buf.definition() -- Salta a la definición en la nueva ventana
+    vim.cmd('vsplit')
+    vim.lsp.buf.definition()
 end, { desc = "LSP: Definición en split horizontal" })
 
 ------------------------------------------------------------------------------------------------
