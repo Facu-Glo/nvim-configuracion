@@ -20,6 +20,12 @@ vim.diagnostic.config({
             [vim.diagnostic.severity.INFO] = diagnostic_icons.Info,
             [vim.diagnostic.severity.HINT] = diagnostic_icons.Hint,
         },
+        linehl = {
+            [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
+        },
+        numhl = {
+            [vim.diagnostic.severity.WARN] = 'WarningMsg',
+        },
     },
     underline = true,
     update_in_insert = false,

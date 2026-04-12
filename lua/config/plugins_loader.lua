@@ -1,7 +1,11 @@
 local categories = {
     "plugins.ui",
+    "plugins.completion",
     "plugins.lsp",
-    "plugins.editor",
+    "plugins.diagnostic",
+    "plugins.syntax",
+    "plugins.editing",
+    "plugins.navigation",
     "plugins.git",
 }
 
