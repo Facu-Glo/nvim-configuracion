@@ -173,7 +173,7 @@ keymap("n", "<leader>fd", function() Snacks.picker.diagnostics() end, { desc = "
 keymap("n", "<leader>fr", function() Snacks.picker.registers() end, { desc = "Registros" })
 keymap("n", "<leader>fu", function() Snacks.picker.undo() end, { desc = "Undo" })
 keymap("n", "<leader>fi", function() Snacks.picker.icons() end, { desc = "Icons" })
-keymap("n", "<leader>cs", function() Snacks.picker.lsp_symbols() end, { desc = "Lsp symbols" })
+keymap("n", "<leader>fs", function() Snacks.picker.lsp_symbols() end, { desc = "Lsp symbols" })
 keymap("n", "<leader>fc", function() Snacks.picker.colorschemes() end, { desc = "colorscheme" })
 keymap("n", "<leader>fm", function() Snacks.picker.marks() end, { desc = "Marks" })
 
