@@ -3,7 +3,6 @@ require("snacks").setup({
         enabled = true,
         width = 72,
         preset = {
-            ""
  -- 		header =    [[
  --                                                                     
  --       ████ ██████           █████      ██                     
@@ -25,7 +24,7 @@ require("snacks").setup({
                     { "  Session[s] ", hl = "@property" },
                     { "  Find Files[f] ", hl = "DiagnosticInfo" },
                     { " 󰱼 Find Text[g] ", hl = "DiagnosticHint" },
-                    { "  Quit[q] ", hl = "Error" },
+                    { "  Quit[q] "},
                 },
             },
 
