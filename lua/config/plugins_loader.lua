@@ -1,17 +1,20 @@
-local categories = {
-    "plugins.ui",
-    "plugins.completion",
-    "plugins.lsp",
-    "plugins.diagnostic",
-    "plugins.syntax",
-    "plugins.editing",
-    "plugins.navigation",
-    "plugins.git",
-}
+require("plugins.snacks")
+require("plugins.tokyonight")
+require("plugins.whichkeys")
+require("plugins.mini")
 
-for _, category in ipairs(categories) do
-    local ok, err = pcall(require, category)
-    if not ok then
-        vim.notify("Error cargando categoría: " .. category .. "\n" .. err, vim.log.levels.ERROR)
-    end
-end
+vim.schedule(function()
+    require("plugins.noice")
+    require("plugins.blink")
+    require("plugins.lspconfig")
+    require("plugins.treesitter")
+    require("plugins.gitsigns")
+    require("plugins.lualine")
+    require("plugins.bufferline")
+    require("plugins.trouble")
+    require("plugins.conform")
+    require("plugins.multicursor")
+    require("plugins.mason")
+    require("plugins.flash")
+    require("plugins.fyler")
+end)

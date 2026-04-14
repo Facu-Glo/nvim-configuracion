@@ -1,3 +1,7 @@
+vim.pack.add({
+    { src = "https://github.com/echasnovski/mini.nvim.git",         version = "main" },
+})
+
 require('mini.icons').setup({
     extension = {
         c = { glyph = '', hl = 'CIconHL' },

@@ -1,3 +1,9 @@
+vim.pack.add({
+    { src = "https://github.com/folke/noice.nvim.git" },
+    { src = "https://github.com/rcarriga/nvim-notify.git" },
+    { src = "https://github.com/MunifTanjim/nui.nvim.git" },
+})
+
 local notify = require("notify")
 notify.setup({
     background_colour = "#000000",
