@@ -1,5 +1,5 @@
 vim.pack.add({
-    { src = "https://github.com/folke/tokyonight.nvim.git",    version = "main" },
+    { src = "https://github.com/folke/tokyonight.nvim.git", version = "main" },
 })
 
 require("tokyonight").setup({
@@ -11,7 +11,9 @@ require("tokyonight").setup({
     on_colors = function(colors)
         colors.bg_statusline = colors.none
     end,
+    on_highlights = function(highlights, _)
+        highlights.ColorColumn = { bg = "#2c2e34" }
+    end,
 })
 
 vim.cmd.colorscheme("tokyonight")
-
