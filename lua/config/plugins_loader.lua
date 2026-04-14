@@ -1,6 +1,6 @@
 require("plugins.snacks")
 require("plugins.tokyonight")
-
+require("plugins.persistence")
 require("plugins.mini")
 
 vim.schedule(function()

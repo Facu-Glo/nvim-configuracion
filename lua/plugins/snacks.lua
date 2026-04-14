@@ -42,8 +42,7 @@ require("snacks").setup({
                 key = "s",
                 hidden = true,
                 action = function()
-                    local session_name = vim.fn.getcwd():gsub("/", "%%")
-                    require("mini.sessions").read(session_name)
+                    require("persistence").load()
                 end
             },
             {
