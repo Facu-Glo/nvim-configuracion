@@ -1,9 +1,10 @@
 require("plugins.snacks")
 require("plugins.tokyonight")
-require("plugins.whichkeys")
+
 require("plugins.mini")
 
 vim.schedule(function()
+    require("plugins.whichkeys")
     require("plugins.noice")
     require("plugins.blink")
     require("plugins.lspconfig")
