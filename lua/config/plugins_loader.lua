@@ -1,21 +1,25 @@
-require("plugins.snacks")
-require("plugins.tokyonight")
-require("plugins.persistence")
-require("plugins.mini")
+local plugin_dir = vim.fn.stdpath("config") .. "/lua/plugins"
+local files = vim.fn.readdir(plugin_dir)
+
+local priority_list = {
+    "snacks",
+    "tokyonight",
+    "persistence",
+    "mini",
+    "noice" }
+
+local priority_set = {}
+
+for _, plugin in ipairs(priority_list) do
+    require("plugins." .. plugin)
+    priority_set[plugin] = true
+end
 
 vim.schedule(function()
-    require("plugins.whichkeys")
-    require("plugins.noice")
-    require("plugins.blink")
-    require("plugins.lspconfig")
-    require("plugins.treesitter")
-    require("plugins.gitsigns")
-    require("plugins.lualine")
-    require("plugins.bufferline")
-    require("plugins.trouble")
-    require("plugins.conform")
-    require("plugins.multicursor")
-    require("plugins.mason")
-    require("plugins.flash")
-    require("plugins.fyler")
+    for _, file in ipairs(files) do
+        local module = file:gsub("%.lua$", "")
+        if file:match("%.lua$") and not priority_set[module] then
+            require("plugins." .. module)
+        end
+    end
 end)
