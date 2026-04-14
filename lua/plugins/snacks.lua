@@ -71,7 +71,7 @@ require("snacks").setup({
                 icon = "󰉋 ",
                 indent = 2,
                 padding = 1,
-                limit = 2,
+                limit = 3,
             },
             {
                 pane = 1,
@@ -80,7 +80,7 @@ require("snacks").setup({
                 icon = " ",
                 indent = 2,
                 padding = 1,
-                limit = 2,
+                limit = 4,
             },
 
             {
