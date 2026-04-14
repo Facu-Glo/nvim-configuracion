@@ -1,5 +1,6 @@
-local nvim          = vim.o
+local nvim          = vim.opt
 
+nvim.termguicolors  = true
 nvim.number         = true
 nvim.relativenumber = false
 nvim.expandtab      = true
@@ -16,15 +17,10 @@ nvim.cursorline     = true
 nvim.wrap           = false
 nvim.showmode       = false
 nvim.splitright     = true
-nvim.textwidth      = 100
 nvim.textwidth      = 80
-vim.opt.formatoptions:remove("t")
-vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#1f2335" })
--- vim.opt.foldexpr   = 'v:lua.vim.treesitter.foldexpr()'
--- vim.opt.foldmethod = 'expr'
--- vim.wo.foldlevel   = 99
-vim.opt.foldtext  = ""
-vim.opt.fillchars = {
+nvim.formatoptions:remove("t")
+nvim.foldtext  = ""
+nvim.fillchars = {
     fold = " ",
     foldopen = "",
     foldclose = "",
