@@ -15,13 +15,20 @@ require("noice").setup({
         },
     },
     cmdline = {
+        enabled = false,
         view = "cmdline",
         format = {
             search_down = { view = "cmdline" },
             search_up = { view = "cmdline" },
         },
     },
+    messages = {
+        enabled = false,
+    },
     lsp = {
+        progress = {
+            enabled = false,
+        },
         override = {
             ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
             ["vim.lsp.util.stylize_markdown"] = true,
