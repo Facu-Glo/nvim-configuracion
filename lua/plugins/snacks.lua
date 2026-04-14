@@ -1,5 +1,5 @@
 vim.pack.add({
-    { src = "https://github.com/folke/snacks.nvim.git", version = "main" }
+    { src = "https://github.com/folke/snacks.nvim.git", version = "main" },
 })
 
 require("snacks").setup({
@@ -7,17 +7,16 @@ require("snacks").setup({
         enabled = true,
         width = 72,
         preset = {
-            ""
- -- 		header =    [[
- --                                                                     
- --       ████ ██████           █████      ██                     
- --      ███████████             █████                             
- --      █████████ ███████████████████ ███   ███████████   
- --     █████████  ███    █████████████ █████ ██████████████   
- --    █████████ ██████████ █████████ █████ █████ ████ █████   
- --  ███████████ ███    ███ █████████ █████ █████ ████ █████  
- -- ██████  █████████████████████ ████ █████ █████ ████ ██████ 
- --        ]],
+            -- 		header =    [[
+            --                                              
+            --       ████ ██████           █████      ██
+            --      ███████████             █████ 
+            --      █████████ ███████████████████ ███   ███████████
+            --     █████████  ███    █████████████ █████ ██████████████
+            --    █████████ ██████████ █████████ █████ █████ ████ █████
+            --  ███████████ ███    ███ █████████ █████ █████ ████ █████
+            -- ██████  █████████████████████ ████ █████ █████ ████ ██████
+            --        ]],
         },
         sections = {
             { section = "header" },
@@ -25,14 +24,13 @@ require("snacks").setup({
                 align = "center",
                 padding = 1,
                 text = {
-                    { "  Update[u] ", hl = "Label" },
-                    { "  Session[s] ", hl = "@property" },
-                    { "  Find Files[f] ", hl = "DiagnosticInfo" },
-                    { " 󰱼 Find Text[g] ", hl = "DiagnosticHint" },
-                    { "  Quit[q] ", hl = "Error" },
+                    { "  Update[u]  ", hl = "Label" },
+                    { "  Session[s]  ", hl = "@property" },
+                    { "  Find Files[f]  ", hl = "DiagnosticInfo" },
+                    { " 󰱼 Find Text[g]  ", hl = "DiagnosticHint" },
+                    { "  Quit[q]  " },
                 },
             },
-
             {
                 icon = "",
                 key = "q",
@@ -44,8 +42,7 @@ require("snacks").setup({
                 key = "s",
                 hidden = true,
                 action = function()
-                    local session_name = vim.fn.getcwd():gsub("/", "%%")
-                    require("mini.sessions").read(session_name)
+                    require("persistence").load()
                 end
             },
             {
@@ -74,7 +71,7 @@ require("snacks").setup({
                 icon = "󰉋 ",
                 indent = 2,
                 padding = 1,
-                limit = 5,
+                limit = 3,
             },
             {
                 pane = 1,
@@ -83,7 +80,7 @@ require("snacks").setup({
                 icon = " ",
                 indent = 2,
                 padding = 1,
-                limit = 6,
+                limit = 4,
             },
 
             {

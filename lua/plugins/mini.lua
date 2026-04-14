@@ -1,5 +1,5 @@
 vim.pack.add({
-    { src = "https://github.com/echasnovski/mini.nvim.git", version = "main" }
+    { src = "https://github.com/echasnovski/mini.nvim.git",         version = "main" },
 })
 
 require('mini.icons').setup({
@@ -40,10 +40,4 @@ hipatterns.setup({
 
         hex_color = hipatterns.gen_highlighter.hex_color(),
     },
-})
-
-require('mini.sessions').setup({
-    file = '',
-    directory = vim.fn.stdpath('data') .. '/sessions',
-    autowrite = true,
 })

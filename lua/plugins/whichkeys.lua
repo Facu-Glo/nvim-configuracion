@@ -1,4 +1,6 @@
-vim.pack.add({ { src = "https://github.com/folke/which-key.nvim.git" } })
+vim.pack.add({
+    { src = "https://github.com/folke/which-key.nvim.git" },
+})
 
 require("which-key").setup({
     preset = "modern",

@@ -1,6 +1,6 @@
 vim.pack.add({
-    { src = "https://github.com/akinsho/bufferline.nvim.git", version = "main" },
-    "https://github.com/nvim-tree/nvim-web-devicons"
+    { src = "https://github.com/akinsho/bufferline.nvim.git",  version = "main" },
+    -- { src = "https://github.com/nvim-tree/nvim-web-devicons" },
 })
 
 require("bufferline").setup({
@@ -46,3 +46,4 @@ require("bufferline").setup({
         },
     },
 })
+

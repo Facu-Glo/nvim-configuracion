@@ -1,7 +1,6 @@
 vim.pack.add({
     { src = "https://github.com/neovim/nvim-lspconfig.git", version = "master" },
 })
-
 local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 local diagnostic_icons = {
@@ -23,6 +22,12 @@ vim.diagnostic.config({
             [vim.diagnostic.severity.WARN] = diagnostic_icons.Warn,
             [vim.diagnostic.severity.INFO] = diagnostic_icons.Info,
             [vim.diagnostic.severity.HINT] = diagnostic_icons.Hint,
+        },
+        linehl = {
+            [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
+        },
+        numhl = {
+            [vim.diagnostic.severity.WARN] = 'WarningMsg',
         },
     },
     underline = true,

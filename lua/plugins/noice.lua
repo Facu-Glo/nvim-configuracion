@@ -1,7 +1,7 @@
 vim.pack.add({
     { src = "https://github.com/folke/noice.nvim.git" },
     { src = "https://github.com/rcarriga/nvim-notify.git" },
-    { src = "https://github.com/MunifTanjim/nui.nvim.git" }
+    { src = "https://github.com/MunifTanjim/nui.nvim.git" },
 })
 
 local notify = require("notify")
@@ -21,13 +21,20 @@ require("noice").setup({
         },
     },
     cmdline = {
+        enabled = true,
         view = "cmdline",
         format = {
             search_down = { view = "cmdline" },
             search_up = { view = "cmdline" },
         },
     },
+    messages = {
+        enabled = true,
+    },
     lsp = {
+        progress = {
+            enabled = false,
+        },
         override = {
             ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
             ["vim.lsp.util.stylize_markdown"] = true,

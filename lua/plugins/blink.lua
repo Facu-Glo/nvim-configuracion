@@ -48,3 +48,4 @@ require("blink.cmp").setup({
         ghost_text = { enabled = true },
     },
 })
+

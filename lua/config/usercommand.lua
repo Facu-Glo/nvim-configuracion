@@ -47,7 +47,19 @@ local function abrir_pdf(opts)
     end
 end
 
+local function restart_session()
+    vim.cmd("wa")
+
+    local ok, persistence = pcall(require, "persistence")
+    if ok then
+        persistence.save()
+    end
+
+    vim.cmd("restart lua require('persistence').load()")
+end
+
 create_command("TabPick", tab_pick, { desc = "Abrir archivo en nueva pestaña con snacks.picker.files" })
 create_command("Format", format_code, { range = true, desc = "Formatear código con Conform" })
 create_command("CopyAll", copy_all_buffers, { desc = "Copia contenido de buffers con su ruta usando bufdo" })
 create_command('PDF', abrir_pdf, { nargs = 1, complete = "file" })
+create_command("RestartSession", restart_session, { desc = "Reiniciar Neovim restaurando la sesión actual", })

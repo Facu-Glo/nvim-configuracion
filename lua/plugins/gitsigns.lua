@@ -34,3 +34,4 @@ require('gitsigns').setup {
         col = 1
     },
 }
+
