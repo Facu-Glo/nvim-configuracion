@@ -35,7 +35,7 @@ M.pretty_path = function()
         status = " [No Name]"
     end
 
-    return final_path ..  filename .. status
+    return final_path .. "%#Bold#" .. filename .. status
 end
 
 -- Función para mostrar el estado de grabación de macros
@@ -51,28 +51,28 @@ end
 -- Función para mostrar el modo de Neovim
 M.custom_mode = function()
     local mode_map = {
-        ['n']   = 'NORMAL',
-        ['ce']  = 'NORMAL',
-        ['nt']  = 'NORMAL',
-        ['no']  = 'N-PENDING',
-        ['niI'] = 'I-NORMAL',
-        ['v']   = 'VISUAL',
-        ['V']   = 'V-LINE',
-        ['']   = 'V-BLOCK',
-        ['s']   = 'SELECT',
-        ['S']   = 'S-LINE',
-        ['']   = 'S-BLOCK',
-        ['i']   = 'INSERT',
-        ['ic']  = 'INSERT',
-        ['R']   = 'REPLACE',
-        ['Rv']  = 'V-REPLACE',
-        ['c']   = 'COMMAND',
-        ['cv']  = 'EX',
-        ['r']   = 'REPLACE',
-        ['rm']  = 'MORE',
-        ['r?']  = 'CONFIRM',
-        ['!']   = 'SHELL',
-        ['t']   = 'TERMINAL',
+        ["n"] = "NORMAL",
+        ["ce"] = "NORMAL",
+        ["nt"] = "NORMAL",
+        ["no"] = "N-PENDING",
+        ["niI"] = "I-NORMAL",
+        ["v"] = "VISUAL",
+        ["V"] = "V-LINE",
+        [""] = "V-BLOCK",
+        ["s"] = "SELECT",
+        ["S"] = "S-LINE",
+        [""] = "S-BLOCK",
+        ["i"] = "INSERT",
+        ["ic"] = "INSERT",
+        ["R"] = "REPLACE",
+        ["Rv"] = "V-REPLACE",
+        ["c"] = "COMMAND",
+        ["cv"] = "EX",
+        ["r"] = "REPLACE",
+        ["rm"] = "MORE",
+        ["r?"] = "CONFIRM",
+        ["!"] = "SHELL",
+        ["t"] = "TERMINAL",
     }
     local mode_code = vim.api.nvim_get_mode().mode
     local mode_name = mode_map[mode_code] or mode_code
@@ -80,4 +80,3 @@ M.custom_mode = function()
 end
 
 return M
-
