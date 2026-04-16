@@ -24,10 +24,10 @@ vim.diagnostic.config({
             [vim.diagnostic.severity.HINT] = diagnostic_icons.Hint,
         },
         linehl = {
-            [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
+            [vim.diagnostic.severity.ERROR] = "ErrorMsg",
         },
         numhl = {
-            [vim.diagnostic.severity.WARN] = 'WarningMsg',
+            [vim.diagnostic.severity.WARN] = "WarningMsg",
         },
     },
     underline = true,
@@ -54,14 +54,20 @@ vim.api.nvim_create_autocmd("LspAttach", {
         -- lsp_map("gD", vim.lsp.buf.declaration, "Ir a declaración")
         lsp_map("<leader>cd", vim.lsp.buf.definition, "Ir a definición")
         lsp_map("<leader>cD", vim.lsp.buf.declaration, "Ir a declaración")
-        lsp_map("gr", function() Snacks.picker.lsp_references() end, "Referencias (Snacks)")
+        lsp_map("gr", function()
+            Snacks.picker.lsp_references()
+        end, "Referencias (Snacks)")
         lsp_map("gi", vim.lsp.buf.implementation, "Ir a implementación")
         lsp_map("K", vim.lsp.buf.hover, "Hover")
         lsp_map("<leader>cr", vim.lsp.buf.rename, "Renombrar")
         lsp_map("<leader>ca", vim.lsp.buf.code_action, "Code action")
         lsp_map("<leader>ce", vim.diagnostic.open_float, "Diagnóstico flotante")
-        lsp_map("[d", function() vim.diagnostic.jump({ count = -1, float = true }) end, "Diagnóstico anterior")
-        lsp_map("]d", function() vim.diagnostic.jump({ count = 1, float = true }) end, "Diagnóstico siguiente")
+        lsp_map("[d", function()
+            vim.diagnostic.jump({ count = -1, float = true })
+        end, "Diagnóstico anterior")
+        lsp_map("]d", function()
+            vim.diagnostic.jump({ count = 1, float = true })
+        end, "Diagnóstico siguiente")
     end,
 })
 
@@ -84,13 +90,14 @@ local servers = {
     },
     ts_ls = {},
     pyright = {},
-    bashls = { filetypes = { "sh", "bash", "zsh" }, },
-    jsonls = {},
+    bashls = { filetypes = { "sh", "bash", "zsh" } },
+    jsonls = {
+        cmd = { "vscode-json-languageserver", "--stdio" },
+    },
     html = {},
     cssls = {},
     clangd = {},
-    elixirls = {
-    },
+    elixirls = {},
 }
 
 for server, config in pairs(servers) do
