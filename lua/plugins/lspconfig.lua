@@ -91,9 +91,7 @@ local servers = {
     ts_ls = {},
     pyright = {},
     bashls = { filetypes = { "sh", "bash", "zsh" } },
-    jsonls = {
-        cmd = { "vscode-json-languageserver", "--stdio" },
-    },
+    jsonls = {},
     html = {},
     cssls = {},
     clangd = {},
