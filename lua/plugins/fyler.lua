@@ -70,3 +70,7 @@ require("fyler").setup({
     },
 })
 
+------------------------------------------------------------------------------------------------
+vim.keymap.set({ "n", "v" }, "-", function()
+    require("fyler").toggle({ kind = "float" })
+end, { desc = "Abrir Fyler" })

@@ -2,10 +2,9 @@ vim.loader.enable()
 
 require("config.options")
 require("config.plugins_loader")
-require("config.keymaps_basic")
+require("lua.config.keymaps")
 
 vim.schedule(function()
-    require("config.keymaps_plugins")
     require("config.usercommand")
     require("config.autocmds")
 end)

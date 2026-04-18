@@ -26,3 +26,4 @@ nvim.fillchars = {
     foldclose = "",
     foldsep = " ",
 }
+vim.g.mapleader = " "

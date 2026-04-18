@@ -161,3 +161,38 @@ require("snacks").setup({
         }
     },
 })
+
+------------------------------------------------------------------------------------------------
+
+-- [ SNACKS ]
+vim.keymap.set("n", "<leader><space>", function() Snacks.picker.files() end, { desc = "Find files" })
+vim.keymap.set("n", "<leader>fb", function() Snacks.picker.buffers() end, { desc = "Buffers" })
+vim.keymap.set("n", "<leader>fg", function() Snacks.picker.grep() end, { desc = "Grep" })
+vim.keymap.set("n", "<leader>fn", function() Snacks.picker.notifications() end, { desc = "History" })
+vim.keymap.set("n", "<leader>fh", function() Snacks.picker.help() end, { desc = "Help" })
+vim.keymap.set("n", "<leader>fz", function() Snacks.picker.zoxide() end, { desc = "Zoxide" })
+vim.keymap.set("n", "<leader>fl", function() Snacks.picker.lines() end, { desc = "Buscar lineas" })
+vim.keymap.set("n", "<leader>f:", function() Snacks.picker.command_history() end, { desc = "Command History" })
+vim.keymap.set("n", "<leader>fd", function() Snacks.picker.diagnostics() end, { desc = "Diagnostico" })
+vim.keymap.set("n", "<leader>fr", function() Snacks.picker.registers() end, { desc = "Registros" })
+vim.keymap.set("n", "<leader>fu", function() Snacks.picker.undo() end, { desc = "Undo" })
+vim.keymap.set("n", "<leader>fi", function() Snacks.picker.icons() end, { desc = "Icons" })
+vim.keymap.set("n", "<leader>fs", function() Snacks.picker.lsp_symbols() end, { desc = "Lsp symbols" })
+vim.keymap.set("n", "<leader>fc", function() Snacks.picker.colorschemes() end, { desc = "colorscheme" })
+vim.keymap.set("n", "<leader>fm", function() Snacks.picker.marks() end, { desc = "Marks" })
+
+-- Git
+vim.keymap.set("n", "<leader>gb", function() Snacks.picker.git_branches() end, { desc = "Git Branches" })
+vim.keymap.set("n", "<leader>gl", function() Snacks.picker.git_log() end, { desc = "Git Log" })
+vim.keymap.set({ "n", "v" }, "<leader>gB", function() Snacks.gitbrowse() end, { desc = "Git Browse" })
+vim.keymap.set("n", "<leader>gg", function() Snacks.lazygit() end, { desc = "Lazygit" })
+
+-- Buffers & Utils
+vim.keymap.set("n", "<leader>bc", function() Snacks.bufdelete() end, { desc = "Eliminar buffer" })
+vim.keymap.set("n", "<leader>bo", function() Snacks.bufdelete.other() end, { desc = "Eliminar otros" })
+vim.keymap.set("n", "<leader>e", function() Snacks.explorer() end, { desc = "File Explorer" })
+
+-- Terminal
+vim.keymap.set({ "n", "t" }, "<leader>tt", function() Snacks.terminal.toggle(nil, { cwd = vim.fn.getcwd() }) end,
+    { desc = "Terminal Toggle" })
+vim.keymap.set({ "n", "t" }, "<leader>ty", function() Snacks.terminal("zsh") end, { desc = "Terminal Zsh" })
