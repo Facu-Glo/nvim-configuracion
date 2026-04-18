@@ -22,6 +22,7 @@ require("fyler").setup({
         finder = {
             follow_current_file = true,
             close_on_select = false,
+            columns_order = { "git", "link", "diagnostic" },
             icon = {
                 directory_expanded = "",
             },
@@ -39,7 +40,6 @@ require("fyler").setup({
                 ["#"]     = "CollapseAll",
                 ["<BS>"]  = "CollapseNode",
                 ["-"]     = "CloseView",
-                -- ["<M-o>"] = open_files, -- Asegurate de tener definida 'open_files' o comentá esta línea
             },
             win = {
                 kind = "split_right_most",
