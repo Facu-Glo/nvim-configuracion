@@ -3,3 +3,5 @@ vim.pack.add({
 })
 
 require("codediff").setup({})
+
+vim.keymap.set({ "n", "v" }, "<leader>gd", "<CMD>CodeDiff<CR>", { desc = "Code Diff" })
