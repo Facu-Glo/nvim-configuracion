@@ -1,13 +1,12 @@
 vim.pack.add({
+    { src = "https://github.com/Saghen/blink.lib.git", version = "main" },
     { src = "https://github.com/Saghen/blink.cmp.git", version = "main" },
 })
 
-require("blink.cmp").setup({
-    fuzzy = {
-        prebuilt_binaries = {
-            download = true,
-        },
-    },
+local cmp = require('blink.cmp')
+cmp.build():wait(60000)
+
+cmp.setup({
     keymap = {
         preset        = "default",
         ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
