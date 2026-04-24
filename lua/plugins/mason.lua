@@ -23,8 +23,7 @@ require("mason-lspconfig").setup({
         "cssls",
         "elixirls",
         "clangd",
-        "ruff",
-        "latexindent",
+        "texlab"
     },
     automatic_installation = true,
 })
