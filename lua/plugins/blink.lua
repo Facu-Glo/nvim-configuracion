@@ -1,10 +1,8 @@
 vim.pack.add({
-    { src = "https://github.com/Saghen/blink.lib.git", version = "main" },
-    { src = "https://github.com/Saghen/blink.cmp.git", version = "main" },
-})
+        { src = 'https://github.com/Saghen/blink.cmp', version = vim.version.range('*') }
+    })
 
 local cmp = require('blink.cmp')
-cmp.build():wait(60000)
 
 cmp.setup({
     keymap = {
