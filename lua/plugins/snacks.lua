@@ -113,7 +113,7 @@ require("snacks").setup({
             files = { hidden = false }
         },
         layout = {
-            preset = "ivy",
+            preset = "telescope",
             cycle = false,
         },
         layouts = {
@@ -151,6 +151,27 @@ require("snacks").setup({
                     },
                 },
             },
+            telescope = {
+                layout = {
+                    box = "horizontal",
+                    backdrop = false,
+                    width = 0.8,
+                    height = 0.9,
+                    border = "none",
+                    {
+                        box = "vertical",
+                        { win = "list",  title = " Results ", title_pos = "center", border = true },
+                        { win = "input", height = 1,          border = true,        title = "{title} {live} {flags}", title_pos = "center" },
+                    },
+                    {
+                        win = "preview",
+                        title = "{preview:Preview}",
+                        width = 0.5,
+                        border = true,
+                        title_pos = "center",
+                    },
+                }
+            }
         },
         win = {
             input = {
