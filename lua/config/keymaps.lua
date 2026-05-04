@@ -84,3 +84,16 @@ end, { desc = "Toggle números relativos" })
 -- Integracion con GIT
 keymap("n", "<leader>gr", "<CMD>!gh repo view --web<CR>", { desc = "Abrir repositorio en github" })
 keymap("n", "<leader>gp", "<CMD>!gh api user --jq '.html_url' | xargs xdg-open<CR>", { desc = "Abrir perfil en github" })
+
+------------------------------------------------------------------------------------------------
+
+keymap("v", "gq", function()
+    local buf = vim.api.nvim_get_current_buf()
+    local old = vim.bo[buf].formatexpr
+
+    vim.bo[buf].formatexpr = ""
+
+    vim.cmd("normal! gq")
+
+    vim.bo[buf].formatexpr = old
+end)
