@@ -35,6 +35,7 @@ vim.keymap.set({ "n", "x" }, "<leader>mx", mc.deleteCursor, { desc = "Eliminar c
 vim.keymap.set({ "n", "x" }, "<leader>mq", mc.clearCursors, { desc = "Limpiar cursores" })
 vim.keymap.set({ "n", "x" }, "<leader>ma", mc.toggleCursor, { desc = "Agregar cursor" })
 vim.keymap.set("n", "<leader>me", mc.enableCursors, { desc = "Activar los cursores" })
+vim.keymap.set("n", "<leader>mc", mc.alignCursors, { desc = "Alinear en columnas" })
 
 -- Integracion con mouse
 vim.keymap.set("n", "<m-leftmouse>", mc.handleMouse)
