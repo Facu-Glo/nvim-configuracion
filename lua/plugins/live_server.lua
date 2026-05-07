@@ -1,3 +1,3 @@
 vim.pack.add({
-    { src = "https://github.com/barrett-ruth/live-server.nvim", version = "main" },
+    'https://git.barrettruth.com/barrettruth/live-server.nvim',
 })
