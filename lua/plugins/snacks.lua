@@ -113,7 +113,7 @@ require("snacks").setup({
             files = { hidden = false }
         },
         layout = {
-            preset = "telescope",
+            preset = "default",
             cycle = false,
         },
         layouts = {
