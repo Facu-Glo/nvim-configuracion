@@ -1,6 +1,7 @@
 vim.pack.add({
-    { src = "https://github.com/mason-org/mason.nvim.git", version = "main" },
+    { src = "https://github.com/mason-org/mason.nvim.git",           version = "main" },
     { src = "https://github.com/mason-org/mason-lspconfig.nvim.git", version = "main" },
+    { src = "https://github.com/jay-babu/mason-nvim-dap.nvim.git",   version = "main" },
 })
 require("mason").setup({
     ui = {
@@ -28,3 +29,10 @@ require("mason-lspconfig").setup({
     automatic_installation = true,
 })
 
+require("mason-nvim-dap").setup({
+    ensure_installed = {
+        "python",
+        "js",
+    },
+    automatic_installation = true,
+})
