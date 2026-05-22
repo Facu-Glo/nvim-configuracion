@@ -17,6 +17,7 @@ require("which-key").setup({
             { "<leader>t", group = "terminal" },
             { "<leader>r", name = "Toggle números relativos", icon = { icon = " " } },
             { "<leader>d", group = "debug", icon = { icon = " ", color = "red" } },
+            { "<leader>i", group = "IA", icon = { icon = "󱜚 " } },
         }
     }
 })

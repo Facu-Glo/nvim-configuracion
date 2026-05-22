@@ -57,7 +57,25 @@ require("lualine").setup({
             },
         },
         lualine_y = { "progress" },
-        lualine_z = { "location" },
+        lualine_z = {
+            "location",
+            {
+                function()
+                    local status = require("sidekick.status").cli()
+                    if #status > 0 then
+                        return " " .. (#status > 1 and #status or "")
+                    end
+                    return ""
+                end,
+                cond = function()
+                    local ok, status = pcall(function()
+                        return require("sidekick.status").cli()
+                    end)
+                    return ok and #status > 0
+                end,
+                color = "Special",
+            },
+        },
     },
 })
 
