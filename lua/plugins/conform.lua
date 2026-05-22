@@ -78,4 +78,3 @@ vim.keymap.set({ "n", "v" }, "<leader>cf", function()
         timeout_ms = 1000,
     })
 end, { desc = "Formatear archivo o selección" })
-
