@@ -14,13 +14,13 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     end,
 })
 
-vim.api.nvim_create_autocmd("BufWritePre", {
-    desc = "Formatear código al guardar",
-    callback = function()
-        require("conform").format({
-            lsp_fallback = true,
-            async = false,
-            timeout_ms = 1000,
-        })
-    end,
-})
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+--     desc = "Formatear código al guardar",
+--     callback = function()
+--         require("conform").format({
+--             lsp_fallback = true,
+--             async = false,
+--             timeout_ms = 1000,
+--         })
+--     end,
+-- })
