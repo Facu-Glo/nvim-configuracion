@@ -1,6 +1,6 @@
 vim.pack.add({
     { src = "https://github.com/mfussenegger/nvim-dap.git",           version = "master" },
-    { src = "https://github.com/igorlfs/nvim-dap-view.git",           version = "v1.1.1" },
+    { src = "https://github.com/igorlfs/nvim-dap-view.git",           version = vim.version.range("1.*") },
     { src = "https://github.com/theHamsta/nvim-dap-virtual-text.git", version = "master" },
     { src = "https://github.com/mfussenegger/nvim-dap-python.git",    version = "master" },
 })
@@ -13,10 +13,15 @@ dap_view.setup({
     windows = {
         position = "right",
         size = 0.5,
+        terminal = {
+            position = "below",
+            size = 0.4,
+        }
     },
     winbar = {
-        sections = { "watches", "scopes", "breakpoints", "threads", "repl", "console" },
-        show_keymap_hints = false,
+        sections = { "watches", "scopes", "breakpoints", "threads", "repl" },
+        default_section = "scopes",
+        show_keymap_hints = true,
         controls = {
             enabled = true,
         },
@@ -77,8 +82,8 @@ map("n", "<F12>", dap.step_out, { desc = "DAP: Step out" })
 map("n", "<leader>dO", dap.step_out, { desc = "DAP: Step out" })
 map("n", "<leader>dt", dap.terminate, { desc = "DAP: Terminate" })
 map("n", "<leader>dd", function()
-    dap_view.toggle()
+    dap_view.toggle({ force = true })
 end, { desc = "DAP: Toggle view" })
 map({ "n", "v" }, "<leader>dh", function()
-    dap_view.hover()
+    require("dap-view").hover()
 end, { desc = "DAP: Hover" })
