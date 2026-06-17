@@ -25,7 +25,7 @@ require('gitsigns').setup {
         virt_text_pos = 'eol',
         delay = 1000,
     },
-    current_line_blame_formatter = '<author>, <author_time:%R> - <summary>',
+    current_line_blame_formatter = '   <author>, <author_time:%R>',
     preview_config = {
         border = 'single',
         style = 'minimal',
