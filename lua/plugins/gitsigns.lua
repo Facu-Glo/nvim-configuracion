@@ -25,7 +25,16 @@ require('gitsigns').setup {
         virt_text_pos = 'eol',
         delay = 1000,
     },
-    current_line_blame_formatter = '   <author>, <author_time:%R>',
+    current_line_blame_formatter = function(name, blame_info)
+        local blame_formatter = require('gitsigns.blame_formatter')
+        local text = blame_formatter.expand_string(
+            '   <author>, <author_time:%R>',
+            name,
+            blame_info,
+            { self_author_text = 'Facu' }
+        )
+        return {{ text, 'GitSignsCurrentLineBlame' }}
+    end,
     preview_config = {
         border = 'single',
         style = 'minimal',
