@@ -97,3 +97,9 @@ keymap("v", "gq", function()
 
     vim.bo[buf].formatexpr = old
 end)
+
+if vim.g.is_scrollback_pager then
+    vim.keymap.set('n', 'q', 'ZQ', { desc = 'Cerrar scrollback pager' })
+    vim.keymap.set('v', 'q', '<ESC>ZQ', { desc = 'Cerrar scrollback pager' })
+    vim.keymap.set('v', 'y', '"+yZQ', { desc = 'Copiar selección y cerrar' })
+end
