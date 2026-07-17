@@ -107,7 +107,7 @@ require("snacks").setup({
         enabled = true,
         sources = {
             explorer = {
-                hidden = true,
+                hidden = false,
                 layout = { layout = { position = "right", width = 40 } },
             },
             files = { hidden = false }

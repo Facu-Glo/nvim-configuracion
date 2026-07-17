@@ -25,7 +25,7 @@ require("lualine").setup({
         component_separators = { left = "", right = "" },
         section_separators = { left = "", right = "" },
         disabled_filetypes = {
-            statusline = { "NvimTree", "dashboard", "alpha", "ministarter", "snacks_dashboard", "fyler" }
+            statusline = { "NvimTree", "dashboard", "alpha", "ministarter", "snacks_dashboard", "fyler_finder" }
         },
         globalstatus = false,
     },

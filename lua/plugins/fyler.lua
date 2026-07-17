@@ -20,7 +20,7 @@ require("fyler").setup({
         end,
     },
     kind_presets = {
-        split_right_most = { width = "28%" },
+        split_right_most = { width = "25%" },
         split_left_most = { width = "28%" },
         float = {
             width = "70%",
@@ -34,6 +34,15 @@ require("fyler").setup({
         relativenumber = true,
         cursorline = true,
         signcolumn = "yes",
+    },
+    ui = {
+        hidden_items = {
+            switches = { 'dotfiles' },
+            patterns = {},
+            always_visible = {},
+            always_hidden = {},
+        },
+        indent_guides = true,
     },
     mappings = {
         n = {
