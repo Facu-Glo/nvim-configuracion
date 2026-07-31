@@ -7,6 +7,7 @@ local priority_list = {
     "persistence",
     "mini",
     "noice",
+    "treesitter"
 }
 
 local priority_set = {}
