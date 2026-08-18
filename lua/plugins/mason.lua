@@ -22,8 +22,6 @@ require("mason-lspconfig").setup({
         "jsonls",
         "html",
         "cssls",
-        "elixirls",
-        "clangd",
         "texlab"
     },
     automatic_installation = true,
