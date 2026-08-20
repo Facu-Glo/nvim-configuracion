@@ -22,12 +22,10 @@ require("fyler").setup({
     kind_presets = {
         split_right_most = { width = "25%" },
         split_left_most = { width = "28%" },
-        float = {
-            width = "70%",
-            height = "70%",
-            border = "single",
+        floating = {
+            border = "rounded",
         },
-        split_below_all = { height = "35%" },
+        split_below_all = { height = "40%" },
     },
     win_opts = {
         number = true,
