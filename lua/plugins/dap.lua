@@ -65,6 +65,44 @@ for _, lang in ipairs({ "javascript", "typescript" }) do
     }
 end
 
+-- Rust / C / C++ (codelldb)
+dap.adapters.codelldb = {
+    type = "server",
+    port = "${port}",
+    executable = {
+        command = vim.fn.stdpath("data") .. "/mason/bin/codelldb",
+        args = { "--port", "${port}" },
+    },
+}
+
+dap.configurations.rust = {
+    {
+        name = "Launch Rust",
+        type = "codelldb",
+        request = "launch",
+        program = function()
+            local cwd = vim.fn.getcwd()
+            local cargo_toml = cwd .. "/Cargo.toml"
+            local project_name
+
+            if vim.fn.filereadable(cargo_toml) == 1 then
+                local content = table.concat(vim.fn.readfile(cargo_toml), "\n")
+                project_name = content:match('%[%[bin%s*%]%s*\nname%s*=%s*"([^"]+)"')
+                    or content:match('%[package%]%s*\nname%s*=%s*"([^"]+)"')
+            end
+
+            if not project_name then
+                project_name = vim.fn.fnamemodify(cwd, ":t")
+            end
+
+            local default_path = cwd .. "/target/debug/" .. project_name
+
+            local choice = vim.fn.input("Binario: ", default_path, "file")
+            return (choice ~= "") and choice or default_path
+        end,
+        cwd = "${workspaceFolder}",
+    },
+}
 -- Keymaps
 local map = vim.keymap.set
 
