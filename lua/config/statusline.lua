@@ -8,32 +8,27 @@ local mode_colors = {
     select   = { fg = "#1a1b26", bg = "#ff9e64" },
 }
 
-local hl_mode_groups = {}
-local hl_git_groups = {}
+local mode_strings = {}
+local git_hl_prefix = {}
 
 for name, colors in pairs(mode_colors) do
     local capitalized = name:gsub("^%l", string.upper)
+    local m_group = "StatuslineMode" .. capitalized
+    local g_group = "StatuslineGit" .. capitalized
 
-    local mode_group = "StatuslineMode" .. capitalized
-    vim.api.nvim_set_hl(0, mode_group, {
-        fg = colors.fg,
-        bg = colors.bg,
-        bold = true,
-    })
-    hl_mode_groups[name] = mode_group
+    vim.api.nvim_set_hl(0, m_group, { fg = colors.fg, bg = colors.bg, bold = true })
+    vim.api.nvim_set_hl(0, g_group, { fg = colors.bg, bold = true })
 
-    local git_group = "StatuslineGit" .. capitalized
-    vim.api.nvim_set_hl(0, git_group, {
-        fg = colors.bg,
-        bold = true,
-    })
-    hl_git_groups[name] = git_group
+    git_hl_prefix[name] = "%#" .. g_group .. "# "
 end
 
-local VBLOCK = vim.fn.nr2char(22)
-local SBLOCK = vim.fn.nr2char(19)
+vim.api.nvim_set_hl(0, "MacroRecording", { fg = "#ff9e64", bg = "none", bold = true })
+vim.api.nvim_set_hl(0, "SearchCount", { fg = "#ff9e64", bg = "none", bold = true })
 
-local mode_map = {
+local VBLOCK = "\22"
+local SBLOCK = "\19"
+
+local raw_modes = {
     ["n"]    = { "NORMAL", "normal" },
     ["ce"]   = { "NORMAL", "normal" },
     ["nt"]   = { "NORMAL", "normal" },
@@ -58,28 +53,27 @@ local mode_map = {
     ["t"]    = { "TERMINAL", "terminal" },
 }
 
-local function get_current_mode_info()
-    local code = vim.api.nvim_get_mode().mode
-    return mode_map[code] or { code:upper(), "normal" }
+for code, data in pairs(raw_modes) do
+    local label, color = data[1], data[2]
+    local capitalized = color:gsub("^%l", string.upper)
+    mode_strings[code] = "%#StatuslineMode" .. capitalized .. "# " .. label .. " %*"
 end
 
-local function current_mode(entry)
-    local label = entry[1]
-    local color = entry[2]
-    return "%#" .. hl_mode_groups[color] .. "# " .. label .. " %*"
-end
+local default_mode_str = "%#StatuslineModeNormal# NORMAL %*"
+local default_git_pfx  = git_hl_prefix["normal"]
 
-local function pretty_path()
-    local raw_path = vim.fn.expand("%:p")
+local function update_cached_path(bufnr)
+    local raw_path = vim.api.nvim_buf_get_name(bufnr)
     if raw_path == "" then
-        return "%#Bold#[No Name]%*"
+        vim.b[bufnr].cached_pretty_path = "%#Bold#[No Name]%*"
+        return
     end
 
-    local cwd = vim.fn.getcwd()
+    local cwd = vim.uv.cwd() or ""
     local home = vim.env.HOME or ""
 
     local path = raw_path
-    if path:find(cwd, 1, true) then
+    if cwd ~= "" and path:find(cwd, 1, true) then
         path = path:sub(#cwd + 2)
     elseif home ~= "" and path:find(home, 1, true) then
         path = "~" .. path:sub(#home + 1)
@@ -99,40 +93,82 @@ local function pretty_path()
         dir_path = table.concat(parts, "/") .. "/"
     end
 
+    vim.b[bufnr].cached_pretty_path = dir_path .. "%#Bold#" .. filename .. "%*"
+end
+
+vim.api.nvim_create_autocmd({ "BufEnter", "BufFilePost" }, {
+    callback = function(args)
+        update_cached_path(args.buf)
+    end,
+})
+
+local function pretty_path()
+    local path_str = vim.b.cached_pretty_path or "%#Bold#[No Name]%*"
     local status = ""
     if vim.bo.modified then
         status = " [+]"
     elseif vim.bo.readonly or not vim.bo.modifiable then
         status = " [-]"
     end
-
-    return dir_path .. "%#Bold#" .. filename .. "%*" .. status
+    return path_str .. status
 end
 
-local function git_branch(entry)
-    local head = vim.b.gitsigns_head
-    if head and head ~= "" then
-        local color = entry[2]
-        return " %#" .. hl_git_groups[color] .. "# " .. head .. " %* "
+local function get_macro_recording()
+    local reg = vim.fn.reg_recording()
+    if reg ~= "" then
+        return "%#MacroRecording# grabando @" .. reg .. " %*"
     end
-    return " "
+    return ""
+end
+
+local function get_search_count()
+    if vim.v.hlsearch == 0 then
+        return ""
+    end
+    local ok, count = pcall(vim.fn.searchcount, { recompute = 0, maxcount = 999 })
+    if ok and count and count.total > 0 then
+        local max = count.incomplete == 2 and ">" or ""
+        return "%#SearchCount#[" .. count.current .. "/" .. max .. count.total .. "] %*"
+    end
+    return ""
+end
+
+vim.api.nvim_set_hl(0, "StatuslineInactive", { fg = "#565f89", bg = "none" })
+
+local function statusline_inactive()
+    return "%#StatuslineInactive# %t%m%=%l:%c "
 end
 
 function StatuslineRender()
-    local mode_entry = get_current_mode_info()
+    if vim.g.statusline_winid ~= vim.api.nvim_get_current_win() then
+        return statusline_inactive()
+    end
+
+    local code = vim.api.nvim_get_mode().mode
+    local mode_str = mode_strings[code] or default_mode_str
+
+    local head = vim.b.gitsigns_head
+    local git_str = " "
+    if head and head ~= "" then
+        local color = raw_modes[code] and raw_modes[code][2]
+        local pfx = git_hl_prefix[color] or default_git_pfx
+        git_str = " " .. pfx .. head .. " %* "
+    end
+
     return table.concat({
-        current_mode(mode_entry),
-        git_branch(mode_entry),
+        mode_str,
+        git_str,
         pretty_path(),
         "%=",
+        get_macro_recording(),
+        get_search_count(),
         "%y ",
-        "%l:%c ",
     })
 end
 
 vim.o.statusline = "%!v:lua.StatuslineRender()"
 
-vim.api.nvim_create_autocmd("ModeChanged", {
+vim.api.nvim_create_autocmd({ "ModeChanged", "WinEnter", "WinLeave", "RecordingEnter", "RecordingLeave" }, {
     callback = function()
         vim.cmd("redrawstatus")
     end,
