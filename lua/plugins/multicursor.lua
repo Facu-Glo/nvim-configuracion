@@ -51,6 +51,7 @@ vim.keymap.set("n", "<Esc>", function()
         mc.clearCursors()
     else
         vim.cmd("nohlsearch")
+        vim.cmd("redrawstatus")
         vim.cmd("echo ''")
     end
 end, { desc = "Limpiar búsqueda y cursores" })
@@ -60,6 +61,7 @@ vim.keymap.set("n", "<M-e>", function()
         mc.clearCursors()
     else
         vim.cmd("nohlsearch")
+        vim.cmd("redrawstatus")
         vim.cmd("echo ''")
     end
 end, { desc = "Limpiar búsqueda y cursores" })
