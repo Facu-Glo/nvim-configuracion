@@ -211,4 +211,10 @@ vim.keymap.set("n", "<leader>e", function() Snacks.explorer() end, { desc = "Fil
 -- Terminal
 vim.keymap.set({ "n", "t" }, "<leader>tt", function() Snacks.terminal.toggle(nil, { cwd = vim.fn.getcwd() }) end,
     { desc = "Terminal Toggle" })
-vim.keymap.set({ "n", "t" }, "<leader>tf", function() Snacks.terminal("zsh") end, { desc = "Terminal Zsh" })
+vim.keymap.set({ "n", "t" }, "<leader>tf", function()
+    Snacks.terminal("zsh", {
+        win = {
+            border = "rounded",
+        },
+    })
+end, { desc = "Terminal Zsh flotante con borde" })
