@@ -21,7 +21,7 @@ require("noice").setup({
         },
     },
     cmdline = {
-        enabled = true,
+        enabled = false,
         view = "cmdline",
         format = {
             search_down = { view = "cmdline" },
@@ -29,7 +29,7 @@ require("noice").setup({
         },
     },
     messages = {
-        enabled = true,
+        enabled = false,
     },
     lsp = {
         progress = {
