@@ -7,6 +7,8 @@ require('mini.icons').setup({
         c = { glyph = '', hl = 'CIconHL' },
     },
 })
+require('mini.icons').mock_nvim_web_devicons()
+
 vim.api.nvim_set_hl(0, 'CIconHL', { fg = '#599EFF' })
 
 require('mini.surround').setup({
