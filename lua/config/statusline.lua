@@ -1,10 +1,10 @@
 local mode_colors = {
     normal   = { fg = "#1a1b26", bg = "#7aa2f7" },
-    insert   = { fg = "#1a1b26", bg = "#7dcfff" },
+    insert   = { fg = "#1a1b26", bg = "#9ece6a" },
     visual   = { fg = "#1a1b26", bg = "#bb9af7" },
     replace  = { fg = "#1a1b26", bg = "#f7768e" },
     command  = { fg = "#1a1b26", bg = "#e0af68" },
-    terminal = { fg = "#1a1b26", bg = "#9ece6a" },
+    terminal = { fg = "#1a1b26", bg = "#4fd6be" },
     select   = { fg = "#1a1b26", bg = "#ff9e64" },
 }
 

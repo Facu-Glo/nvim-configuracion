@@ -1,5 +1,6 @@
 local nvim          = vim.opt
 
+nvim.laststatus = 2
 nvim.termguicolors  = true
 nvim.number         = true
 nvim.relativenumber = false
