@@ -140,6 +140,11 @@ local function statusline_inactive()
 end
 
 function StatuslineRender()
+    local ft = vim.bo.filetype
+    if ft == "snacks_dashboard" or ft == "dashboard" or ft == "alpha" then
+        return ""
+    end
+
     if vim.g.statusline_winid ~= vim.api.nvim_get_current_win() then
         return statusline_inactive()
     end
