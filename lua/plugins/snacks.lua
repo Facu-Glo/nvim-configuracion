@@ -90,7 +90,12 @@ require("snacks").setup({
     input = { enabled = true },
     notifier = { enabled = true },
     scroll = { enabled = true },
-    lazygit = { enabled = true },
+    lazygit = {
+        enabled = true,
+        win = {
+            border = "rounded"
+        }
+    },
     statuscolumn = { enabled = true },
     picker = {
         enabled = true,

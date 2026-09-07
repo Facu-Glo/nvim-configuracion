@@ -3,8 +3,10 @@ vim.pack.add({
     { src = "https://github.com/mason-org/mason-lspconfig.nvim.git", version = "main" },
     { src = "https://github.com/jay-babu/mason-nvim-dap.nvim.git",   version = "main" },
 })
+
 require("mason").setup({
     ui = {
+        border = "rounded",
         icons = {
             package_installed   = "✓",
             package_pending     = "➜",
