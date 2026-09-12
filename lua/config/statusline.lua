@@ -22,8 +22,8 @@ for name, colors in pairs(mode_colors) do
     git_hl_prefix[name] = "%#" .. g_group .. "# "
 end
 
--- vim.api.nvim_set_hl(0, "MacroRecording", { fg = "#ff9e64", bg = "none", bold = true })
--- vim.api.nvim_set_hl(0, "SearchCount", { fg = "#ff9e64", bg = "none", bold = true })
+vim.api.nvim_set_hl(0, "MacroRecording", { fg = "#ff9e64", bg = "none", bold = true })
+vim.api.nvim_set_hl(0, "SearchCount", { fg = "#ff9e64", bg = "none", bold = true })
 
 local VBLOCK = "\22"
 local SBLOCK = "\19"
@@ -113,25 +113,25 @@ local function pretty_path()
     return path_str .. status
 end
 
--- local function get_macro_recording()
---     local reg = vim.fn.reg_recording()
---     if reg ~= "" then
---         return "%#MacroRecording# grabando @" .. reg .. " %*"
---     end
---     return ""
--- end
+local function get_macro_recording()
+    local reg = vim.fn.reg_recording()
+    if reg ~= "" then
+        return "%#MacroRecording# grabando @" .. reg .. " %*"
+    end
+    return ""
+end
 
--- local function get_search_count()
---     if vim.v.hlsearch == 0 then
---         return ""
---     end
---     local ok, count = pcall(vim.fn.searchcount, { recompute = 0, maxcount = 999 })
---     if ok and count and count.total > 0 then
---         local max = count.incomplete == 2 and ">" or ""
---         return "%#SearchCount#[" .. count.current .. "/" .. max .. count.total .. "] %*"
---     end
---     return ""
--- end
+local function get_search_count()
+    if vim.v.hlsearch == 0 then
+        return ""
+    end
+    local ok, count = pcall(vim.fn.searchcount, { recompute = 1, maxcount = 999 })
+    if ok and count and count.total > 0 then
+        local max = count.incomplete == 2 and ">" or ""
+        return "%#SearchCount#[" .. count.current .. "/" .. max .. count.total .. "] %*"
+    end
+    return ""
+end
 
 vim.api.nvim_set_hl(0, "StatuslineInactive", { fg = "#565f89", bg = "none" })
 
@@ -165,8 +165,8 @@ function StatuslineRender()
         git_str,
         pretty_path(),
         "%=",
-        -- get_macro_recording(),
-        -- get_search_count(),
+        get_macro_recording(),
+        get_search_count(),
         "%y ",
     })
 end

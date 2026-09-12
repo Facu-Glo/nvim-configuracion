@@ -1,5 +1,9 @@
 local nvim          = vim.opt
-
+nvim.shortmess:append({
+    q = true, -- Silencia "recording @..."
+    s = true, -- Silencia "search hit BOTTOM/TOP"
+    S = true, -- Silencia el contador de coincidencias [x/y]
+})
 nvim.laststatus = 2
 nvim.termguicolors  = true
 nvim.number         = true
