@@ -214,12 +214,14 @@ vim.keymap.set("n", "<leader>bo", function() Snacks.bufdelete.other() end, { des
 vim.keymap.set("n", "<leader>e", function() Snacks.explorer() end, { desc = "File Explorer" })
 
 -- Terminal
-vim.keymap.set({ "n", "t" }, "<leader>tt", function() Snacks.terminal.toggle(nil, { cwd = vim.fn.getcwd() }) end,
-    { desc = "Terminal Toggle" })
-vim.keymap.set({ "n", "t" }, "<leader>tf", function()
+vim.keymap.set({ "n", "t" }, "<leader>ts", function() Snacks.terminal.toggle(nil, { cwd = vim.fn.getcwd() }) end,
+    { desc = "Terminal split horizontal" })
+
+vim.keymap.set({ "n", "t" }, "<leader>tv", function()
     Snacks.terminal("zsh", {
         win = {
-            border = "rounded",
+            position = "right",
+            width = 0.5,
         },
     })
-end, { desc = "Terminal Zsh flotante con borde" })
+end, { desc = "Terminal split vertical" })
