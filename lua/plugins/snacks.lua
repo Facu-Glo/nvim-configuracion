@@ -88,7 +88,7 @@ require("snacks").setup({
     explorer = { enabled = true },
     indent = { enabled = true },
     input = { enabled = true },
-    notifier = { enabled = true },
+    notifier = { enabled = false },
     scroll = { enabled = true },
     lazygit = {
         enabled = true,
