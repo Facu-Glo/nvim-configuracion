@@ -99,6 +99,11 @@ require("snacks").setup({
     statuscolumn = { enabled = true },
     picker = {
         enabled = true,
+        sources = {
+            explorer = {
+                layout = { layout = { position = "right" } },
+            }
+        }
     },
 })
 
