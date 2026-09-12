@@ -28,7 +28,6 @@ ui2.enable({
             shell_out = "pager",
             verbose = "pager",
             list_cmd = "pager",
-            confirm = "pager",
         },
         msg = { height = 0.4, timeout = 3000 },
         pager = { height = 0.5 },
@@ -40,9 +39,10 @@ vim.api.nvim_create_autocmd("FileType", {
     callback = function(args)
         local win = ui2.wins and ui2.wins.msg
         if win and vim.api.nvim_win_is_valid(win) then
+            vim.api.nvim_win_set_config(win, { focusable = true })
             vim.api.nvim_set_option_value(
                 "winhighlight",
-                "Normal:NormalFloat,FloatBorder:FloatBorder",
+                "Normal:NormalFloat,Search:,CurSearch:,IncSearch:,FloatBorder:FloatBorder,FloatTitle:NormalFloat",
                 { scope = "local", win = win }
             )
         end
@@ -62,36 +62,49 @@ vim.api.nvim_create_autocmd("FileType", {
 local ok_msgs, msgs = pcall(require, "vim._core.ui2.messages")
 if ok_msgs and msgs.set_pos then
     local orig_set_pos = msgs.set_pos
+
+    local function has_active_msg()
+        return next(msgs.msg.ids) ~= nil
+    end
+
     msgs.set_pos = function(tgt)
         orig_set_pos(tgt)
 
-        vim.schedule(function()
-            local win = ui2.wins and ui2.wins.msg
-            if (tgt == "msg" or tgt == nil) and win and vim.api.nvim_win_is_valid(win) then
-                local buf = vim.api.nvim_win_get_buf(win)
-                local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
-                local text = table.concat(lines, " ")
+        -- Only reposition when a message is (or may be) visible in the msg window.
+        local is_msg = tgt == "msg"
+        if not (is_msg or (tgt == nil and has_active_msg())) then
+            return
+        end
 
-                local is_error = text:match("E%d+:") or text:match("[Ee]rror") or text:match("traceback")
-                local border_hl = is_error and "DiagnosticFloatingError" or "FloatBorder"
+        local win = ui2.wins and ui2.wins.msg
+        if not (win and vim.api.nvim_win_is_valid(win)) then
+            return
+        end
 
-                pcall(vim.api.nvim_win_set_config, win, {
-                    relative = "editor",
-                    anchor = "NE",
-                    row = 1,
-                    col = vim.o.columns - 1,
-                    border = "rounded",
-                    title = is_error and " Error " or " Notificación ",
-                    title_pos = "center",
-                })
+        if is_msg and vim.api.nvim_win_get_config(win).hide then
+            return -- Nothing visible to position.
+        end
 
-                vim.api.nvim_set_option_value(
-                    "winhighlight",
-                    "Normal:NormalFloat,FloatBorder:" ..
-                    border_hl .. ",FloatTitle:" .. (is_error and "DiagnosticError" or "Directory"),
-                    { scope = "local", win = win }
-                )
-            end
-        end)
+        local buf = vim.api.nvim_win_get_buf(win)
+        local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
+        local text = table.concat(lines, " ")
+
+        local is_error = text:match("E%d+:") or text:match("[Ee]rror") or text:match("traceback")
+        local border_hl = is_error and "DiagnosticFloatingError" or "FloatBorder"
+
+        pcall(vim.api.nvim_win_set_config, win, {
+            relative = "editor",
+            anchor = "NE",
+            row = 1,
+            col = vim.o.columns - 1,
+            border = "rounded",
+            title = is_error and " Error " or " Notificación ",
+            title_pos = "center",
+        })
+
+        pcall(vim.api.nvim_set_option_value, "winhighlight",
+            "Normal:NormalFloat,Search:,CurSearch:,IncSearch:,FloatBorder:" ..
+            border_hl .. ",FloatTitle:" .. (is_error and "DiagnosticError" or "Directory"),
+            { scope = "local", win = win })
     end
 end
