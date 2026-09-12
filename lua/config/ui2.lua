@@ -70,7 +70,6 @@ if ok_msgs and msgs.set_pos then
     msgs.set_pos = function(tgt)
         orig_set_pos(tgt)
 
-        -- Only reposition when a message is (or may be) visible in the msg window.
         local is_msg = tgt == "msg"
         if not (is_msg or (tgt == nil and has_active_msg())) then
             return
@@ -82,7 +81,7 @@ if ok_msgs and msgs.set_pos then
         end
 
         if is_msg and vim.api.nvim_win_get_config(win).hide then
-            return -- Nothing visible to position.
+            return
         end
 
         local buf = vim.api.nvim_win_get_buf(win)
@@ -91,14 +90,24 @@ if ok_msgs and msgs.set_pos then
 
         local is_error = text:match("E%d+:") or text:match("[Ee]rror") or text:match("traceback")
         local border_hl = is_error and "DiagnosticFloatingError" or "FloatBorder"
+        local title_str = is_error and " Error " or " Notificación "
+
+        local max_line_len = 0
+        for _, line in ipairs(lines) do
+            max_line_len = math.max(max_line_len, vim.fn.strdisplaywidth(line))
+        end
+
+        local min_width = vim.fn.strdisplaywidth(title_str) + 2
+        local target_width = math.max(max_line_len, min_width)
 
         pcall(vim.api.nvim_win_set_config, win, {
             relative = "editor",
             anchor = "NE",
             row = 1,
             col = vim.o.columns - 1,
+            width = target_width,
             border = "rounded",
-            title = is_error and " Error " or " Notificación ",
+            title = title_str,
             title_pos = "center",
         })
 
