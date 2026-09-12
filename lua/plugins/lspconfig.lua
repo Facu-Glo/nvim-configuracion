@@ -58,7 +58,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
             Snacks.picker.lsp_references()
         end, "Referencias (Snacks)")
         lsp_map("gi", vim.lsp.buf.implementation, "Ir a implementación")
-        lsp_map("K", vim.lsp.buf.hover, "Hover")
+        lsp_map("K", function()
+            vim.lsp.buf.hover({
+                border = "rounded",
+                max_width = 80,
+                max_height = 20,
+            })
+        end, "Hover")
         lsp_map("<leader>cr", vim.lsp.buf.rename, "Renombrar")
         lsp_map("<leader>ca", vim.lsp.buf.code_action, "Code action")
         lsp_map("<leader>ce", vim.diagnostic.open_float, "Diagnóstico flotante")
