@@ -173,8 +173,10 @@ end
 
 vim.o.statusline = "%!v:lua.StatuslineRender()"
 
-vim.api.nvim_create_autocmd({ "ModeChanged", "WinEnter", "WinLeave", "RecordingEnter", "RecordingLeave" }, {
+vim.api.nvim_create_autocmd("ModeChanged", {
     callback = function()
-        vim.cmd("redrawstatus")
+        vim.schedule(function()
+            vim.cmd("redrawstatus")
+        end)
     end,
 })
