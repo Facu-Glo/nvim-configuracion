@@ -1,26 +1,33 @@
-local plugin_dir = vim.fn.stdpath("config") .. "/lua/plugins"
-local files = vim.fn.readdir(plugin_dir)
-
-local priority_list = {
+local plugins = {
     "snacks",
     "tokyonight",
     "persistence",
     "mini",
-    "treesitter"
+    "treesitter",
+    "dap",
+    "mason",
+    "conform",
+    "blink",
+    "lspconfig",
+    "bufferline",
+    "trouble",
+    "gitsigns",
+    "codediff",
+    "live_server",
+    "multicursor",
+    "whichkeys",
+    "fyler",
+    "flash",
 }
 
-local priority_set = {}
-
-for _, plugin in ipairs(priority_list) do
-    require("plugins." .. plugin)
-    priority_set[plugin] = true
+local plugin_dir = vim.fn.stdpath("config") .. "/lua/plugins"
+for _, file in ipairs(vim.fn.readdir(plugin_dir)) do
+    local module = file:gsub("%.lua$", "")
+    if file:match("%.lua$") and not vim.iter(plugins):any(function(p) return p == module end) then
+        vim.notify("Plugin sin registrar en plugins_loader: " .. module, vim.log.levels.WARN)
+    end
 end
 
-vim.schedule(function()
-    for _, file in ipairs(files) do
-        local module = file:gsub("%.lua$", "")
-        if file:match("%.lua$") and not priority_set[module] then
-            require("plugins." .. module)
-        end
-    end
-end)
+for _, plugin in ipairs(plugins) do
+    require("plugins." .. plugin)
+end
