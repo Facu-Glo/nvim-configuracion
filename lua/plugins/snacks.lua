@@ -138,14 +138,27 @@ vim.keymap.set("n", "<leader>bo", function() Snacks.bufdelete.other() end, { des
 vim.keymap.set("n", "<leader>e", function() Snacks.explorer() end, { desc = "File Explorer" })
 
 -- Terminal
-vim.keymap.set({ "n", "t" }, "<leader>ts", function() Snacks.terminal.toggle(nil, { cwd = vim.fn.getcwd() }) end,
-    { desc = "Terminal split horizontal" })
+vim.keymap.set("n", "<leader>ts", function()
+    Snacks.terminal.toggle(nil, {
+        cwd = vim.fn.getcwd(),
+        win = {
+            position = "bottom",
+            height = 0.5,
+            keys = {
+                ["<M-q>"] = { "hide", mode = { "n", "t" } },
+            },
+        },
+    })
+end, { desc = "Terminal split horizontal" })
 
-vim.keymap.set({ "n", "t" }, "<leader>tv", function()
-    Snacks.terminal("zsh", {
+vim.keymap.set("n", "<leader>tv", function()
+    Snacks.terminal.toggle("zsh", {
         win = {
             position = "right",
             width = 0.5,
+            keys = {
+                ["<M-q>"] = { "hide", mode = { "n", "t" } },
+            },
         },
     })
 end, { desc = "Terminal split vertical" })
