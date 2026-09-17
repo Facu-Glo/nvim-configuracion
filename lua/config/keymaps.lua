@@ -58,20 +58,6 @@ keymap({ "n", "v" }, "<M-f>", "$", { noremap = true, silent = true, desc = "Ir a
 -- keymap({ "n", "v" }, "<leader>0", "^", { noremap = true, silent = true, desc = "Ir al inicio de la linea" })
 -- keymap({ "n", "v" }, "<leader>9", "$", { noremap = true, silent = true, desc = "Ir al final de la linea" })
 
--- Toggle wrap
-keymap("n", "<A-z>", function()
-    local wrap_enabled = vim.wo.wrap
-    vim.wo.wrap = not wrap_enabled
-    vim.wo.breakindent = not wrap_enabled
-    vim.wo.linebreak = not wrap_enabled
-
-    if wrap_enabled then
-        print("Wrap desactivado")
-    else
-        print("Wrap activado")
-    end
-end, { desc = "Alternar ajuste de línea con Alt+Z" })
-
 ------------------------------------------------------------------------------------------------
 
 -- [ UI / TOGGLES ]
