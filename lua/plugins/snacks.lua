@@ -15,8 +15,8 @@ require("snacks").setup({
                 text = {
                     { "  Update[u]  ", hl = "Label" },
                     { "  Session[s]  ", hl = "@property" },
-                    { "  Find Files[f]  ", hl = "DiagnosticInfo" },
-                    { " 󰱼 Find Text[g]  ", hl = "DiagnosticHint" },
+                    -- { "  Find Files[f]  ", hl = "DiagnosticInfo" },
+                    -- { " 󰱼 Find Text[g]  ", hl = "DiagnosticHint" },
                     { "  Quit[q]  " },
                 },
             },
@@ -34,18 +34,18 @@ require("snacks").setup({
                     require("persistence").load()
                 end
             },
-            {
-                icon = "",
-                key = "f",
-                action = function() Snacks.picker.files() end,
-                hidden = true
-            },
-            {
-                icon = "",
-                key = "g",
-                action = function() Snacks.picker.grep() end,
-                hidden = true
-            },
+            -- {
+            --     icon = "",
+            --     key = "f",
+            --     action = function() Snacks.picker.files() end,
+            --     hidden = true
+            -- },
+            -- {
+            --     icon = "",
+            --     key = "g",
+            --     action = function() Snacks.picker.grep() end,
+            --     hidden = true
+            -- },
             {
                 icon = "",
                 key = "u",
