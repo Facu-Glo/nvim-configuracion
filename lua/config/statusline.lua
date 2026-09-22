@@ -112,7 +112,7 @@ end
 
 function StatuslineRender()
     local ft = vim.bo.filetype
-    if ft == "snacks_dashboard" or ft == "dashboard" or ft == "alpha" then
+    if ft == "snacks_dashboard" or ft == "dashboard" or ft == "alpha" or ft == "fyler_finder" then
         return ""
     end
 
