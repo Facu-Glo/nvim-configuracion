@@ -13,10 +13,8 @@ local plugins = {
     "trouble",
     "gitsigns",
     "codediff",
-    -- "multicursor",
     "whichkeys",
     "fyler",
-    "flash",
 }
 
 for _, plugin in ipairs(plugins) do
