@@ -120,6 +120,5 @@ end, { desc = "Cerrar Buffers a derecha" })
 
 keymap("n", "<leader>bd", "<CMD>bd %<CR>", { desc = "Cerrar buffer/ventana actual" })
 
-keymap("n", "<S-h>", "<cmd>bprev<cr>", { desc = "Next Buffer" })
-keymap("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Prev Buffer" })
-
+keymap("n", "<S-h>", "<cmd>bprev<cr>", { desc = "Prev Buffer" })
+keymap("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
