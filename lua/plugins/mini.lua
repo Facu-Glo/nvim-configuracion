@@ -11,6 +11,14 @@ local hipatterns = require('mini.hipatterns')
 local jump = require('mini.jump')
 local jump2d = require('mini.jump2d')
 local tabline = require('mini.tabline')
+local sessions = require('mini.sessions')
+
+surround.setup()
+pairs.setup()
+comment.setup()
+move.setup()
+jump.setup()
+jump2d.setup()
 
 icons.setup({
     extension = {
@@ -20,25 +28,6 @@ icons.setup({
 icons.mock_nvim_web_devicons()
 
 vim.api.nvim_set_hl(0, 'CIconHL', { fg = '#599EFF' })
-
-surround.setup({
-    mappings = {
-        add = 'gsa',            -- Agregar en Normal y Visual
-        delete = 'gsd',         -- Borrar
-        find = 'gsf',           -- Buscar a la derecha
-        find_left = 'gsF',      -- Buscar a la izquierda
-        highlight = 'gsh',      -- Resaltar
-        replace = 'gsr',        -- Reemplazar
-        update_n_lines = 'gsn', -- Actualizar cantidad de líneas
-
-        suffix_last = 'l',      -- Sufijo para "prev"
-        suffix_next = 'n',      -- Sufijo para "next"
-    },
-})
-
-pairs.setup()
-comment.setup()
-move.setup()
 
 hipatterns.setup({
     highlighters = {
@@ -51,8 +40,6 @@ hipatterns.setup({
     },
 })
 
-jump.setup()
-jump2d.setup()
 
 tabline.setup({
     show_icons = true,
@@ -78,3 +65,11 @@ vim.api.nvim_set_hl(0, "MiniTablineModifiedCurrent", {
     sp = "#ff9e3b",
     bold = true,
 })
+
+sessions.setup({
+    directory = vim.fn.stdpath('state') .. '/sessions',
+    autowrite = false,
+    autoread = false,
+    file = '',
+})
+require("config.sessions").setup()
