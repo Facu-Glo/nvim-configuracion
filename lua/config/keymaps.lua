@@ -84,10 +84,20 @@ keymap("v", "gq", function()
     vim.bo[buf].formatexpr = old
 end)
 
-if vim.g.is_scrollback_pager then
-    vim.keymap.set('n', 'q', 'ZQ', { desc = 'Cerrar scrollback pager' })
-    vim.keymap.set('v', 'q', '<ESC>ZQ', { desc = 'Cerrar scrollback pager' })
-    vim.keymap.set('v', 'y', '"+yZQ', { desc = 'Copiar selección y cerrar' })
-end
+------------------------------------------------------------------------------------------------
 
+-- Ejecutar el ultimo comando ejecutado
 keymap("n", "|", "<CMD>@:<CR>")
+
+------------------------------------------------------------------------------------------------
+
+-- Limpiar la cmd
+keymap("n", "<Esc>", function()
+    vim.cmd("nohlsearch")
+    vim.cmd("echo ''")
+end, { desc = "Limpiar búsqueda" })
+
+keymap("n", "<M-e>", function()
+    vim.cmd("nohlsearch")
+    vim.cmd("echo ''")
+end, { desc = "Limpiar búsqueda" })
