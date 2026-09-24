@@ -1,17 +1,27 @@
 vim.pack.add({
-    { src = "https://github.com/echasnovski/mini.nvim.git",         version = "main" },
+    { src = "https://github.com/echasnovski/mini.nvim.git", version = "main" },
 })
 
-require('mini.icons').setup({
+local icons = require('mini.icons')
+local surround = require('mini.surround')
+local pairs = require('mini.pairs')
+local comment = require('mini.comment')
+local move = require('mini.move')
+local hipatterns = require('mini.hipatterns')
+local jump = require('mini.jump')
+local jump2d = require('mini.jump2d')
+local tabline = require('mini.tabline')
+
+icons.setup({
     extension = {
         c = { glyph = '', hl = 'CIconHL' },
     },
 })
-require('mini.icons').mock_nvim_web_devicons()
+icons.mock_nvim_web_devicons()
 
 vim.api.nvim_set_hl(0, 'CIconHL', { fg = '#599EFF' })
 
-require('mini.surround').setup({
+surround.setup({
     mappings = {
         add = 'gsa',            -- Agregar en Normal y Visual
         delete = 'gsd',         -- Borrar
@@ -26,11 +36,10 @@ require('mini.surround').setup({
     },
 })
 
-require("mini.pairs").setup()
-require('mini.comment').setup()
-require('mini.move').setup()
+pairs.setup()
+comment.setup()
+move.setup()
 
-local hipatterns = require('mini.hipatterns')
 hipatterns.setup({
     highlighters = {
         fixme     = { pattern = '%f[%w]()FIXME()%f[%W]', group = 'MiniHipatternsFixme' },
@@ -40,4 +49,32 @@ hipatterns.setup({
 
         hex_color = hipatterns.gen_highlighter.hex_color(),
     },
+})
+
+jump.setup()
+jump2d.setup()
+
+tabline.setup({
+    show_icons = true,
+    format = function(buf_id, label)
+        local suffix = vim.bo[buf_id].modified and '+ ' or ''
+        return " " .. tabline.default_format(buf_id, label) .. suffix .. " "
+    end,
+    tabpage_section = 'right',
+})
+
+vim.api.nvim_set_hl(0, "MiniTablineFill", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "MiniTablineCurrent", {
+    bg = "#3a4261",
+    fg = "#c0caf5",
+    underline = true,
+    sp = "#7aa2f7",
+    bold = true,
+})
+vim.api.nvim_set_hl(0, "MiniTablineModifiedCurrent", {
+    bg = "#3a4261",
+    fg = "#ff9e3b",
+    underline = true,
+    sp = "#ff9e3b",
+    bold = true,
 })

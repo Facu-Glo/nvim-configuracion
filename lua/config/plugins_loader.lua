@@ -9,7 +9,7 @@ local plugins = {
     "conform",
     "blink",
     "lspconfig",
-    "bufferline",
+    -- "bufferline",
     "trouble",
     "gitsigns",
     "codediff",

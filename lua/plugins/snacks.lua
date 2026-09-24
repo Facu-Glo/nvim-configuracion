@@ -121,6 +121,8 @@ vim.keymap.set("n", "<leader>gg", function() Snacks.lazygit() end, { desc = "Laz
 -- Buffers & Utils
 vim.keymap.set("n", "<leader>bc", function() Snacks.bufdelete() end, { desc = "Eliminar buffer" })
 vim.keymap.set("n", "<leader>bo", function() Snacks.bufdelete.other() end, { desc = "Eliminar otros" })
+vim.keymap.set("n", "<leader>ba", function() Snacks.bufdelete.all() end, { desc = "Cerrar todos los buffers" })
+vim.keymap.set("n", "<leader>bi", function() Snacks.bufdelete.invisible() end, { desc = "Cerrar buffers ocultos" })
 vim.keymap.set("n", "<leader>e", function() Snacks.explorer() end, { desc = "File Explorer" })
 
 -- Terminal
