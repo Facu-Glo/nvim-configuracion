@@ -29,8 +29,8 @@ require("snacks").setup({
                 key = "s",
                 hidden = true,
                 action = function()
-                    require("persistence").load()
-                end
+                    require("config.sessions").restore()
+                end,
             },
             {
                 icon = "",

@@ -1,7 +1,6 @@
 local plugins = {
     "snacks",
     "tokyonight",
-    "persistence",
     "mini",
     "treesitter",
     "dap",
