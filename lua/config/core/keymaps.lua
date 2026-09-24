@@ -49,14 +49,9 @@ keymap("n", "<leader>a", function()
     vim.cmd("keepjumps normal! ggVG")
 end, { desc = "Select all" })
 
--- Cerrar buffer
-keymap("n", "<leader>bd", "<CMD>bd %<CR>", { desc = "Cerrar buffer/ventana actual" })
-
 -- Cursor en el incio/fin de linea
 keymap({ "n", "v" }, "<M-i>", "^", { noremap = true, silent = true, desc = "Ir al inicio de la linea" })
 keymap({ "n", "v" }, "<M-f>", "$", { noremap = true, silent = true, desc = "Ir al final de la linea" })
--- keymap({ "n", "v" }, "<leader>0", "^", { noremap = true, silent = true, desc = "Ir al inicio de la linea" })
--- keymap({ "n", "v" }, "<leader>9", "$", { noremap = true, silent = true, desc = "Ir al final de la linea" })
 
 ------------------------------------------------------------------------------------------------
 
@@ -101,3 +96,30 @@ keymap("n", "<M-e>", function()
     vim.cmd("nohlsearch")
     vim.cmd("echo ''")
 end, { desc = "Limpiar búsqueda" })
+
+------------------------------------------------------------------------------------------------
+
+-- Manejo de buffers
+keymap("n", "<leader>bl", function()
+    local cur_buf = vim.api.nvim_get_current_buf()
+    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+        if vim.bo[buf].buflisted and buf < cur_buf then
+            vim.api.nvim_buf_delete(buf, { force = false })
+        end
+    end
+end, { desc = "Cerrar Buffers a izquierda" })
+
+keymap("n", "<leader>br", function()
+    local cur_buf = vim.api.nvim_get_current_buf()
+    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+        if vim.bo[buf].buflisted and buf > cur_buf then
+            vim.api.nvim_buf_delete(buf, { force = false })
+        end
+    end
+end, { desc = "Cerrar Buffers a derecha" })
+
+keymap("n", "<leader>bd", "<CMD>bd %<CR>", { desc = "Cerrar buffer/ventana actual" })
+
+keymap("n", "<S-h>", "<cmd>bprev<cr>", { desc = "Next Buffer" })
+keymap("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Prev Buffer" })
+
