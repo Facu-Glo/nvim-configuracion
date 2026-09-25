@@ -44,26 +44,10 @@ hipatterns.setup({
 tabline.setup({
     show_icons = true,
     format = function(buf_id, label)
-        local suffix = vim.bo[buf_id].modified and '+ ' or ''
+        local suffix = vim.bo[buf_id].modified and ' ' or ''
         return " " .. tabline.default_format(buf_id, label) .. suffix .. " "
     end,
     tabpage_section = 'right',
-})
-
-vim.api.nvim_set_hl(0, "MiniTablineFill", { bg = "NONE" })
-vim.api.nvim_set_hl(0, "MiniTablineCurrent", {
-    bg = "#3a4261",
-    fg = "#c0caf5",
-    underline = true,
-    sp = "#7aa2f7",
-    bold = true,
-})
-vim.api.nvim_set_hl(0, "MiniTablineModifiedCurrent", {
-    bg = "#3a4261",
-    fg = "#ff9e3b",
-    underline = true,
-    sp = "#ff9e3b",
-    bold = true,
 })
 
 sessions.setup({
