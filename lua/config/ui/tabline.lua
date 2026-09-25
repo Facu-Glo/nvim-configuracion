@@ -41,16 +41,17 @@ function M.setup(tabline)
     tabline.setup({
         show_icons = true,
         format = function(buf_id, label)
-            local prefix = ""
-            if pick_mode and pick_map[buf_id] then
-                prefix = pick_map[buf_id]
-            end
             local suffix = vim.bo[buf_id].modified and " " or ""
-            return " " .. prefix .. tabline.default_format(buf_id, label) .. suffix .. " "
+
+            if pick_mode and pick_map[buf_id] then
+                local num = pick_map[buf_id]
+                return string.format("  %s %s %s ", num, label, suffix)
+            end
+
+            return " " .. tabline.default_format(buf_id, label) .. suffix .. " "
         end,
         tabpage_section = "right",
     })
-
     vim.keymap.set("n", "gb", function()
         pick_action(function(buf)
             vim.api.nvim_win_set_buf(0, buf)
