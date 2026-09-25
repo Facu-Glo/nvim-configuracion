@@ -11,7 +11,6 @@ local plugins = {
     "trouble",
     "gitsigns",
     "codediff",
-    "whichkeys",
     "fyler",
 }
 

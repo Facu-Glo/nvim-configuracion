@@ -12,6 +12,7 @@ local jump = require('mini.jump')
 local jump2d = require('mini.jump2d')
 local tabline = require('mini.tabline')
 local sessions = require('mini.sessions')
+local clue = require('mini.clue')
 
 surround.setup()
 pairs.setup()
@@ -48,3 +49,51 @@ sessions.setup({
     file = '',
 })
 require("config.sessions").setup()
+
+clue.setup({
+    triggers = {
+        { mode = { 'n', 'x' }, keys = '<Leader>' },
+
+        { mode = 'n',          keys = '<C-w>' },
+
+        { mode = { 'n', 'x' }, keys = 'g' },
+        { mode = { 'n', 'x' }, keys = 'z' },
+
+        { mode = 'n',          keys = '[' },
+        { mode = 'n',          keys = ']' },
+
+        { mode = { 'n', 'x' }, keys = "'" },
+        { mode = { 'n', 'x' }, keys = '`' },
+        { mode = { 'n', 'x' }, keys = '"' },
+        { mode = { 'i', 'c' }, keys = '<C-r>' },
+
+        { mode = 'i',          keys = '<C-x>' },
+    },
+
+    clues = {
+        { mode = { 'n', 'x' }, keys = '<Leader>b', desc = '+Buffers' },
+        { mode = { 'n', 'x' }, keys = '<Leader>c', desc = '+Code' },
+        { mode = { 'n', 'x' }, keys = '<Leader>d', desc = '+Debug / DAP' },
+        { mode = { 'n', 'x' }, keys = '<Leader>f', desc = '+File / Find' },
+        { mode = { 'n', 'x' }, keys = '<Leader>g', desc = '+Git' },
+        { mode = { 'n', 'x' }, keys = '<Leader>q', desc = '+Quit' },
+        { mode = { 'n', 'x' }, keys = '<Leader>t', desc = '+Terminal' },
+        { mode = { 'n', 'x' }, keys = '<Leader>x', desc = '+Trouble / Diag' },
+
+        clue.gen_clues.builtin_completion(),
+        clue.gen_clues.g(),
+        clue.gen_clues.marks(),
+        clue.gen_clues.registers(),
+        clue.gen_clues.windows(),
+        clue.gen_clues.z(),
+        clue.gen_clues.square_brackets(),
+    },
+
+    window = {
+        delay = 100,
+        config = {
+            width = "50",
+            border = "rounded",
+        }
+    },
+})
