@@ -92,8 +92,8 @@ local servers = {
     jsonls = {},
     html = {},
     cssls = {},
-    clangd = {},
-    elixirls = {},
+    texlab = {},
+    rust_analyzer = {},
 }
 
 for server, config in pairs(servers) do
