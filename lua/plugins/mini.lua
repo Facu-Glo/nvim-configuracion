@@ -90,7 +90,7 @@ clue.setup({
     },
 
     window = {
-        delay = 100,
+        delay = 300,
         config = {
             width = "50",
             border = "rounded",
