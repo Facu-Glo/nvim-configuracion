@@ -38,26 +38,24 @@ require("snacks").setup({
                 action = ":lua vim.pack.update()",
                 hidden = true
             },
-
-            {
-                pane = 1,
-                section = "projects",
-                title = "Recent Projects:",
-                icon = "󰉋 ",
-                indent = 2,
-                padding = 1,
-                limit = 3,
-            },
-            {
-                pane = 1,
-                section = "recent_files",
-                title = "Most Recent Files:",
-                icon = " ",
-                indent = 2,
-                padding = 1,
-                limit = 4,
-            },
-
+            -- {
+            --     pane = 1,
+            --     section = "projects",
+            --     title = "Recent Projects:",
+            --     icon = "󰉋 ",
+            --     indent = 2,
+            --     padding = 1,
+            --     limit = 3,
+            -- },
+            -- {
+            --     pane = 1,
+            --     section = "recent_files",
+            --     title = "Most Recent Files:",
+            --     icon = " ",
+            --     indent = 2,
+            --     padding = 1,
+            --     limit = 4,
+            -- },
             {
                 text = {
                     {
