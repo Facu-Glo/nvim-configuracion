@@ -130,13 +130,13 @@ function StatuslineRender()
     return table.concat({
         mode_str,
         git_str,
-        get_diagnostics(),
         vim.b.cached_path or "%#Bold#[No Name]%*",
         " %m%r ",
         "%=",
         get_lsp_status(),
         get_macro_recording(),
         get_search_count(),
+        get_diagnostics(),
         "%y ",
     })
 end
