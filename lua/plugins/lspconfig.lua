@@ -94,6 +94,7 @@ local servers = {
     cssls = {},
     texlab = {},
     rust_analyzer = {},
+    markdown_oxide = {}
 }
 
 for server, config in pairs(servers) do
