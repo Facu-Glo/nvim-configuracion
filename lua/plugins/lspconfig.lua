@@ -74,7 +74,10 @@ local servers = {
         settings = {
             Lua = {
                 runtime = { version = "LuaJIT" },
-                diagnostics = { globals = { "vim", "Snacks" } },
+                diagnostics = {
+                    globals = { "vim", "Snacks" },
+                    disable = { "assign-type-mismatch" },
+                },
                 workspace = {
                     checkThirdParty = false,
                     library = {
