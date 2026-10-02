@@ -13,12 +13,6 @@ keymap("n", "<leader>qw", "<CMD>wqall<CR>", { desc = "Guardar y salir" })
 keymap({ "i", "v" }, "<M-e>", "<ESC>")
 keymap("t", "<M-e>", [[<C-\><C-n>]], { desc = "Escapar terminal" })
 
--- Movimiento entre splits (Normal y Terminal)
-local directions = { h = "Izquierda", j = "Abajo", k = "Arriba", l = "Derecha" }
-for key, desc in pairs(directions) do
-    keymap("n", "<C-" .. key .. ">", "<C-w>" .. key, { desc = "Mover a la ventana " .. desc })
-end
-
 keymap("t", "<C-j>", [[<C-\><C-n><C-w>j]], { desc = "Mover abajo (terminal)" })
 keymap("t", "<C-k>", [[<C-\><C-n><C-w>k]], { desc = "Mover arriba (terminal)" })
 
