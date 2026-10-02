@@ -3,13 +3,3 @@ vim.api.nvim_set_hl(0, "YankHighlight", {
     bg = "#f18e5d",
     bold = true,
 })
-
-vim.api.nvim_create_autocmd("TextYankPost", {
-    desc = "Resaltar texto al copiar (yank)",
-    callback = function()
-        vim.hl.on_yank({
-            higroup = "YankHighlight",
-            timeout = 200,
-        })
-    end,
-})
