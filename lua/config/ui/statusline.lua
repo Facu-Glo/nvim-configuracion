@@ -229,4 +229,25 @@ function M.setup(opts)
     vim.o.statusline = "%!v:lua.__CustomStatuslineRender()"
 end
 
+M.setup({
+    mode_style     = "bar",
+    mode_separator = "",
+    git_separator  = "",
+
+    layout         = {
+        left = {
+            "mode",
+            "git",
+            "path"
+        },
+        right = {
+            "diag",
+            "search",
+            "macro",
+            "lsp",
+            "filetype"
+        },
+    },
+})
+
 return M
