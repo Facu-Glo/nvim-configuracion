@@ -12,6 +12,7 @@ local plugins = {
     "gitsigns",
     "codediff",
     "fyler",
+    "render_markdown"
 }
 
 for _, plugin in ipairs(plugins) do
