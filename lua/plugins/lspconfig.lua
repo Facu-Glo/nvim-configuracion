@@ -97,7 +97,24 @@ local servers = {
     cssls = {},
     texlab = {},
     rust_analyzer = {},
-    markdown_oxide = {}
+    markdown_oxide = {},
+    cobol_ls = {
+        cmd = {
+            vim.fn.stdpath("data") .. "/mason/bin/cobol-language-support",
+            "-Dlogback.statusListenerClass=ch.qos.logback.core.status.NopStatusListener",
+        },
+        settings = {
+            cobol = {
+                dialect = "gnu-cobol",
+                indexing = true,
+                tabstop = 4,
+                copybookdirs = { "." },
+                diagnostics = {
+                    enable = true,
+                },
+            },
+        },
+    },
 }
 
 for server, config in pairs(servers) do
