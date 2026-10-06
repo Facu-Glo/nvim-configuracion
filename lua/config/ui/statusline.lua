@@ -230,8 +230,8 @@ function M.setup(opts)
 end
 
 M.setup({
-    mode_style     = "bar",
-    mode_separator = "",
+    mode_style     = "block",
+    mode_separator = "",
     git_separator  = "",
 
     layout         = {
