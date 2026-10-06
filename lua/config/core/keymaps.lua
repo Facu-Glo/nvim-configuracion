@@ -43,6 +43,9 @@ keymap("n", "<leader>a", function()
     vim.cmd("keepjumps normal! ggVG")
 end, { desc = "Select all" })
 
+-- Copiar todo el buffer
+keymap("n", "<leader>y", "<CMD>%y<CR>", { desc = "Yank all without moving cursor" })
+
 -- Cursor en el incio/fin de linea
 keymap({ "n", "v" }, "<M-i>", "^", { noremap = true, silent = true, desc = "Ir al inicio de la linea" })
 keymap({ "n", "v" }, "<M-f>", "$", { noremap = true, silent = true, desc = "Ir al final de la linea" })
