@@ -12,3 +12,14 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.wo.relativenumber = false
     end,
 })
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+    group = vim.api.nvim_create_augroup("HighlightYank", { clear = true }),
+    desc = "Resaltar texto al copiar",
+    callback = function()
+        vim.hl.on_yank({
+            higroup = "YankHighlight",
+            timeout = 200,
+        })
+    end,
+})
