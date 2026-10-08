@@ -98,6 +98,7 @@ local servers = {
     texlab = {},
     rust_analyzer = {},
     markdown_oxide = {},
+    gopls = {},
     cobol_ls = {
         cmd = {
             vim.fn.stdpath("data") .. "/mason/bin/cobol-language-support",
